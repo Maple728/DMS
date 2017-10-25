@@ -1,0 +1,118 @@
+<div class="user-info">
+	<form name="userDetailForm" class="form-horizontal">
+	    <div ng-class="['form-group', userDetailForm.name.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label">司机姓名：</label>
+	    	<div class="col-sm-7">
+		        <input name="name" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.name" required/>
+	    	</div>
+	    </div>
+
+	    <div ng-class="['form-group', userDetailForm.idNo.$invalid ? 'has-error' : '']" ng-if="isBaseEditable">
+		    <label class="col-sm-5 control-label">身份证号：</label>
+	    	<div class="col-sm-7">
+		        <input name="idNo" type="text" class="form-control" ng-model="userWithDetail.idNo" required/>
+	    	</div>
+	    </div>
+	    
+	    <div ng-class="['form-group', userDetailForm.phonenumber.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label">联系方式：</label>
+	        <div class="col-sm-7">
+		        <input name="phonenumber" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.phonenumber" required/>
+	    	</div>
+	    </div>
+	    	
+	    <div ng-class="['form-group', userDetailForm.address.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label">居住地：</label>
+	        <div class="col-sm-7">
+		        <input name="address" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.address" required/>
+	    	</div>
+	    </div>
+	    
+	    <div ng-class="['form-group', userDetailForm.drivingLicensePathInput.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">驾驶证：</label>
+	        <div class="col-sm-7">
+		        <img name="drivingLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.drivingLicensePath}}" ng-click="uploadPicture('drivingLicensePathInput')" alt="上传驾驶证照片"/>
+		        <input name="drivingLicensePathInput" id="drivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="visibility: hidden;" required/>	        
+	    	</div>
+	    </div>
+	    
+	    <div ng-class="['form-group', userDetailForm.certificatePath.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >从业资格证：</label>
+	    	<div class="col-sm-7">
+		        <img name="certificatePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.certificatePath}}" ng-click="uploadPicture('certificatePathInput')" alt="上传从业资格证照片"/>
+		        <input id="certificatePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+	    	</div>
+	    </div>	
+
+	    <div ng-class="['form-group', userDetailForm.certificateDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >从业资格证取得时间：</label>
+	    	<div class="col-sm-7">
+		        <input name="certificateDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.certificateDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	    	</div>	    
+	    </div>	
+	    	    
+	    <div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >行驶证：</label>
+	    	<div class="col-sm-7">
+		        <img name="vehicleTravelLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.vehicleTravelLicensePath}}" ng-click="uploadPicture('vehicleTravelLicensePathInput')" alt="上传行驶证照片"/>
+		        <input id="vehicleTravelLicensePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+	    	</div>
+	    </div>
+	    
+	    <div ng-class="['form-group', userDetailForm.vehicleOperatingId.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >车辆营运证号：</label>
+	    	<div class="col-sm-7">
+ 				<input name="vehicleOperatingId" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.vehicleOperatingId" required/>
+ 	    	</div>
+	    </div>
+	
+	    <div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">保险：</label>
+	    	<div class="col-sm-7">
+		        <textarea class="textarea form-control" rows="2" ng-model="userWithDetail.userDetail.signature" ng-disabled="!isDetailEditable"></textarea>
+	    	</div>
+	    </div>
+	    
+	   	<div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">合同：</label>
+	    	<div class="col-sm-7">
+		        <textarea class="textarea form-control" rows="2" ng-model="userWithDetail.userDetail.signature" ng-disabled="!isDetailEditable"></textarea>
+	    	</div>
+	    </div>
+	    
+	    <div ng-class="['form-group', userDetailForm.driverDetailModel.annualAudit.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">年审：</label>
+	    	<div class="col-sm-7">
+		        <input name="annualAudit" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.annualAudit" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	    	</div>
+	    </div>
+	    
+	    <div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">换型：</label>
+	    	<div class="col-sm-7">
+		        <textarea class="textarea form-control" rows="2" ng-model="userWithDetail.userDetail.signature" ng-disabled="!isDetailEditable"></textarea>
+	    	</div>
+	    </div>	    
+	    
+	    <div class="form-group">
+	        <label class="col-sm-5 control-label">过户：</label>
+	    	<div class="col-sm-7">
+	    		<input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="userWithDetail.userDetail.isTransferOwnership"/>
+	    	</div>
+	    </div>	    
+	    
+	    <div class="form-group" ng-show="isDetailEditable">
+	        <label class="col-sm-5 control-label">创 建 日 期：</label>
+	    	<div class="col-sm-7 form-control-static">
+		        <label class="label label-info">{{userWithDetail.createDt | date : DATE_FORMAT}}</label>
+	    	</div>
+	    </div>
+	
+	    <div class="form-group" ng-show="isDetailEditable">
+	        <label class="col-sm-5 control-label">上次更新日期：</label>
+	    	<div class="col-sm-7 form-control-static">
+		        <label class="label label-info">{{userWithDetail.lastUpdateDt | date : DATE_FORMAT}}</label>
+	    	</div>
+	    </div>
+	</form>
+</div>

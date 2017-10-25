@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="state-header" ng-switch=" $ctrl.user.id == $root.user.id">
+  		<div ng-switch-when="false">
+	    	<a class="a-like-btn" ui-sref="profile({ userId : $ctrl.user.id})">{{$ctrl.user.userDetail.nickname}}</a>  的 动 态
+  		</div>
+  		<div ng-switch-when="true">
+  			我 的 动 态
+  		</div>
+    </div>
+</div>
+<div class="row" ng-switch="$ctrl.topicList.length == 0">
+    <div ng-switch-default style="margin-bottom:20px;" ng-repeat="topic in $ctrl.topicList | orderBy : 'id' : true as filtered_results track by topic.id">
+        <topic-content topic="topic" is-detail="$ctrl.isTopicDetail"></topic-content>
+    </div>
+    <div ng-switch-when="true" class="jumbotron" >
+    	<h1>暂 无 动 态</h1>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="description" content="师生交流系统"></meta>
+    <meta name="author" content="Maple.S"></meta>
+    <link rel="icon" href="../../favicon.ico" />
+
+    <title>T-S Communication</title>
+
+    <link rel="stylesheet" href="../../global/plugins/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../global/plugins/bootstrap-3.3.7/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="../../global/css/common.css" />
+    <link rel="stylesheet" href="../../global/plugins/angular-tostr/angular-toastr.css" />
+
+	<!-- Simditor  -->
+    <link rel="stylesheet" href="/global/plugins/simditor/simditor/styles/simditor.css"/>
+	
+    <!-- Custom styles for this template -->
+    <link href="../../global/templates/comment-reply/comment-reply.css" rel="stylesheet" />
+    <link href="../../global/templates/topic-content/topic-content.css" rel="stylesheet" />
+    <link href="../../global/templates/user-info/user-info.css" rel="stylesheet" />
+    <link href="dashboard.css" rel="stylesheet" th:href="@{/TSCinternal/UserContents/dashboard.css}"/>
+      
+  </head>
+
+  <body ng-app="homepageApp" ng-controller="homepageCtrl">
+    <nav class="navbar navbar-default blog-masthead">
+      <div class="container-fluid">
+	      <div class="navbar-header">
+	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#blog-navbar" aria-expanded="false" aria-controls="navbar">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<div class="navbar-inverse">
+	      			<a class="navbar-brand" ui-sref="homePage" ui-sref-active="active" style="color:rgb(205, 221, 235);">
+	      				<span class="tsc-title">T S C</span>
+	      			</a>
+				</div>
+	      	
+	      </div>
+            <div class="collapse navbar-collapse" id="blog-navbar">
+                <ul id="blog-nav" class="nav navbar-nav blog-nav">
+                    <!--  <li><a class="blog-nav-item" ui-sref="homePage" ui-sref-active="active">主页</a></li>--> 
+                    <li><a class="blog-nav-item" ui-sref="myTopics({userId : loginUserId})" ui-sref-active="active">我的动态</a></li>
+                    <li><a class="blog-nav-item" ui-sref="myCourses" ui-sref-active="active">我的课程</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" action="/logout" method="post">
+	                <a ui-sref="profile({userId : loginUserId})" class="navbar-link blog-nav-item" style="margin-right:10px;" ng-bind="$root.user.userDetail.nickname"></a>
+                    <button type="submit" class="btn btn-default btn-danger" style="margin-left:10px; margin-right:-10px;">Logout</button>
+                    <input type="hidden" name="_csrf" id="CSRF-TOKEN"></input>
+                </form>
+            </div>
+      </div>
+    </nav>
+
+    <div class="blog-body">
+    	<div class="container">
+	        <ui-view></ui-view>
+    	</div>
+    </div>
+
+    <footer class="blog-footer">
+      <p>师生交流平台( Teacher-Student Communication ) - Built by <a href="https://github.com/Maple728">@MapleS</a>.</p>
+      <p>
+        <a href="javascript:window.scrollTo( 0, 0 );">返回顶部</a>
+      </p>
+    </footer>
+      
+    <script src="../../global/plugins/lodash-min.js"></script>
+    <script src="../../global/plugins/jquery-3.2.0.min.js"></script>
+    <script src="../../global/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../global/plugins/angular-1.5.8/angular.js"></script>
+    <script src="../../global/plugins/angular-1.5.8/angular-sanitize.min.js"></script>
+    <script src="../../global/plugins/ui-router/angular-ui-router.js"></script>
+    <script src="../../global/plugins/angular-tostr/angular-toastr.tpls.js"></script>
+    
+    <!-- Simditor  -->
+    <!--  
+   	<script src="/global/plugins/js-beautify/js/lib/beautify.js"></script>
+	<script src="/global/plugins/js-beautify/js/lib/beautify-css.js"></script>
+	<script src="/global/plugins/js-beautify/js/lib/beautify-html.js"></script>
+	-->
+    <script src="/global/plugins/simditor/simditor/scripts/module.js"></script>
+	<script src="/global/plugins/simditor/simditor/scripts/uploader.js"></script>
+	<script src="/global/plugins/simditor/simditor/scripts/hotkeys.js"></script>
+	<script src="/global/plugins/simditor/simditor/scripts/simditor.js"></script>
+	<script src="/global/plugins/simditor/angular-simditor.js"></script>
+	
+    <!-- Customized scripts -->
+    <script type="text/javascript" src="../../global/scripts/constants.js"></script>
+    <script type="text/javascript" src="../../global/scripts/server-service.js"></script>
+    
+    <script type="text/javascript" src="dashboard.js" th:src="@{/TSCinternal/UserContents/dashboard.js}"></script>
+    <script type="text/javascript" src="../../global/templates/comment-reply/comment-reply.js"></script>
+    <script type="text/javascript" src="../../global/templates/comment-posted/comment-posted.js"></script>
+    <script type="text/javascript" src="../../global/templates/topic-content/topic-content.js"></script>
+    <script type="text/javascript" src="../../global/templates/user-info/user-info.js"></script>
+    <script type="text/javascript" src="../../global/templates/course-info/course-info.js"></script>
+    <script type="text/javascript" src="../../global/templates/topic-info/topic-info.js"></script>
+    <script type="text/javascript" src="home-page/home-page.js" th:src="@{/TSCinternal/UserContents/home-page/home-page.js}"></script>
+    <script type="text/javascript" src="topic/topic.js" th:src="@{/TSCinternal/UserContents/topic/topic.js}"></script>
+    <script type="text/javascript" src="profile/profile.js" th:src="@{/TSCinternal/UserContents/profile/profile.js}"></script>
+    <script type="text/javascript" src="course/course.js" th:src="@{/TSCinternal/UserContents/course/course.js}"></script>
+    <script type="text/javascript" src="my-courses/my-courses.js" th:src="@{/TSCinternal/UserContents/my-courses/my-courses.js}"></script>
+    <script type="text/javascript" src="my-topics/my-topics.js" th:src="@{/TSCinternal/UserContents/my-topics/my-topics.js}"></script>
+    
+  </body>
+</html>

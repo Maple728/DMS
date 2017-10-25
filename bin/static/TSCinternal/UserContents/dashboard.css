@@ -1,0 +1,121 @@
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+  background: url("../../global/img/home_bg.jpg");
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-weight: normal;
+  color: #333;
+}
+
+
+/*
+ * Masthead for nav
+ */
+
+.blog-masthead {
+	background-color: #428bca !important;
+	background-image: linear-gradient(to bottom,#428bca 0,#428bca 100%) !important;
+	-webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1) !important;
+	         box-shadow: inset 0 -2px 5px rgba(0,0,0,.1) !important;
+}
+
+/* Nav links */
+
+.blog-nav {
+	margin-left : 100px;
+}
+
+.blog-nav-item {
+  position: relative !important;
+  display: inline-block !important;
+  font-weight: 500 !important;
+  color: #cdddeb !important;
+  font-size: 17px !important;
+}
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* Active state gets a caret at the bottom */
+#blog-nav .active {
+  color: #fff !important;
+}
+#blog-nav .active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
+}
+
+/*
+ * Footer
+ */
+
+.blog-footer {
+	margin-top : 50px;
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * For all states layout 	
+ */
+.state-header {
+	background-color: #f9f9f9;
+    font-size: 35px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
+
+.widget {
+    background-color: rgba(249, 249, 249, 0.7);
+    margin-bottom: 30px;
+    word-wrap: break-word;
+    -webkit-box-shadow: 1px 2px 3px #dddddd;
+    box-shadow: 1px 2px 3px #dddddd;
+    line-height: 1.8em;
+}
+
+.widget .widget-title {
+    padding: 15px 20px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #DDD;
+    font-weight: normal;
+    color: #666666;
+    margin-bottom:0;
+}
+
+.widget .widget-content {
+    font-size: .9em;
+    padding: 15px 20px;
+}
+
+.widget .widget-content ul, .widget .widget-content ol, .widget .widget-content dl {
+    list-style: none;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0;
+}

@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="state-header">课 程 动 态</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-md-push-8">
+		<div class="widget">
+			<h3 class="widget-title">课 程 信 息</h3>
+			<div class="widget-content">
+				<course-info course-detail="$ctrl.courseModel"></course-info>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 col-md-pull-4">
+		<div ng-switch="$ctrl.isEmpty">
+			<div ng-switch-when="false" style="margin-bottom:20px;" ng-repeat="topic in $ctrl.topicList | orderBy : 'id' : true as filtered_results track by topic.id">
+				<topic-content topic="topic" is-detail="$ctrl.isTopicDetail"></topic-content>
+			</div>
+			<div ng-switch-when="true" class="jumbotron">
+				<h1>暂 无 动 态</h1>
+			</div>
+		</div>
+</div>

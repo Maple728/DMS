@@ -1,0 +1,50 @@
+body {
+    line-height: 1.7;
+    background: url("../../global/img/login_bg.jpg") no-repeat #E9F0F4;;
+
+}
+.login-content {
+    margin-top: 110px;
+}
+
+.form-signin {
+    max-width: 500px;
+    padding: 10px 25px 20px 30px;
+
+    margin: 0 auto;
+    background-color: white;
+}
+.form-signin .form-signin-heading {
+    font-family: SigmarOne-Regular;
+    text-align: center;
+    font-size:110px;
+    color: rgb(45,82,255);
+}
+
+.header-two {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+    padding: 10px;
+
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: 1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 30px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

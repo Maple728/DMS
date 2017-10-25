@@ -1,0 +1,31 @@
+* {
+	font-family : 'Microsoft YaHei';
+}
+
+@font-face {
+    font-family: SigmarOne-Regular;
+    src: url("../../global/fonts/SigmarOne-Regular.ttf");
+}
+
+.tsc-title {
+	font-size: 40px;
+	letter-spacing: 1.5px;
+	font-family: SigmarOne-Regular;
+	text-shadow: -1px -1px 1px #aaa,
+             0px 4px 1px rgba(0,0,0,0.5),
+             4px 4px 5px rgba(0,0,0,0.7),
+             0px 0px 7px rgba(0,0,0,0.4);
+}
+
+a.a-like-btn {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.a-like-btn:hover {
+	text-decoration: none;
+}
+
+.textarea-board {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,17 @@
+
+.highlight {
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    text-align: right;
+}
+
+textarea {
+    border:0;  
+    background-color:transparent;  
+    /*scrollbar-arrow-color:yellow;  
+    scrollbar-base-color:lightsalmon;  
+    overflow: hidden;*/  
+    color: #666464;  
+    height: auto;
+    overflow-y: hidden;
+}

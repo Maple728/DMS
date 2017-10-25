@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="state-header">用 户 资 料</div>
+</div>
+<div class="row" style="width:400px;margin:0 auto;">
+	<user-info user-with-detail="$ctrl.userWithDetail" mode="$ctrl.mode" is-form-valid="$ctrl.isFormValid"  user-role-category="$ctrl.userRoleCategory"></user-info>
+	<div ng-show="$ctrl.isEditable" style="text-align:center">
+		<button class="btn btn-default" ng-click="$ctrl.resetUser()" style="margin-right:100px;width:100px">重 置</button>
+		<button class="btn btn-primary" ng-click="$ctrl.saveUser()" ng-disabled="$ctrl.isFormValid" style="width:100px">保 存</button>
+	</div>
+	<div ng-show="!$ctrl.isEditable" style="text-align:center">
+		<button class="btn btn-success" style="width:100px" ui-sref="myTopics({userId : $ctrl.userWithDetail.id})">他 的 动 态</button>
+	</div>
+</div>

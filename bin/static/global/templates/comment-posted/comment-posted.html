@@ -1,0 +1,33 @@
+<div class="media">
+    <div class="media-left">
+    	<a class="a-like-btn" ui-sref="profile({userId : comment.ownerDetailModel.id})">
+	        <img class="media-object img-circle" style="width:40px;height:40px;margin-top: 10px;" ng-src="{{comment.ownerDetailModel.picturePath}}" alt="Bio"/>
+    	</a>
+    </div>
+    <div class="media-body" style="background-color: #f9f9f9;padding:10px;border-radius: 10px;">
+        <div class="media-heading">
+            <h4><a class="a-like-btn" ui-sref="profile({userId : comment.ownerDetailModel.id})" >{{ comment.ownerDetailModel.nickname }}</a></h4>
+        </div>
+        <div class="comment-body" style="padding:10px;">
+            <div ng-bind-html="comment.content"></div>
+        </div>
+        <div ng-if="comment.superCommentModal != null" class="well well-sm super-comment">
+            <h4><a class="a-like-btn" ui-sref="profile({userId : comment.superCommentModal.ownerDetailModel.id})">@{{comment.superCommentModal.ownerDetailModel.nickname}}</a></h4>
+            <div ng-bind-html="comment.superCommentModal.content" style="padding:5px;margin-left:10px;"></div>
+        </div>
+        <div class="footer" style="color: #999;">
+            <span>{{ comment.createdDt | date : DATE_FORMAT}}</span>
+            
+            <a class="a-like-btn" style="float:right;margin-right:2px;color: #999;" ng-click="onReply()">
+            	<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <small>回复</small>
+            </a>
+            <span style="float:right;margin-right:11px;margin-left:11px;color: #999;">|</span>
+            
+            <a class="a-like-btn" style="float:right;color: #999;" ng-click="likeComment($event)">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                ({{ comment.likesCount }})
+            </a>
+        </div>
+    </div>
+</div>

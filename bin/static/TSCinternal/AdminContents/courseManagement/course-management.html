@@ -1,0 +1,61 @@
+<div>
+    <h1 class="page-header">课程管理</h1>
+    <div class="sub-header">
+        <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddCourseModal()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
+    	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteCourses()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
+    </div>
+    <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" demo-tracked-table="$ctrl.tableTracker">
+        <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+        	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
+            <td data-title="'课程序号'" filter="{courseNumber : 'number'}" sortable="'courseNumber'"
+            ng-switch="row.isEditing" ng-class="courseNumber.$dirty ? 'bg-warning' : ''" ng-form="courseNumber" demo-tracked-table-cell>
+                <span ng-switch-default>{{row.courseNumber}}</span>
+            	<div class="controls" ng-class="courseNumber.$invalid && courseNumber.$dirty || !$ctrl.isCourseNumberValid ? 'has-error' : ''" ng-switch-when="true">
+              		<input type="number" name="courseNumber" ng-model="row.courseNumber" class="form-control input-sm" ng-blur="$ctrl.checkCourseNumber(row)" required />
+              		<label class="control-label" ng-show="!$ctrl.isCourseNumberValid">该课程序号已存在！</label>
+            	</div>
+            </td>
+            <td data-title="'课程名称'" filter="{name : 'text'}" sortable="'name'"
+            ng-switch="row.isEditing" ng-class="name.$dirty ? 'bg-warning' : ''" ng-form="name" demo-tracked-table-cell>
+        	    <span ng-switch-default>{{row.name}}</span>
+            	<div class="controls" ng-class="name.$invalid && name.$dirty ? 'has-error' : ''" ng-switch-when="true">
+              		<input type="text" name="name" ng-model="row.name" class="form-control input-sm" required />
+            	</div>
+            </td>
+            <td data-title="'描述'" filter="{description : 'text'}" ng-form="description" ng-switch="row.isEditing" demo-tracked-table-cell >
+                <span ng-switch-default>{{row.description}}</span>
+                <input type="text" name="description" ng-model="row.description" class="form-control input-sm" ng-switch-when="true" />
+            </td>
+            <td data-title="'创建日期'"  sortable="'createdDt'">{{row.createdDt | date : $ctrl.DATE_FORMAT}}</td>
+            <td data-title="'上次更新日期'" sortable="'lastLeftDt'">{{row.lastUpdateDt | date : $ctrl.DATE_FORMAT}}</td>
+            <td style="width: 50px;">
+	            <button class="btn btn-primary btn-sm" ng-click="$ctrl.save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid || !$ctrl.isCourseNumberValid" title="保存"><span class="glyphicon glyphicon-ok"></span></button>
+	            <button class="btn btn-default btn-sm" ng-click="$ctrl.cancel(row, rowForm)" ng-if="row.isEditing" title="取消"><span class="glyphicon glyphicon-remove"></span></button>
+	            <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing" title="编辑信息"><span class="glyphicon glyphicon-pencil"></span></button>
+          </td>
+        </tr>
+    </table>
+
+    <!-- Customized Modal -->
+    <div id="courseDetailModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3>编辑课程信息</h3>
+                </div>
+                <div class="modal-body">
+                	<div class="form-content">
+	                    <course-info mode="$ctrl.editableMode" course-detail="$ctrl.clickedCourse" is-form-valid="$ctrl.isFormValid"></course-info>
+                	</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal" ng-click="$ctrl.cancelCourseModal()">取 消</button>
+                    <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="$ctrl.isFormValid" ng-click="$ctrl.saveCourseModal()">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

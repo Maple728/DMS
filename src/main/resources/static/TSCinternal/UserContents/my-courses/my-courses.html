@@ -1,0 +1,15 @@
+<div class="col-md-3">
+	<div class='panel panel-default'>
+		<div class="panel-heading">
+			<h1>我 的 课 程</h1>
+		</div>
+			<div class="list-group">
+				<a class="list-group-item a-like-btn" ng-repeat="course in $ctrl.courseList" ui-sref="myCourses.course({courseId : course.id})" ui-sref-active="active">
+					{{course.name}}
+				</a>
+			</div>
+	</div>
+</div>
+<div class="col-md-9">
+	<ui-view></ui-view>
+</div>

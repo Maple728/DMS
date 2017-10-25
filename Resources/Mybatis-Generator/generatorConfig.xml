@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry
+        location="C:/Users/SEELE/.gradle/caches/modules-2/files-2.1/org.postgresql/postgresql/9.4.1212.jre7/7101612950488be0ff6882bcc27aa0f0a4c202dd/postgresql-9.4.1212.jre7.jar" />
+
+  <context id="DMSTables">
+
+    <jdbcConnection connectionURL="jdbc:postgresql://localhost:5432/dms" driverClass="org.postgresql.Driver" 
+    	password="123456" userId="postgres" />
+    	
+	 <javaTypeResolver>
+		<property name="forceBigDecimals" value="false" />
+	</javaTypeResolver>
+    	
+    <javaModelGenerator targetPackage="com.maple.dms.models" targetProject="E:\DevCodes\dms\src\main\java">
+		<property name="enableSubPackages" value="false" />
+      	<property name="trimStrings" value="true" />
+    </javaModelGenerator>
+    
+    <sqlMapGenerator targetPackage="com.maple.dms.mappers" targetProject="E:\DevCodes\dms\src\main\java">
+    	<property name="enableSubPackages" value="false" />
+    </sqlMapGenerator>
+    
+    <javaClientGenerator targetPackage="com.maple.dms.mappers" targetProject="E:\DevCodes\dms\src\main\java" type="XMLMAPPER">
+    	<property name="enableSubPackages" value="false" />
+    </javaClientGenerator>
+	
+	<!--
+    <table tableName="codetable" domainObjectName="CodetableModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+ 
+    <table tableName="driver" domainObjectName="DriverModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+	
+    <table tableName="driver_detail" domainObjectName="DriverDetailModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+	-->
+    <table tableName="insurance" domainObjectName="InsuranceModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+
+    <table tableName="contract" domainObjectName="ContractModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+
+    <table tableName="accident" domainObjectName="AccidentModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+
+    <table tableName="complaint" domainObjectName="ComplaintModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+
+    <table tableName="civil_dispute" domainObjectName="CivilDisputeModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+
+    <table tableName="insurance" domainObjectName="InsuranceModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+
+    <table tableName="contract" domainObjectName="ContractModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+	
+  </context>
+</generatorConfiguration>

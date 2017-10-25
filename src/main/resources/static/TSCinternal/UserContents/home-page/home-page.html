@@ -1,0 +1,83 @@
+<div class="row">
+	<div class="panel panel-primary">
+		<div id="carousel-top-toic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  <li ng-repeat="topic in topicListTop" data-target="#carousel-top-toic" data-slide-to="{{$index}}" ng-class="[$first ? 'active' : '']"></li>
+			</ol>
+			
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div ng-repeat="topic in topicListTop" ng-class="['item', $first ? 'active' : '']" style="height:300px;">
+					<img ng-src="{{ topic.pic }}" alt="picture" style="width:100%;height:100%;">
+					<div class="carousel-caption">
+					 	<h1>
+					 		<a class="a-like-btn" ui-sref="topic({topicId : topic.id})">{{topic.title | cutString : 20}}</a>
+					 	</h1>
+					 	<p>{{topic.content | cutString : 120}}</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-top-toic" role="button" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-top-toic" role="button" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="state-header col-xs-9 col-sm-10">全 部 动 态</div>
+	<div class="col-xs-2 col-sm-1">
+		<button class="btn btn-default" type="button" style="height:71px;padding:10px;" ng-click="$ctrl.openAddToicModal()"> 
+		发表动态
+		</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3 col-sm-push-9">
+		<div class="widget">
+			<h3 class="widget-title">课程相关最新动态</h3>
+			<div class="widget-content">
+				<ul class="post-list">
+					<li class="post-list-item" ng-repeat="trendTopic in $ctrl.topicListOfTrend">
+						<a class="post-list-link" ui-sref="topic({topicId : trendTopic.id})">{{ trendTopic.title }}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-9 col-sm-pull-3">
+		<div style="margin-bottom:20px;" ng-repeat="topic in $ctrl.topicList | orderBy : 'id' : true as filtered_results track by topic.id">
+			<topic-content topic="topic" is-detail="$ctrl.isTopicDetail"></topic-content>
+		</div>
+	</div>
+</div>
+
+<!-- Customized modal -->
+<div id="topicModel" class="modal fade" role="dialog" tabindex="-1">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <h3>编 辑 动 态</h3>	
+			</div>
+			<div class="modal-body">
+				<div style="margin:0 50px;">
+					<topic-info topic="$ctrl.newTopic" mode="$ctrl.mode" is-form-valid="$ctrl.isFormValid"></topic-info>
+				</div>
+			</div>
+			<div class="modal-footer">
+	            <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal">取 消</button>
+	            <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="$ctrl.isFormValid" ng-click="$ctrl.addTopic($ctrl.newTopic)">发 表</button>
+			</div>
+		</div>
+	</div>
+</div>

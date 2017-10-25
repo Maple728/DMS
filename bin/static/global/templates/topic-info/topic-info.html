@@ -1,0 +1,54 @@
+<div class="topic-info">
+	<form name="topicForm" class="form-horizontal">
+		<div ng-class="['form-group', topicForm.owner.$invalid ? 'has-error' : '']" ng-show="isBaseEditable">
+			<label class="col-sm-3 control-label">所有者：</label>
+			<div class="col-sm-9">
+				<input class="form-control" name="owner" type="text" ng-model="topic" required/>
+			</div>
+		</div>
+		
+		<div ng-class="['form-group', topicForm.category.$invalid ? 'has-error' : '']">
+			<label class="col-sm-3 control-label">类别：</label>
+			<div class="col-sm-9">
+				<select class="form-control" name="category" ng-model="topic.categoryId" ng-options="category.id as category.displayValue for category in categoryList" required>
+				</select>
+			</div>
+		</div>
+
+		<div ng-class="['form-group', topicForm.course.$invalid ? 'has-error' : '']">
+			<label class="col-sm-3 control-label">所属课程：</label>
+			<div class="col-sm-9">
+				<select class="form-control" name="course" ng-model="topic.courseId" ng-options="course.id as course.name for course in courseList" required>
+				</select>
+			</div>
+		</div>
+			
+		<div ng-class="['form-group', topicForm.title.$invalid ? 'has-error' : '']">
+			<label class="col-sm-3 control-label">标题：</label>
+			<div class="col-sm-9">
+				<input class="form-control" name="title" type="text" ng-model="topic.title" required/>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-3 control-label">内容：</label>
+		</div>
+		
+		<div ng-class="['form-group', topicForm.content.$invalid ? 'has-error' : '']">
+			<ng-simditor class="textarea-board"  content="topic.content" editable="isDetailEditable"></ng-simditor>
+		</div>
+	    <div class="form-group" ng-show="isBaseEditable">
+	        <label class="col-sm-3 control-label">创 建 日 期：</label>
+	    	<div class="col-sm-9 form-control-static">
+		        <label class="label label-info">{{topic.createdDt | date : DATE_FORMAT}}</label>
+	    	</div>
+	    </div>
+	
+	    <div class="form-group" ng-show="isBaseEditable">
+	        <label class="col-sm-3 control-label">上次更新日期：</label>
+	    	<div class="col-sm-9 form-control-static">
+		        <label class="label label-info">{{topic.lastUpdateDt | date : DATE_FORMAT}}</label>
+	    	</div>
+	    </div>	
+	</form>
+</div>

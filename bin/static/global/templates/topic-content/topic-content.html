@@ -1,0 +1,89 @@
+<article class="article post">
+    <div class="article-wrap">
+        <header class="article-header">
+            <span class="article-header-icon" ng-switch="topic.categoryModel.name">
+            	<img ng-switch-when="HOMEWORK" style="width:33px;height:33px;" title="作业" src="/global/img/icon-topic-homework.png"/>
+            	<img ng-switch-when="QUESTION" style="width:33px;height:33px;" title="问题" src="/global/img/icon-topic-question.png"/>
+            	<img ng-switch-when="GOSSIP" style="width:33px;height:33px;" title="树洞" src="/global/img/icon-topic-gossip.png"/>
+            	
+            	<!--  
+                <span class="glyphicon glyphicon-file" style="font-size:25px" aria-hidden="true"></span>
+                -->
+            </span>
+            <div ng-switch="isDetail" class="article-header-title">
+            	<h1 ng-switch-when="false">
+            		<a ui-sref="topic({topicId : topic.id})">{{topic.title}}</a>
+            	</h1>
+            	<h1 ng-switch-when="true">{{topic.title}}</h1>
+            	
+            </div>
+            <time class="article-header-time">
+                <span class="day">{{topic.createdDt | date : 'd'}}</span>
+                <span class="month">{{topic.createdDt | date : 'yyyy年M月' }}</span  >
+            </time>
+        </header>
+        <section class="article-content" style="padding:10px 0;">
+            <div ng-bind-html="topic.content"></div>
+            <div class="footer" style="color: #999;text-align:right">
+            	<small>作者：<a class="a-like-btn" ui-sref="profile({ userId : topic.ownerDetailModel.userId})">{{topic.ownerDetailModel.nickname}}</a></small>
+            	<span style="margin-right:5px;margin-left:5px;color: #999;">|</span>
+	            <a class="a-like-btn" style="color: #999;" ng-click="likeTopic($event)">
+	                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+	                ({{topic.likesCount}})
+	            </a>
+	            <span ng-show="isDetail">
+		            <span style="margin-right:5px;margin-left:5px;color: #999;">|</span>
+		            <a class="a-like-btn" style="margin-right:2px;color: #999;" ng-click="openAddCommentModal(topic.id, null)">
+		            	<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+		                <small>回复</small>
+		            </a>
+	            </span>
+	        </div>
+        </section>
+        <footer class="article-footer clearfix">
+            <!-- Use ng-repeat to display tags -->
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+            <div class="tags" style="display:inline">
+                <a class="a-like-btn" ui-sref="course({courseId : topic.courseModel.id})">{{topic.courseModel.name}}</a>
+            </div>
+        </footer>
+    </div>
+    <div ng-show="isDetail">
+        <nav class="article-nav clearfix">
+            <a class="article-nav-link article-nav-newer">
+                <strong class="article-nav-type">Newer</strong>
+                <span class="article-nav-title">the newer article</span>
+            </a>
+            <a class="article-nav-link article-nav-older">
+                <strong class="article-nav-type">Older</strong>
+                <span class="article-nav-title">the older article</span>
+            </a>
+        </nav>
+        <div class="article-comments" >
+            <div class="article-comment-item" ng-repeat="comment in topic.commentModelList | orderBy : 'id' : true as results track by comment.id">
+                <comment-posted comment="comment" on-reply="openAddCommentModal(comment.topicId, comment.id)"></comment-posted>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- Customized modal -->
+<div id="commentModal" class="modal fade" role="dialog" tabindex="-1">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <h3>编 辑 评 论</h3>	
+			</div>
+			<div class="modal-body">
+				<div style="margin:0 50px;">
+					<ng-simditor class="textarea-board" content="newComment.content" editable="true"></ng-simditor>
+				</div>
+			</div>
+			<div class="modal-footer">
+	            <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal">取 消</button>
+	            <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="$ctrl.isFormValid" ng-click="addComment(newComment)">发 表</button>
+			</div>
+		</div>
+	</div>
+</div>

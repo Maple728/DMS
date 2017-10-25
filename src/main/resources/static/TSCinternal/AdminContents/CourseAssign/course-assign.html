@@ -1,0 +1,43 @@
+<div>
+    <h1 class="page-header">选课管理</h1>
+    <div class="sub-header">
+        <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddTCXRefModal()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
+    	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteTCXRefs()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
+    </div>
+    <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" demo-tracked-table="$ctrl.tableTracker">
+        <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+        	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
+            <td data-title="'课程编号'" filter="{'courseModel.courseNumber' : 'number'}" sortable="'courseModel.courseNumber'" demo-tracked-table-cell>
+                <span>{{row.courseModel.courseNumber}}</span>
+            </td>
+            <td data-title="'课程名称'" filter="{'courseModel.name' : 'text'}" sortable="'courseModel.name'" demo-tracked-table-cell>
+        	    <span>{{row.courseModel.name}}</span>
+            </td>
+            <td data-title="'任课教师'" filter="{'teacherModel.name' : 'text'}" sortable="'teacherModel.name'" demo-tracked-table-cell >
+                <span>{{row.teacherModel.name}}</span>
+            </td>
+            <td style="width:50px">
+            	<button class="btn btn-link btn-sm" ng-click="$ctrl.clickDetail(row)">详 情</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Customized Modal -->
+    <div id="TSXRefDetailModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3>编辑课程关系信息</h3>
+                </div>
+                <div class="modal-body">
+                    <course-assign-info mode="$ctrl.editableMode" tsxref="$ctrl.clickedTCXRef" is-form-valid="$ctrl.isFormValid"></course-assign-info>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="$ctrl.isFormValid" ng-click="$ctrl.saveTCXRefModal()">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="course-assign-info">
+    <form name="courseAssignForm" class="form-horizontal">
+        <div ng-class="['form-group', courseAssignForm.courseNumber.$invalid ? 'has-error' : '']">
+        	<label for="courseNumber" class="col-sm-3 control-label">课 程 编 号：</label>
+        	<div class="col-sm-6">
+	            <div class="input-group">
+	                <input id="courseNumber" name="courseNumber" type="number" class="form-control" ng-disabled="!isDetailEditable" ng-model="tsxref.courseModel.courseNumber" placeholder="课 程 编 号" required/>
+	                <span class="input-group-btn">
+	                    <button class="btn btn-default" type="button" ng-click="getCourse()">检查</button>
+	                </span>
+	            </div>
+        	</div>
+        	<div class="col-sm-3">
+	            <p class="form-control-static text-info">{{tsxref.courseModel.name}}</p>
+        	</div>
+        </div>
+
+        <div ng-class="['form-group', courseAssignForm.teacherAccountId.$invalid ? 'has-error' : '']">
+        	<label for="teacherAccountId" class="col-sm-3 control-label">授课教师工号：</label>
+               <div class="col-sm-6">
+           			<div class="input-group">
+	               		<input id="teacherAccountId" name="teacherAccountId" type="number" class="form-control" ng-disabled="!isDetailEditable" ng-model="tsxref.teacherModel.accountId" placeholder="授课教师工号" required/>
+		                <span class="input-group-btn">
+		                    <button class="btn btn-default" type="button" ng-click="getTeacher()">检查</button>
+	               		</span>
+              		</div>
+            	</div>
+            <div class="col-sm-3">
+            	<p class="form-control-static text-info">{{tsxref.teacherModel.name}}</p>
+            </div>
+        </div>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">编 辑 选 课 学 生</div>
+			<div class="panel-body">
+		        <div class="form-group">
+		        	<div style="margin:0 10px">
+			        	<button type="button" class="btn btn-danger col-sm-2" ng-click="deleteSelectedStudentRecords()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
+			        	<div class="col-sm-5 col-sm-offset-2">
+				            <div class="input-group">
+				                <input name="studentAccountId" type="number" class="form-control" ng-disabled="!isDetailEditable" ng-model="newStudent.accountId" placeholder="学 生 学 号"/>
+				                <span class="input-group-btn">
+				                    <button class="btn btn-default" type="button" ng-click="getStudent()">检查</button>
+				                </span>
+				            </div>
+			        	</div>
+			        	<div class="col-sm-2">
+			            	<p class="form-control-static text-info"> {{newStudent.name}}</p>
+			        	</div>
+			            <button class="btn btn-primary col-sm-1" ng-click="addStudentToCourse()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+		        	</div>
+		        </div>
+			</div>
+		    <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
+		        <tr ng-repeat="row in $data">
+		        	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{isSelected(row)}}" ng-click="checkSelectStatus($event,row)"/></td>
+		            <td data-title="'学（工）号'" filter="{accountId : 'number'}" sortable="'accountId'">
+		                <span>{{row.accountId}}</span>
+		            </td>
+		            <td data-title="'姓名'" filter="{name : 'text'}" sortable="'name'">
+		        	    <span>{{row.name}}</span>
+		            </td>
+		        </tr>
+		    </table>
+		</div>
+    </form>
+</div>
