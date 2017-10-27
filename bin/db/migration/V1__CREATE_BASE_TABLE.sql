@@ -88,47 +88,24 @@ CREATE TABLE "driver_detail"
 	
 	is_transfer_ownership boolean,
 	
+	-- Insurance
+	insurance_photo_path text,
+	insurance_dt DATE,
+	insurance_premium double precision,
+	insurance_insured_company text,
+
+	-- Contract
+	contract_photo_path,
+	contract_start_dt DATE,
+	contract_end_dt DATE,
+	contract_supplementary text,
+	
 	create_dt DATE NOT NULL,
 	last_update_dt DATE NOT NULL,	
+
 	
 	CONSTRAINT driver_detail_pkey PRIMARY KEY(id),
 	CONSTRAINT driver_detail_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)
-)
-;
-
-CREATE TABLE "insurance"
-(
-	id bigserial,
-	driver_id bigint NOT NULL UNIQUE,
-	
-	photo_path text,
-	occur_dt DATE NOT NULL,
-	premium double precision NOT NULL,
-	insured_company text NOT NULL,
-	
-	create_dt DATE NOT NULL,
-	last_update_dt DATE NOT NULL,
-	
-	CONSTRAINT driver_insurance_pkey PRIMARY KEY(id),
-	CONSTRAINT driver_insurance_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)
-)
-;
-
-CREATE TABLE "contract"
-(
-	id bigserial,
-	driver_id bigint NOT NULL UNIQUE,
-	
-	photo_path text,
-	start_dt DATE NOT NULL,
-	end_dt DATE NOT NULL,
-	supplementary text,
-	
-	create_dt DATE NOT NULL,
-	last_update_dt DATE NOT NULL,
-	
-	CONSTRAINT driver_contract_pkey PRIMARY KEY(id),
-	CONSTRAINT driver_contract_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)	
 )
 ;
 

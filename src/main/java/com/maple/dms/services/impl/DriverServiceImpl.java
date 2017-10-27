@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.maple.dms.mappers.ContractModelMapper;
 import com.maple.dms.mappers.DriverDetailModelMapper;
 import com.maple.dms.mappers.DriverModelMapper;
-import com.maple.dms.mappers.InsuranceModelMapper;
 import com.maple.dms.models.DriverModel;
 import com.maple.dms.services.DriverService;
 
@@ -21,12 +19,6 @@ public class DriverServiceImpl implements DriverService {
 
 	@Autowired
 	private DriverModelMapper driverModelMapper;
-	
-	@Autowired
-	private InsuranceModelMapper insuranceModelMapper;
-	
-	@Autowired
-	private ContractModelMapper contractModelMapper;
 	
 	@Autowired
 	private DriverDetailModelMapper driverDetailModelMapper;
@@ -41,10 +33,6 @@ public class DriverServiceImpl implements DriverService {
 		List<DriverModel> result = driverModelMapper.selectAllBase();
 		
 		for(DriverModel driver : result) {
-			driver.setInsuranceModel(insuranceModelMapper.selectByDriverId(driver.getId()));
-			
-			driver.setContractModel(contractModelMapper.selectByDriverId(driver.getId()));
-			
 			driver.setDriverDetailModel(driverDetailModelMapper.selectByDriverId(driver.getId()));
 		}
 		return result;
@@ -60,16 +48,6 @@ public class DriverServiceImpl implements DriverService {
 		record.setCreateDt(nowDate);
 		record.setLastUpdateDt(nowDate);
 		driverModelMapper.insert(record);
-
-		record.getInsuranceModel().setDriverId(record.getId());
-		record.getInsuranceModel().setCreateDt(nowDate);
-		record.getInsuranceModel().setLastUpdateDt(nowDate);		
-		insuranceModelMapper.insert(record.getInsuranceModel());
-		
-		record.getContractModel().setDriverId(record.getId());
-		record.getContractModel().setCreateDt(nowDate);
-		record.getContractModel().setLastUpdateDt(nowDate);		
-		contractModelMapper.insert(record.getContractModel());
 		
 		record.getDriverDetailModel().setDriverId(record.getId());
 		record.getDriverDetailModel().setCreateDt(nowDate);
@@ -87,16 +65,6 @@ public class DriverServiceImpl implements DriverService {
 		Date nowDate = new Date();
 		record.setLastUpdateDt(nowDate);
 		driverModelMapper.updateByPrimaryKeySelective(record);
-		
-		if(record.getInsuranceModel() != null) {
-			record.getInsuranceModel().setLastUpdateDt(nowDate);
-			insuranceModelMapper.updateByPrimaryKeySelective(record.getInsuranceModel());
-		}
-		
-		if(record.getContractModel() != null) {
-			record.getContractModel().setLastUpdateDt(nowDate);
-			contractModelMapper.updateByPrimaryKeySelective(record.getContractModel());
-		}
 		
 		if(record.getDriverDetailModel() != null) {
 			record.getDriverDetailModel().setLastUpdateDt(nowDate);

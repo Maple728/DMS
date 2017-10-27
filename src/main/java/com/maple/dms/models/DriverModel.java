@@ -400,27 +400,7 @@ public class DriverModel {
     }
     
     // -------------------- Below is customized ----------------
-    private InsuranceModel insuranceModel;
-    
-    private ContractModel contractModel;
-    
     private DriverDetailModel driverDetailModel;
-
-	public InsuranceModel getInsuranceModel() {
-		return insuranceModel;
-	}
-
-	public void setInsuranceModel(InsuranceModel insuranceModel) {
-		this.insuranceModel = insuranceModel;
-	}
-
-	public ContractModel getContractModel() {
-		return contractModel;
-	}
-
-	public void setContractModel(ContractModel contractModel) {
-		this.contractModel = contractModel;
-	}
 
 	public DriverDetailModel getDriverDetailModel() {
 		return driverDetailModel;

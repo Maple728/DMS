@@ -47,20 +47,6 @@
      	<property name="useActualColumnNames" value="false" />
     	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
     </table>
-	-->
-    <table tableName="insurance" domainObjectName="InsuranceModel" 
-	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-	    enableSelectByExample="false" selectByExampleQueryId="false" >
-     	<property name="useActualColumnNames" value="false" />
-    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
-    </table>
-
-    <table tableName="contract" domainObjectName="ContractModel" 
-	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-	    enableSelectByExample="false" selectByExampleQueryId="false" >
-     	<property name="useActualColumnNames" value="false" />
-    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
-    </table>
 
     <table tableName="accident" domainObjectName="AccidentModel" 
 	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
@@ -91,6 +77,13 @@
     </table>
 
     <table tableName="contract" domainObjectName="ContractModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>
+	-->
+	<table tableName="driver_detail" domainObjectName="DriverDetailModel" 
 	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 	    enableSelectByExample="false" selectByExampleQueryId="false" >
      	<property name="useActualColumnNames" value="false" />
