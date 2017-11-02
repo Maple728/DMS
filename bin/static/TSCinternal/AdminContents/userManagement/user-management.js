@@ -116,6 +116,8 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
         			});
                     // initialize the list
         			ctrl.selectedUserIdList = [];
+        			
+        			toastr.success("删除用户信息成功！！", "Server:");
                 }, function(reject){
                     toastr.error("删除用户信息失败！", "Server Error:");
                 });
@@ -129,13 +131,37 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 			return _.indexOf(ctrl.selectedUserIdList, row.id) >= 0;
 		}
 // ------------------ Model functions  ----------------------------------
+		function setDefaultPicture(userWithDetail) {
+			var defaultPicturePath = "\\global\\img";
+			
+			if(typeof(userWithDetail.drivingLicensePath) == 'undefined' || userWithDetail.drivingLicensePath == null) {
+				userWithDetail.drivingLicensePath = defaultPicturePath;
+			}
+			
+			if(typeof(userWithDetail.certificatePath) == 'undefined' || userWithDetail.certificatePath == null) {
+				userWithDetail.certificatePath = defaultPicturePath;
+			}
+			
+			if(typeof(userWithDetail.vehicleTravelLicensePath) == 'undefined' || userWithDetail.vehicleTravelLicensePath == null) {
+				userWithDetail.vehicleTravelLicensePath = defaultPicturePath;
+			}
+			
+			if(typeof(userWithDetail.driverDetailModel.insurancePhotoPath) == 'undefined' || userWithDetail.driverDetailModel.insurancePhotoPath == null) {
+				userWithDetail.driverDetailModel.insurancePhotoPath = defaultPicturePath;
+			}
+			
+			if(typeof(userWithDetail.driverDetailModel.contractPhotoPath) == 'undefined' || userWithDetail.driverDetailModel.contractPhotoPath == null) {
+				userWithDetail.driverDetailModel.contractPhotoPath = defaultPicturePath;
+			}
+		}
 		
 		ctrl.openAddUserWithDetail = function(){
-			var userWithDetail = {};
-			userWithDetail.userDetail = {};
-			// set default photo path
-			userWithDetail.userDetail.picturePath = '/global/img/bio-default.png';
-            ctrl.clickedUser = userWithDetail;
+			// init
+            ctrl.clickedUser = {};
+            ctrl.clickedUser.driverDetailModel = {};
+            
+            setDefaultPicture(ctrl.clickedUser);
+            
 			// Open modal to display user detail
             $('#userDetailModal').modal('show');
 		};
@@ -147,9 +173,21 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 					id : row.id
 				}
 			}).success(function(response){
-				ctrl.clickedUser = response;
+				// set default picture
+				setDefaultPicture(response);
 				
-				//row.userDetail.birthday == null ? null : row.userDetail.birthday = new Date(row.userDetail.birthday);
+				// handle date type
+				response.certificateDt == null ? null : response.certificateDt = new Date(response.certificateDt);
+
+				response.driverDetailModel.annualAudit == null ? null : response.driverDetailModel.annualAudit = new Date(response.driverDetailModel.annualAudit);
+				response.driverDetailModel.changeCarDt == null ? null : response.driverDetailModel.changeCarDt = new Date(response.driverDetailModel.changeCarDt);
+				response.driverDetailModel.insuranceDt == null ? null : response.driverDetailModel.insuranceDt = new Date(response.driverDetailModel.insuranceDt);
+				response.driverDetailModel.contractStartDt == null ? null : response.driverDetailModel.contractStartDt = new Date(response.driverDetailModel.contractStartDt);
+				response.driverDetailModel.contractEndDt == null ? null : response.driverDetailModel.contractEndDt = new Date(response.driverDetailModel.contractEndDt);
+				response.driverDetailModel.changeCarDt == null ? null : response.driverDetailModel.changeCarDt = new Date(response.driverDetailModel.changeCarDt);
+
+				
+				ctrl.clickedUser = response;
 	    		
 				// Open modal to display user detail
                 $('#userDetailModal').modal();
@@ -175,9 +213,19 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
                         var promise = addUserToServer(userWithDetail);
                         promise.then(function(resolve){
                             // success
+                        	
                             // Add the row into ngtable
+                        	console.log(resolve);
                         	ctrl.tableParams.settings().dataset.push(resolve);
                             ctrl.originalData.push(angular.copy(resolve));
+                            // reload ng-table
+                			ctrl.tableParams.reload().then(function (data) {
+                				if (data.length === 0 && ctrl.tableParams.total() > 0) {
+                					ctrl.tableParams.page(ctrl.tableParams.page() - 1);
+                					ctrl.tableParams.reload();
+                				}
+                			});
+                			
                             $('#userDetailModal').modal('hide');
                             ctrl.clickedUser = null;
                         }, function(reject){

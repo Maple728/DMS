@@ -87,11 +87,16 @@ public class DriverServiceImpl implements DriverService {
 		if(null == id) {
 			return null;
 		}		
-		return driverModelMapper.selectByPrimaryKey(id);
+		DriverModel result = driverModelMapper.selectByPrimaryKey(id);
+
+		// get driver detail
+		result.setDriverDetailModel(driverDetailModelMapper.selectByDriverId(id));
+		
+		return result;
 	}
 
 	@Override
-	public DriverModel getDriverBaseByIdNo(Long idNo) {
+	public DriverModel getDriverBaseByIdNo(String idNo) {
 		if(idNo == null) {
 			return null;
 		}

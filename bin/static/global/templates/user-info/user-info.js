@@ -30,7 +30,7 @@ angular.module('userInfo',['serverService'])
             	// set image style
             	imgs = $('.user-info img');
             	for(var i = 0; i < imgs.length; ++i) {
-            		imgs[i].title = "上传照片";
+            		imgs[i].title = "更改照片";
             		imgs[i].style.cursor = "pointer";
             	}
                 
@@ -89,7 +89,28 @@ angular.module('userInfo',['serverService'])
         			toastr.error('图片过大或连接服务器失败！', '上传失败：');
         		});
 	        }
+
+        	// Image of insurancePhotoPath
+        	var insurancePhotoPathInputEle = document.querySelector("#insurancePhotoPath");
         	
+        	insurancePhotoPathInputEle.onchange = function(){
+        		serverService.uploadPicture(insurancePhotoPathInputEle).success(function(response){
+        			$scope.userWithDetail.driverDetailModel.insurancePhotoPath = response.fileName;
+        		}).error(function(response){
+        			toastr.error('图片过大或连接服务器失败！', '上传失败：');
+        		});
+	        }
+        	
+        	// Image of contractPhotoPath
+        	var contractPhotoPathInputEle = document.querySelector("#contractPhotoPath");
+        	
+        	contractPhotoPathInputEle.onchange = function(){
+        		serverService.uploadPicture(contractPhotoPathInputEle).success(function(response){
+        			$scope.userWithDetail.driverDetailModel.contractPhotoPath = response.fileName;
+        		}).error(function(response){
+        			toastr.error('图片过大或连接服务器失败！', '上传失败：');
+        		});
+	        }
         }
     };
 

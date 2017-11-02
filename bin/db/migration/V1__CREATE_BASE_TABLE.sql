@@ -95,7 +95,7 @@ CREATE TABLE "driver_detail"
 	insurance_insured_company text,
 
 	-- Contract
-	contract_photo_path,
+	contract_photo_path text,
 	contract_start_dt DATE,
 	contract_end_dt DATE,
 	contract_supplementary text,

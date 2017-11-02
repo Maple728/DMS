@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.maple.dms.exceptions.DMSException;
 import com.maple.dms.models.DriverModel;
 import com.maple.dms.services.DriverService;
 
@@ -42,8 +43,12 @@ public class DriverController {
 	}
 	
 	@RequestMapping(value = "/addDriver", method = RequestMethod.POST)
-	public Integer addDriver(@RequestBody DriverModel driver) {
-		return driverService.addWithDetail(driver);
+	public DriverModel addDriver(@RequestBody DriverModel driver) throws DMSException {
+		if(1 == driverService.addWithDetail(driver)) {
+			return driver;
+		} else {
+			throw new DMSException("Add driver error");
+		}
 	}
 	
 	@RequestMapping(value = "/removeDriver", method = RequestMethod.POST)
@@ -66,7 +71,7 @@ public class DriverController {
 	}
 	
 	@RequestMapping(value = "/checkIdNo", method = RequestMethod.GET)
-	public Boolean checkIdNo(@RequestParam("idNo") Long idNo) {
+	public Boolean checkIdNo(@RequestParam("idNo") String idNo) {
 		if(null == driverService.getDriverBaseByIdNo(idNo)) {
 			return true;
 		} else {

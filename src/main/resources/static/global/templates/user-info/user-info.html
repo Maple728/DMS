@@ -31,7 +31,7 @@
 	    <div ng-class="['form-group', userDetailForm.drivingLicensePathInput.$invalid ? 'has-error' : '']">
 	        <label class="col-sm-5 control-label">驾驶证：</label>
 	        <div class="col-sm-7">
-		        <img name="drivingLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.drivingLicensePath}}" ng-click="uploadPicture('drivingLicensePathInput')" alt="上传驾驶证照片"/>
+		        <img name="drivingLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.drivingLicensePath}}" ng-click="uploadPicture('drivingLicensePathInput')" alt="上传驾驶证照片" src=""/>
 		        <input name="drivingLicensePathInput" id="drivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="visibility: hidden;" required/>	        
 	    	</div>
 	    </div>
@@ -65,19 +65,61 @@
  				<input name="vehicleOperatingId" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.vehicleOperatingId" required/>
  	    	</div>
 	    </div>
-	
-	    <div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
-	        <label class="col-sm-5 control-label">保险：</label>
+	    
+	    <div ng-class="['form-group', userDetailForm.insuranceDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >保险时间：</label>
 	    	<div class="col-sm-7">
-		        <textarea class="textarea form-control" rows="2" ng-model="userWithDetail.userDetail.signature" ng-disabled="!isDetailEditable"></textarea>
-	    	</div>
+		        <input name="insuranceDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.insuranceDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	    	</div>	    
+	    </div>
+
+	    <div ng-class="['form-group', userDetailForm.insurancePremium.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >保险金额：</label>
+	    	<div class="col-sm-7">
+ 				<input name="insurancePremium" type="number" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.insurancePremium"/>
+ 	    	</div>
+	    </div>
+
+	    <div ng-class="['form-group', userDetailForm.insuranceInsuredCompany.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >投保公司：</label>
+	    	<div class="col-sm-7">
+ 				<input name="insuranceInsuredCompany" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.insuranceInsuredCompany"/>
+ 	    	</div>
+	    </div>
+	    	    	    
+	    <div ng-class="['form-group', userDetailForm.insurancePhotoPath.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">保险照片：</label>
+	    	<div class="col-sm-7">
+		        <img name="insurancePhotoPath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.driverDetailModel.insurancePhotoPath}}" ng-click="uploadPicture('insurancePhotoPath')" alt="上传保险照片"/>
+		        <input id="insurancePhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>		    	</div>
 	    </div>
 	    
-	   	<div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
-	        <label class="col-sm-5 control-label">合同：</label>
+	    <div ng-class="['form-group', userDetailForm.insuranceDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >合同起始时间：</label>
 	    	<div class="col-sm-7">
-		        <textarea class="textarea form-control" rows="2" ng-model="userWithDetail.userDetail.signature" ng-disabled="!isDetailEditable"></textarea>
+		        <input name="contractStartDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.contractStartDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	    	</div>	    
+	    </div>
+
+	    <div ng-class="['form-group', userDetailForm.contractEndDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >合同到期时间：</label>
+	    	<div class="col-sm-7">
+		        <input name="contractEndDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.contractEndDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	    	</div>	    
+	    </div>
+	    	    	
+	    <div ng-class="['form-group', userDetailForm.contractSupplementary.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">合同补充协议：</label>
+	    	<div class="col-sm-7">
+		        <textarea name="contractSupplementary" class="textarea form-control" rows="2" ng-model="userWithDetail.driverDetailModel.contractSupplementary" ng-disabled="!isDetailEditable"></textarea>
 	    	</div>
+	    </div>	  
+	    	    	    	    
+	    <div ng-class="['form-group', userDetailForm.contractPhotoPath.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">合同照片：</label>
+	    	<div class="col-sm-7">
+		        <img name="contractPhotoPath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.driverDetailModel.contractPhotoPath}}" ng-click="uploadPicture('contractPhotoPath')" alt="上传合同照片"/>
+		        <input id="contractPhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>		    	</div>
 	    </div>
 	    
 	    <div ng-class="['form-group', userDetailForm.driverDetailModel.annualAudit.$invalid ? 'has-error' : '']">
@@ -86,11 +128,18 @@
 		        <input name="annualAudit" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.annualAudit" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
 	    	</div>
 	    </div>
-	    
-	    <div ng-class="['form-group', userDetailForm.vehicleTravelLicensePath.$invalid ? 'has-error' : '']">
-	        <label class="col-sm-5 control-label">换型：</label>
+
+	    <div ng-class="['form-group', userDetailForm.changeCarDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >换型时间：</label>
 	    	<div class="col-sm-7">
-		        <textarea class="textarea form-control" rows="2" ng-model="userWithDetail.userDetail.signature" ng-disabled="!isDetailEditable"></textarea>
+		        <input name="changeCarDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.changeCarDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	    	</div>	    
+	    </div>
+	    	    
+	    <div ng-class="['form-group', userDetailForm.changeCarFee.$invalid ? 'has-error' : '']">
+	        <label class="col-sm-5 control-label">换型承包款：</label>
+	    	<div class="col-sm-7">
+ 				<input name="changeCarFee" type="number" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.changeCarFee"/>
 	    	</div>
 	    </div>	    
 	    

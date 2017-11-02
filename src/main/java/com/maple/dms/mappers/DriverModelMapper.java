@@ -51,5 +51,5 @@ public interface DriverModelMapper {
     
     int deleteByPrimaryKey(Long id);
     
-    DriverModel selectByIdNo(Long idNo);
+    DriverModel selectByIdNo(String idNo);
 }
