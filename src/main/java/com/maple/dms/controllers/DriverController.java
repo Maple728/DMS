@@ -71,11 +71,12 @@ public class DriverController {
 	}
 	
 	@RequestMapping(value = "/checkIdNo", method = RequestMethod.GET)
-	public Boolean checkIdNo(@RequestParam("idNo") String idNo) {
-		if(null == driverService.getDriverBaseByIdNo(idNo)) {
-			return true;
+	public DriverModel checkIdNo(@RequestParam("idNo") String idNo) {
+		DriverModel result = driverService.getDriverBaseByIdNo(idNo);
+		if(null == result) {
+			return null;
 		} else {
-			return false;
+			return result;
 		}
 	}
 	

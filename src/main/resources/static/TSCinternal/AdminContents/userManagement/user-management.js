@@ -63,6 +63,11 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 					idNo : row.idNo
 				}
 			}).success(function(response){
+				if(response == null) {
+					response = false;
+				} else {
+					return true;
+				}
                ctrl.isAccountIdValid = response;
                defered.resolve(response);
             }).error(function(response){
@@ -215,7 +220,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
                             // success
                         	
                             // Add the row into ngtable
-                        	console.log(resolve);
                         	ctrl.tableParams.settings().dataset.push(resolve);
                             ctrl.originalData.push(angular.copy(resolve));
                             // reload ng-table

@@ -1,20 +1,21 @@
 /**
  * Created by Maple on 2017/4/21.
  */
-angular.module('courseInfo', [])
-.directive('courseInfo',function() {
+angular.module('complaintInfo', [])
+.directive('complaintInfo',function() {
     return {
         restrict : 'EA',
-        templateUrl : '../../global/templates/course-info/course-info.html',
+        templateUrl : '../../global/templates/complaint-info/complaint-info.html',
         scope : {
             mode : '=',
-            courseDetail : '=',
+            complaintDetail : '=',
             isFormValid : '='
         },
         link : function(scope){
             // init
+        	scope.nowDate = new Date();
             scope.DATE_FORMAT = window.tsc.constants.DATE_FORMAT;
-
+            
             // check the mode
             if(scope.mode == window.tsc.constants.USER_INFO_MODE.USER_MODE){
                 // The user editable
@@ -22,7 +23,7 @@ angular.module('courseInfo', [])
                 scope.isDetailEditable = true;
                 
                 // Watch the form status
-                scope.$watch('courseForm.$invalid', function(value){
+                scope.$watch('complaintForm.$invalid', function(value){
                     if(value == scope.isFormValid)
                         return ;
                     scope.isFormValid = value;
@@ -34,7 +35,7 @@ angular.module('courseInfo', [])
                 scope.isDetailEditable = true;
                 
                 // Watch the form status
-                scope.$watch('courseForm.$invalid', function(value){
+                scope.$watch('complaintForm.$invalid', function(value){
                     if(value == scope.isFormValid)
                         return ;
                     scope.isFormValid = value;
@@ -45,6 +46,25 @@ angular.module('courseInfo', [])
                 scope.isBaseEditable = false;
                 scope.isDetailEditable = false;
             }
+        },
+        controller : function($scope, $http, toastr){
+        	$scope.getDriver = function() {
+        		$http.get('/driver/checkIdNo', {
+    				params : {
+    					idNo : $scope.complaintDetail.driverIdNo
+    				}
+        		}).success(function(response){
+        			if(response == '') {
+        				toastr.error('该驾驶员不存在！');
+        				$scope.complaintDetail.driverName = null;
+        			} else {
+        				$scope.complaintDetail.driverName = response.name;
+        			}
+        		}).error(function(response){
+        			toastr.error('检查失败！');
+        		});
+        	}
         }
+        
     };
 })

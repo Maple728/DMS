@@ -116,7 +116,7 @@ CREATE TABLE "complaint"
 	
 	occur_dt DATE NOT NULL,
 	content text NOT NULL,
-	is_solved boolean NOT NULL,
+	is_solved boolean DEFAULT false,
 	solve_way text,
 	
 	create_dt DATE NOT NULL,

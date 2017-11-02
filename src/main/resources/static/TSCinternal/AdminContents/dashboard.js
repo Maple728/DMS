@@ -1,5 +1,5 @@
 var dashboardApp = angular.module(window.tsc.constants.DASHBOARD_APP, ["ui.router", "ngTable", "toastr"
-	,'userInfo', 'courseInfo', 'serverService']);
+	,'userInfo', 'complaintInfo', 'serverService']);
 
 dashboardApp.config(function($stateProvider){
    var userManageState = {
@@ -8,10 +8,10 @@ dashboardApp.config(function($stateProvider){
       component : 'userManagement'
    };
 	   
-   var courseManageState = {
-     name : 'courseManagement',
-     url : '/course-management',
-     component: 'courseManagement'
+   var complaintManagementState = {
+     name : 'complaintManagement',
+     url : '/complaint-management',
+     component: 'complaintManagement'
    };
    
    var courseAssignState = {
@@ -21,7 +21,7 @@ dashboardApp.config(function($stateProvider){
    };
    
     $stateProvider.state(userManageState);
-    $stateProvider.state(courseManageState);
+    $stateProvider.state(complaintManagementState);
     $stateProvider.state(courseAssignState);
 
 })

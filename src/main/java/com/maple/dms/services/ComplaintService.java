@@ -6,7 +6,7 @@ import com.maple.dms.models.ComplaintModel;
 
 public interface ComplaintService {
 
-	Integer addComplaint(Long driverId, ComplaintModel record);
+	Integer addComplaint(ComplaintModel record);
 	
 	Integer updateComplaint(ComplaintModel record);
 	

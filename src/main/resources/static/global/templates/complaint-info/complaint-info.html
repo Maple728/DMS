@@ -1,0 +1,59 @@
+<form name="complaintForm" class="form-horizontal">
+    <div ng-class="['form-group', complaintForm.driverIdNo.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">驾驶员身份证号：</label>
+     	<div class="col-md-7">
+        	<input name="driverIdNo" type="text" class="form-control" ng-disabled="!isDetailEditable" ng-model="complaintDetail.driverIdNo" required/>
+	        <span class="input-group-btn">
+	            <button class="btn btn-default" type="button" ng-click="getDriver()">检查</button>
+	        </span>
+    	</div>
+    </div>
+    
+    <div ng-class="['form-group', complaintForm.driverName.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">驾驶员姓名：</label>
+        <div class="col-md-7">
+	        <input id="driverName" name="driverName" type="text" class="form-control" disabled="true" ng-model="complaintDetail.driverName"/>
+        </div>
+    </div>
+
+    <div ng-class="['form-group', complaintForm.occurDt.$invalid ? 'has-error' : '']">
+	    <label class="col-sm-5 control-label" >发生时间：</label>
+    	<div class="col-sm-7">
+	        <input name="occurDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.occurDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+    	</div>	    
+    </div>	
+    <div ng-class="['form-group', complaintForm.content.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">投诉内容：</label>
+        <div class="col-md-7">
+         	<textarea name="content" class="form-control textarea" rows="3" ng-model="complaintDetail.content" ng-disabled="!isDetailEditable" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-5 control-label">是否解决：</label>
+    	<div class="col-sm-7">
+    		<input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="complaintDetail.isSolved"/>
+    	</div>
+    </div>
+ 
+    <div ng-class="['form-group', complaintForm.solveWay.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">解决方式：</label>
+        <div class="col-md-7">
+	        <input id="solveWay" name="solveWay" type="text" class="form-control" disable="true" ng-model="complaintDetail.solveWay"/>
+        </div>
+    </div>   
+    
+    <div class="form-group">
+        <label class="col-md-5 control-label">创 建 日 期：</label>
+    	<div class="col-md-7 form-control-static">
+        	<label class="label label-info" ng-bind="complaintDetail.createdDt | date : DATE_FORMAT"></label>
+    	</div>
+    </div>
+
+    <div class="form-group">
+         <label class="col-md-5 control-label">上次更新日期：</label>
+    	<div class="col-md-7 form-control-static">
+         <label class="label label-info" ng-bind="complaintDetail.lastUpdateDt | date : DATE_FORMAT"></label>
+    	</div>
+    </div>
+</form>

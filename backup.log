@@ -2553,3 +2553,237 @@ org.postgresql.util.PSQLException: 错误: 操作符不存在: text = bigint
 2017-11-02 17:39:41.671  INFO 14732 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2017-11-02 17:39:41.672  INFO 14732 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2017-11-02 17:39:41.695  INFO 14732 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms
+2017-11-02 17:49:00.129  INFO 14732 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-11-02 17:49:00.130  INFO 14732 --- [RMI TCP Connection(2)-127.0.0.1] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 17:39:34 CST 2017]; root of context hierarchy
+2017-11-02 17:49:00.132  INFO 14732 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-11-02 21:29:49.404  INFO 3204 --- [main] com.maple.dms.DmsApplication             : Starting DmsApplication on DESKTOP-NK3GD75 with PID 3204 (E:\DevCodes\dms\bin started by SEELE in E:\DevCodes\dms)
+2017-11-02 21:29:49.407  INFO 3204 --- [main] com.maple.dms.DmsApplication             : No active profile set, falling back to default profiles: default
+2017-11-02 21:29:49.452  INFO 3204 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:29:49 CST 2017]; root of context hierarchy
+2017-11-02 21:29:50.978  INFO 3204 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-11-02 21:29:50.988  INFO 3204 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-02 21:29:50.990  INFO 3204 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-02 21:29:51.084  INFO 3204 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-02 21:29:51.084  INFO 3204 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1635 ms
+2017-11-02 21:29:51.262  INFO 3204 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-02 21:29:51.309  INFO 3204 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-02 21:29:51.310  INFO 3204 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-11-02 21:29:51.311  INFO 3204 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-11-02 21:29:51.311  INFO 3204 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-11-02 21:29:52.294  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:29:49 CST 2017]; root of context hierarchy
+2017-11-02 21:29:52.358  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/uploadPicture],methods=[POST]}" onto public java.lang.String com.maple.dms.controllers.BaseController.uploadPicture(org.springframework.web.multipart.MultipartFile) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:29:52.361  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/getPicture],methods=[GET]}" onto public void com.maple.dms.controllers.BaseController.getUserPicture(java.lang.String) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:29:52.372  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/getAllComplaints],methods=[GET]}" onto public java.util.List<com.maple.dms.models.ComplaintModel> com.maple.dms.controllers.ComplaintController.getAllComplaints()
+2017-11-02 21:29:52.374  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/addComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.addComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:29:52.375  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/updateComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:29:52.375  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/removeComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(java.lang.Long) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:29:52.380  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriverList],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriverList(java.util.List<java.lang.Long>)
+2017-11-02 21:29:52.381  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/checkIdNo],methods=[GET]}" onto public java.lang.Boolean com.maple.dms.controllers.DriverController.checkIdNo(java.lang.String)
+2017-11-02 21:29:52.381  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriver],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriver(java.lang.Long)
+2017-11-02 21:29:52.381  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverBase],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverBase()
+2017-11-02 21:29:52.382  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/addDriver],methods=[POST]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.addDriver(com.maple.dms.models.DriverModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:29:52.382  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverWithDetail],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverWithDetail()
+2017-11-02 21:29:52.383  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getDriverWithDetailById],methods=[GET]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.getDriverWithDetailById(java.lang.Long)
+2017-11-02 21:29:52.383  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/updateDriverWithDetail],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.updateDriverWithDetail(com.maple.dms.models.DriverModel)
+2017-11-02 21:29:52.386  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-02 21:29:52.387  INFO 3204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-02 21:29:52.417  INFO 3204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:29:52.417  INFO 3204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:29:52.483  INFO 3204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:29:52.716  INFO 3204 --- [main] o.f.core.internal.util.VersionPrinter    : Flyway 3.2.1 by Boxfuse
+2017-11-02 21:29:53.151  INFO 3204 --- [main] o.f.c.i.dbsupport.DbSupportFactory       : Database: jdbc:postgresql://localhost:5432/dms (PostgreSQL 9.5)
+2017-11-02 21:29:53.203  INFO 3204 --- [main] o.f.core.internal.command.DbValidate     : Validated 3 migrations (execution time 00:00.018s)
+2017-11-02 21:29:53.304  INFO 3204 --- [main] o.f.c.i.metadatatable.MetaDataTableImpl  : Creating Metadata table: "public"."schema_version"
+2017-11-02 21:29:53.446  INFO 3204 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2017-11-02 21:29:53.446  INFO 3204 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 1 - CREATE BASE TABLE
+2017-11-02 21:29:53.902  INFO 3204 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 2 - INSERT BASE DATA
+2017-11-02 21:29:53.939  INFO 3204 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 3 - INSERT DRIVER DETAIL DATA
+2017-11-02 21:29:53.979  INFO 3204 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 3 migrations to schema "public" (execution time 00:00.678s).
+2017-11-02 21:29:54.126  INFO 3204 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-11-02 21:29:54.181  INFO 3204 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-11-02 21:29:54.185  INFO 3204 --- [main] com.maple.dms.DmsApplication             : Started DmsApplication in 5.026 seconds (JVM running for 5.462)
+2017-11-02 21:30:05.543  INFO 3204 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-02 21:30:05.544  INFO 3204 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-02 21:30:05.567  INFO 3204 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms
+2017-11-02 21:34:15.505  INFO 3204 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-11-02 21:34:15.506  INFO 3204 --- [RMI TCP Connection(2)-127.0.0.1] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:29:49 CST 2017]; root of context hierarchy
+2017-11-02 21:34:15.508  INFO 3204 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-11-02 21:34:21.389  INFO 10688 --- [main] com.maple.dms.DmsApplication             : Starting DmsApplication on DESKTOP-NK3GD75 with PID 10688 (E:\DevCodes\dms\bin started by SEELE in E:\DevCodes\dms)
+2017-11-02 21:34:21.391  INFO 10688 --- [main] com.maple.dms.DmsApplication             : No active profile set, falling back to default profiles: default
+2017-11-02 21:34:21.473  INFO 10688 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:34:21 CST 2017]; root of context hierarchy
+2017-11-02 21:34:23.142  INFO 10688 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-11-02 21:34:23.157  INFO 10688 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-02 21:34:23.158  INFO 10688 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-02 21:34:23.333  INFO 10688 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-02 21:34:23.333  INFO 10688 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1863 ms
+2017-11-02 21:34:23.519  INFO 10688 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-02 21:34:23.526  INFO 10688 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-02 21:34:23.527  INFO 10688 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-11-02 21:34:23.527  INFO 10688 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-11-02 21:34:23.527  INFO 10688 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-11-02 21:34:24.448  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:34:21 CST 2017]; root of context hierarchy
+2017-11-02 21:34:24.537  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/uploadPicture],methods=[POST]}" onto public java.lang.String com.maple.dms.controllers.BaseController.uploadPicture(org.springframework.web.multipart.MultipartFile) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:34:24.538  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/getPicture],methods=[GET]}" onto public void com.maple.dms.controllers.BaseController.getUserPicture(java.lang.String) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:34:24.540  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/getAllComplaints],methods=[GET]}" onto public java.util.List<com.maple.dms.models.ComplaintModel> com.maple.dms.controllers.ComplaintController.getAllComplaints()
+2017-11-02 21:34:24.540  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/updateComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:34:24.541  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/removeComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(java.lang.Long) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:34:24.541  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/addComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.addComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:34:24.549  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverBase],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverBase()
+2017-11-02 21:34:24.549  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriver],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriver(java.lang.Long)
+2017-11-02 21:34:24.550  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriverList],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriverList(java.util.List<java.lang.Long>)
+2017-11-02 21:34:24.550  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/addDriver],methods=[POST]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.addDriver(com.maple.dms.models.DriverModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:34:24.550  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/checkIdNo],methods=[GET]}" onto public java.lang.Boolean com.maple.dms.controllers.DriverController.checkIdNo(java.lang.String)
+2017-11-02 21:34:24.551  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/updateDriverWithDetail],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.updateDriverWithDetail(com.maple.dms.models.DriverModel)
+2017-11-02 21:34:24.551  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getDriverWithDetailById],methods=[GET]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.getDriverWithDetailById(java.lang.Long)
+2017-11-02 21:34:24.551  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverWithDetail],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverWithDetail()
+2017-11-02 21:34:24.554  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-02 21:34:24.555  INFO 10688 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-02 21:34:24.620  INFO 10688 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:34:24.621  INFO 10688 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:34:24.776  INFO 10688 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:34:25.172  INFO 10688 --- [main] o.f.core.internal.util.VersionPrinter    : Flyway 3.2.1 by Boxfuse
+2017-11-02 21:34:25.645  INFO 10688 --- [main] o.f.c.i.dbsupport.DbSupportFactory       : Database: jdbc:postgresql://localhost:5432/dms (PostgreSQL 9.5)
+2017-11-02 21:34:25.716  INFO 10688 --- [main] o.f.core.internal.command.DbValidate     : Validated 4 migrations (execution time 00:00.031s)
+2017-11-02 21:34:25.718  WARN 10688 --- [main] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.api.FlywayException: Validate failed. Migration Checksum mismatch for migration 1
+-> Applied to database : 1730075683
+-> Resolved locally    : 747418212
+2017-11-02 21:34:25.719  INFO 10688 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-11-02 21:34:25.722  INFO 10688 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2017-11-02 21:34:25.745  INFO 10688 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-11-02 21:34:25.756 ERROR 10688 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.api.FlywayException: Validate failed. Migration Checksum mismatch for migration 1
+-> Applied to database : 1730075683
+-> Resolved locally    : 747418212
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) ~[spring-context-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) ~[spring-boot-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at com.maple.dms.DmsApplication.main(DmsApplication.java:14) [bin/:na]
+Caused by: org.flywaydb.core.api.FlywayException: Validate failed. Migration Checksum mismatch for migration 1
+-> Applied to database : 1730075683
+-> Resolved locally    : 747418212
+	at org.flywaydb.core.Flyway.doValidate(Flyway.java:1108) ~[flyway-core-3.2.1.jar:na]
+	at org.flywaydb.core.Flyway.access$300(Flyway.java:62) ~[flyway-core-3.2.1.jar:na]
+	at org.flywaydb.core.Flyway$1.execute(Flyway.java:1012) ~[flyway-core-3.2.1.jar:na]
+	at org.flywaydb.core.Flyway$1.execute(Flyway.java:1006) ~[flyway-core-3.2.1.jar:na]
+	at org.flywaydb.core.Flyway.execute(Flyway.java:1418) ~[flyway-core-3.2.1.jar:na]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:1006) ~[flyway-core-3.2.1.jar:na]
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66) ~[spring-boot-autoconfigure-1.5.8.RELEASE.jar:1.5.8.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) ~[spring-beans-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	... 16 common frames omitted
+
+2017-11-02 21:36:35.718  INFO 12744 --- [main] com.maple.dms.DmsApplication             : Starting DmsApplication on DESKTOP-NK3GD75 with PID 12744 (E:\DevCodes\dms\bin started by SEELE in E:\DevCodes\dms)
+2017-11-02 21:36:35.721  INFO 12744 --- [main] com.maple.dms.DmsApplication             : No active profile set, falling back to default profiles: default
+2017-11-02 21:36:35.772  INFO 12744 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:36:35 CST 2017]; root of context hierarchy
+2017-11-02 21:36:37.046  INFO 12744 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-11-02 21:36:37.059  INFO 12744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-02 21:36:37.060  INFO 12744 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-02 21:36:37.185  INFO 12744 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-02 21:36:37.186  INFO 12744 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1417 ms
+2017-11-02 21:36:37.356  INFO 12744 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-02 21:36:37.360  INFO 12744 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-02 21:36:37.360  INFO 12744 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-11-02 21:36:37.360  INFO 12744 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-11-02 21:36:37.361  INFO 12744 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-11-02 21:36:38.185  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:36:35 CST 2017]; root of context hierarchy
+2017-11-02 21:36:38.249  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/getPicture],methods=[GET]}" onto public void com.maple.dms.controllers.BaseController.getUserPicture(java.lang.String) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:36:38.250  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/uploadPicture],methods=[POST]}" onto public java.lang.String com.maple.dms.controllers.BaseController.uploadPicture(org.springframework.web.multipart.MultipartFile) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:36:38.251  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/removeComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(java.lang.Long) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:36:38.251  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/updateComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:36:38.252  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/addComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.addComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:36:38.252  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/getAllComplaints],methods=[GET]}" onto public java.util.List<com.maple.dms.models.ComplaintModel> com.maple.dms.controllers.ComplaintController.getAllComplaints()
+2017-11-02 21:36:38.255  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverWithDetail],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverWithDetail()
+2017-11-02 21:36:38.255  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getDriverWithDetailById],methods=[GET]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.getDriverWithDetailById(java.lang.Long)
+2017-11-02 21:36:38.255  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/updateDriverWithDetail],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.updateDriverWithDetail(com.maple.dms.models.DriverModel)
+2017-11-02 21:36:38.256  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/checkIdNo],methods=[GET]}" onto public java.lang.Boolean com.maple.dms.controllers.DriverController.checkIdNo(java.lang.String)
+2017-11-02 21:36:38.256  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriverList],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriverList(java.util.List<java.lang.Long>)
+2017-11-02 21:36:38.256  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriver],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriver(java.lang.Long)
+2017-11-02 21:36:38.256  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverBase],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverBase()
+2017-11-02 21:36:38.256  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/addDriver],methods=[POST]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.addDriver(com.maple.dms.models.DriverModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 21:36:38.259  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-02 21:36:38.260  INFO 12744 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-02 21:36:38.301  INFO 12744 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:36:38.302  INFO 12744 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:36:38.360  INFO 12744 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 21:36:38.571  INFO 12744 --- [main] o.f.core.internal.util.VersionPrinter    : Flyway 3.2.1 by Boxfuse
+2017-11-02 21:36:38.978  INFO 12744 --- [main] o.f.c.i.dbsupport.DbSupportFactory       : Database: jdbc:postgresql://localhost:5432/dms (PostgreSQL 9.5)
+2017-11-02 21:36:39.017  INFO 12744 --- [main] o.f.core.internal.command.DbValidate     : Validated 4 migrations (execution time 00:00.012s)
+2017-11-02 21:36:39.028  INFO 12744 --- [main] o.f.c.i.metadatatable.MetaDataTableImpl  : Creating Metadata table: "public"."schema_version"
+2017-11-02 21:36:39.117  INFO 12744 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2017-11-02 21:36:39.117  INFO 12744 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 1 - CREATE BASE TABLE
+2017-11-02 21:36:39.604  INFO 12744 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 2 - INSERT BASE DATA
+2017-11-02 21:36:39.641  INFO 12744 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 3 - INSERT DRIVER DETAIL DATA - 副本
+2017-11-02 21:36:39.667  INFO 12744 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 4 - INSERT COMPLAINT DATA
+2017-11-02 21:36:39.683  INFO 12744 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 4 migrations to schema "public" (execution time 00:00.656s).
+2017-11-02 21:36:39.843  INFO 12744 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-11-02 21:36:39.890  INFO 12744 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-11-02 21:36:39.893  INFO 12744 --- [main] com.maple.dms.DmsApplication             : Started DmsApplication in 4.427 seconds (JVM running for 4.913)
+2017-11-02 21:36:43.672  INFO 12744 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-02 21:36:43.672  INFO 12744 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-02 21:36:43.686  INFO 12744 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 14 ms
+2017-11-02 22:28:41.972  INFO 12744 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-11-02 22:28:41.973  INFO 12744 --- [RMI TCP Connection(2)-127.0.0.1] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 21:36:35 CST 2017]; root of context hierarchy
+2017-11-02 22:28:41.984  INFO 12744 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-11-02 22:28:45.194  INFO 10168 --- [main] com.maple.dms.DmsApplication             : Starting DmsApplication on DESKTOP-NK3GD75 with PID 10168 (E:\DevCodes\dms\bin started by SEELE in E:\DevCodes\dms)
+2017-11-02 22:28:45.197  INFO 10168 --- [main] com.maple.dms.DmsApplication             : No active profile set, falling back to default profiles: default
+2017-11-02 22:28:45.249  INFO 10168 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 22:28:45 CST 2017]; root of context hierarchy
+2017-11-02 22:28:46.511  INFO 10168 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-11-02 22:28:46.521  INFO 10168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-02 22:28:46.523  INFO 10168 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-02 22:28:46.650  INFO 10168 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-02 22:28:46.651  INFO 10168 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1406 ms
+2017-11-02 22:28:46.816  INFO 10168 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-02 22:28:46.822  INFO 10168 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-02 22:28:46.822  INFO 10168 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-11-02 22:28:46.822  INFO 10168 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-11-02 22:28:46.822  INFO 10168 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-11-02 22:28:47.665  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 22:28:45 CST 2017]; root of context hierarchy
+2017-11-02 22:28:47.717  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/uploadPicture],methods=[POST]}" onto public java.lang.String com.maple.dms.controllers.BaseController.uploadPicture(org.springframework.web.multipart.MultipartFile) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.719  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/getPicture],methods=[GET]}" onto public void com.maple.dms.controllers.BaseController.getUserPicture(java.lang.String) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.721  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/getAllComplaints],methods=[GET]}" onto public java.util.List<com.maple.dms.models.ComplaintModel> com.maple.dms.controllers.ComplaintController.getAllComplaints()
+2017-11-02 22:28:47.721  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/addComplaint],methods=[POST]}" onto public com.maple.dms.models.ComplaintModel com.maple.dms.controllers.ComplaintController.addComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.721  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/removeComplaintList],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(java.util.List<java.lang.Long>) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.722  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/updateComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(com.maple.dms.models.ComplaintModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.722  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/complaint/removeComplaint],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.ComplaintController.updateComplaint(java.lang.Long) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.727  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/addDriver],methods=[POST]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.addDriver(com.maple.dms.models.DriverModel) throws com.maple.dms.exceptions.DMSException
+2017-11-02 22:28:47.727  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverBase],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverBase()
+2017-11-02 22:28:47.728  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/updateDriverWithDetail],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.updateDriverWithDetail(com.maple.dms.models.DriverModel)
+2017-11-02 22:28:47.728  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getAllDriverWithDetail],methods=[GET]}" onto public java.util.List<com.maple.dms.models.DriverModel> com.maple.dms.controllers.DriverController.getAllDriverWithDetail()
+2017-11-02 22:28:47.728  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/getDriverWithDetailById],methods=[GET]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.getDriverWithDetailById(java.lang.Long)
+2017-11-02 22:28:47.729  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/checkIdNo],methods=[GET]}" onto public com.maple.dms.models.DriverModel com.maple.dms.controllers.DriverController.checkIdNo(java.lang.String)
+2017-11-02 22:28:47.729  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriverList],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriverList(java.util.List<java.lang.Long>)
+2017-11-02 22:28:47.729  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/driver/removeDriver],methods=[POST]}" onto public java.lang.Integer com.maple.dms.controllers.DriverController.removeDriver(java.lang.Long)
+2017-11-02 22:28:47.732  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-02 22:28:47.733  INFO 10168 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-02 22:28:47.761  INFO 10168 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 22:28:47.761  INFO 10168 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 22:28:47.846  INFO 10168 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-02 22:28:48.064  INFO 10168 --- [main] o.f.core.internal.util.VersionPrinter    : Flyway 3.2.1 by Boxfuse
+2017-11-02 22:28:48.520  INFO 10168 --- [main] o.f.c.i.dbsupport.DbSupportFactory       : Database: jdbc:postgresql://localhost:5432/dms (PostgreSQL 9.5)
+2017-11-02 22:28:48.560  INFO 10168 --- [main] o.f.core.internal.command.DbValidate     : Validated 4 migrations (execution time 00:00.016s)
+2017-11-02 22:28:48.578  INFO 10168 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 4
+2017-11-02 22:28:48.579  INFO 10168 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2017-11-02 22:28:48.722  INFO 10168 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-11-02 22:28:48.774  INFO 10168 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-11-02 22:28:48.778  INFO 10168 --- [main] com.maple.dms.DmsApplication             : Started DmsApplication in 3.846 seconds (JVM running for 4.283)
+2017-11-02 22:28:51.596  INFO 10168 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-02 22:28:51.596  INFO 10168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-02 22:28:51.611  INFO 10168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+2017-11-02 22:29:58.312  INFO 10168 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2017-11-02 22:29:58.313  INFO 10168 --- [RMI TCP Connection(2)-127.0.0.1] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1677d1: startup date [Thu Nov 02 22:28:45 CST 2017]; root of context hierarchy
+2017-11-02 22:29:58.314  INFO 10168 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
