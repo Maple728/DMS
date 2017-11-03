@@ -19,11 +19,21 @@ dashboardApp.config(function($stateProvider){
      url : '/accident-management',
      component : 'accidentManagement'
    };
+
+   var chargeManagementState = {
+     name : 'chargeManagement',
+     url : 'charge-management',
+     component : 'chargeManagement'
+   };   
    
     $stateProvider.state(userManageState);
     $stateProvider.state(complaintManagementState);
     $stateProvider.state(accidentManagementState);
-
+    $stateProvider.state(chargeManagementState);
+    
+}).config(function($httpProvider){
+	// disable cache
+	$httpProvider.defaults.cache = false;
 })
 .controller('dashboardCtrl', function($scope, serverService){
 	var userId = window.tsc.utils.getValueFromCookieByParam(window.tsc.constants.COOKIE_PARAM.USER_ID);

@@ -1,0 +1,58 @@
+<div>
+    <h1 class="page-header">收费管理</h1>
+    <div class="sub-header">
+        <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddCourseModal()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
+    	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteCourses()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
+    </div>
+    <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" demo-tracked-table="$ctrl.tableTracker">
+        <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+        	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
+            <td data-title="'驾驶员身份证号'" filter="{driverIdNo : 'number'}" sortable="'driverIdNo'">
+                <span>{{row.driverIdNo}}</span>
+            </td>
+            <td data-title="'驾驶员姓名'" filter="{driverName : 'text'}" sortable="'driverName'" >
+        	    <span>{{row.driverName}}</span>
+            </td>
+            <td data-title="'类型'" filter="{occurDt : 'text'}" sortable="'occurDt'">
+                <span>{{row.occurDt | date : $ctrl.DATE_FORMAT}}</span>
+            </td>
+            
+            <td data-title="'时间'" filter="{responsibilityTypeId : 'text'}">
+                <span>{{row.responsibilityTypeId}}</span>
+            </td>
+
+            <td data-title="'金额'" filter="{isInsurancePaid : 'text'}" style="width:50px">
+                <input type="checkbox" name="isInsurancePaid" style="width:17px;height:17px" disabled="disable" ng-model="row.isInsurancePaid" />
+            </td>
+            
+            <td data-title="'创建日期'"  sortable="'createDt'">{{row.createDt | date : $ctrl.DATE_FORMAT}}</td>
+            <td data-title="'上次更新日期'" sortable="'lastUpdateDt'">{{row.lastUpdateDt | date : $ctrl.DATE_FORMAT}}</td>
+            <td style="width:50px">
+            	<button class="btn btn-link btn-sm" ng-click="$ctrl.clickDetail(row)">详 情</button>
+            </td>            
+        </tr>
+    </table>
+
+    <!-- Customized Modal -->
+    <div id="chargeDetailModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg	">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3>编辑收费信息</h3>
+                </div>
+                <div class="modal-body">
+                	<div class="form-content">
+	                    <charge-info mode="$ctrl.editableMode" charge-detail="$ctrl.clickedCharge" is-form-valid="$ctrl.isFormValid"></charge-info>
+                	</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal" ng-click="$ctrl.cancelCourseModal()">取 消</button>
+                    <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="$ctrl.isFormValid" ng-click="$ctrl.saveCourseModal()">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

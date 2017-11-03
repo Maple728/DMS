@@ -1,0 +1,52 @@
+<form name="chargeForm" class="form-horizontal">
+    <div ng-class="['form-group', chargeForm.driverIdNo.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">驾驶员身份证号：</label>
+     	<div class="col-md-7">
+        	<input name="driverIdNo" type="text" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.driverIdNo" required/>
+	        <span class="input-group-btn">
+	            <button class="btn btn-default" type="button" ng-click="getDriver()">检查</button>
+	        </span>
+    	</div>
+    </div>
+    
+    <div ng-class="['form-group', chargeForm.driverName.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">驾驶员姓名：</label>
+        <div class="col-md-7">
+	        <input id="driverName" name="driverName" type="text" class="form-control" disabled="true" ng-model="chargeDetail.driverName"/>
+        </div>
+    </div>
+
+    <div ng-class="['form-group', chargeForm.occurDt.$invalid ? 'has-error' : '']">
+	    <label class="col-sm-5 control-label" >发生时间：</label>
+    	<div class="col-sm-7">
+	        <input name="occurDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.occurDt" max="{{nowDate | date : 'yyyy-MM-dd'}}" required/>
+    	</div>	    
+    </div>	
+    <div ng-class="['form-group', chargeForm.responsibilityTypeId.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">责任类型：</label>
+        <div class="col-md-7">
+        	<input id="responsibilityTypeId" name="responsibilityTypeId" type="text" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.responsibilityTypeId"/>
+        </div>
+    </div>
+
+    <div ng-class="['form-group', chargeForm.isInsurancePaid.$invalid ? 'has-error' : '']">
+        <label class="col-sm-5 control-label">赔款是否发放：</label>
+    	<div class="col-sm-7">
+    		<input name="isInsurancePaid" class="checkbox" style="width:17px;height:17px" type="checkbox" ng-model="chargeDetail.isInsurancePaid" />
+    	</div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-md-5 control-label">创 建 日 期：</label>
+    	<div class="col-md-7 form-control-static">
+        	<label class="label label-info" ng-bind="chargeDetail.createDt | date : DATE_FORMAT"></label>
+    	</div>
+    </div>
+
+    <div class="form-group">
+         <label class="col-md-5 control-label">上次更新日期：</label>
+    	<div class="col-md-7 form-control-static">
+         <label class="label label-info" ng-bind="chargeDetail.lastUpdateDt | date : DATE_FORMAT"></label>
+    	</div>
+    </div>
+</form>

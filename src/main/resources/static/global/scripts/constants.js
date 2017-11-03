@@ -17,11 +17,6 @@
 	    	QUESTION : 'QUESTION',
 	    	GOSSIP : 'GOSSIP'
 	    },
-	    TOPIC_IMG : {
-	    	HOMEWORK : '/global/img/topic-homework.jpg',
-	    	QUESTION : '/global/img/topic-question.jpg',
-	    	GOSSIP : '/global/img/topic-gossip.jpg'
-	    },
 	    COOKIE_PARAM : {
 	    	TOKEN : 'XSRF-TOKEN',
 	    	USER_ID : 'userId'
