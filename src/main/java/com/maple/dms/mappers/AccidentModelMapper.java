@@ -1,5 +1,7 @@
 package com.maple.dms.mappers;
 
+import java.util.List;
+
 import com.maple.dms.models.AccidentModel;
 
 public interface AccidentModelMapper {
@@ -53,4 +55,6 @@ public interface AccidentModelMapper {
     
     // --------------- Below is customized -----------
     AccidentModel selectByDriverId(Long driverId);
+    
+    List<AccidentModel> selectAll();
 }

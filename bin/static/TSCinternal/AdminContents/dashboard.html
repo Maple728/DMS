@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="zh">
 <head>
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
@@ -58,7 +58,7 @@
             <ul class="nav nav-sidebar">
                 <li><a ui-sref="userManagement" ui-sref-active="active">驾驶员管理</a></li>
                 <li><a ui-sref="complaintManagement" ui-sref-active="active">投诉管理</a></li>
-                <li><a ui-sref="courseAssign" ui-sref-active="active">事故管理</a></li>
+                <li><a ui-sref="accidentManagement" ui-sref-active="active">事故管理</a></li>
             </ul>
         </div>
         
@@ -83,13 +83,14 @@
 <script type="text/javascript" src="../../global/scripts/server-service.js" th:src="@{/global/scripts/server-service.js}"></script>
 <script src="dashboard.js" th:src="@{/TSCinternal/AdminContents/dashboard.js}"></script>
 <script src="ng-table-necessary.js" th:src="@{/TSCinternal/AdminContents/ng-table-necessary.js}"></script>
-<script src="userManagement/user-management.js" th:src="@{/TSCinternal/AdminContents/userManagement/user-management.js}"></script>
+
+<script src="userManagement/user-management.js"></script>
 <script src="complaintManagement/complaint-management.js"></script>
-<script src="courseAssign/course-assign.js" th:src="@{/TSCinternal/AdminContents/courseAssign/course-assign.js}"></script>
+<script src="accidentManagement/accident-management.js"></script>
 
 <script src="../../global/templates/user-info/user-info.js" ></script>
 <script src="../../global/templates/complaint-info/complaint-info.js"></script>
-<script src="../../global/templates/course-assign-info/course-assign-info.js" th:src="@{/global/templates/course-assign-info/course-assign-info.js}"></script>
+<script src="../../global/templates/accident-info/accident-info.js"></script>
 
 </body>
 </html>

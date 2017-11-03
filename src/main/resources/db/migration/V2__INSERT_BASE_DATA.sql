@@ -1,3 +1,6 @@
+INSERT INTO codetable(category, name, display_value)
+VALUES ('InsureType', 'TypeOne', 'TypeOneDisplay');
+
 INSERT INTO driver(id_no, name, address, phonenumber, create_dt, last_update_dt)
 VALUES (123, '张三', '甘井子', 18840831234, now(), now());
 

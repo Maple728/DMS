@@ -47,12 +47,12 @@ public class DriverServiceImpl implements DriverService {
 		
 		record.setCreateDt(nowDate);
 		record.setLastUpdateDt(nowDate);
-		driverModelMapper.insert(record);
+		driverModelMapper.insertSelective(record);
 		
 		record.getDriverDetailModel().setDriverId(record.getId());
 		record.getDriverDetailModel().setCreateDt(nowDate);
 		record.getDriverDetailModel().setLastUpdateDt(nowDate);		
-		driverDetailModelMapper.insert(record.getDriverDetailModel());
+		driverDetailModelMapper.insertSelective(record.getDriverDetailModel());
 		
 		return 1;
 	}

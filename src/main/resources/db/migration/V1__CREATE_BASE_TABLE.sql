@@ -86,7 +86,7 @@ CREATE TABLE "driver_detail"
 	change_car_dt DATE,
 	change_car_fee double precision,
 	
-	is_transfer_ownership boolean,
+	is_transfer_ownership boolean DEFAULT false,
 	
 	-- Insurance
 	insurance_photo_path text,
@@ -112,7 +112,7 @@ CREATE TABLE "driver_detail"
 CREATE TABLE "complaint"
 (
 	id bigserial,
-	driver_id bigint NOT NULL UNIQUE,
+	driver_id bigint NOT NULL,
 	
 	occur_dt DATE NOT NULL,
 	content text NOT NULL,
@@ -131,11 +131,11 @@ CREATE TABLE "complaint"
 CREATE TABLE "accident"
 (
 	id bigserial,
-	driver_id bigint NOT NULL UNIQUE,
+	driver_id bigint NOT NULL,
 		
 	occur_dt DATE NOT NULL,
 	responsibility_type_id bigint NOT NULL,
-	is_insurance_paid boolean NOT NULL,
+	is_insurance_paid boolean DEFAULT false,
 	
 	create_dt DATE NOT NULL,
 	last_update_dt DATE NOT NULL,

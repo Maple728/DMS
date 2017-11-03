@@ -8,40 +8,40 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.maple.dms.mappers.ComplaintModelMapper;
-import com.maple.dms.models.ComplaintModel;
-import com.maple.dms.services.ComplaintService;
+import com.maple.dms.mappers.AccidentModelMapper;
+import com.maple.dms.models.AccidentModel;
+import com.maple.dms.services.AccidentService;
 
 @Service
 @Transactional(value = "transactionManager", rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
-public class ComplaintServiceImpl implements ComplaintService {
+public class AccidentServiceImpl implements AccidentService {
 
 	@Autowired
-	private ComplaintModelMapper complaintModelMapper;
+	private AccidentModelMapper accidentModelMapper;
 	
 	@Override
-	public Integer addComplaint(ComplaintModel record) {
+	public Integer addAccident(AccidentModel record) {
 		Date nowDate = new Date();
 		record.setCreateDt(nowDate);
 		record.setLastUpdateDt(nowDate);
-		return complaintModelMapper.insertSelective(record);
+		return accidentModelMapper.insertSelective(record);
 	}
 
 	@Override
-	public Integer updateComplaint(ComplaintModel record) {
+	public Integer updateAccident(AccidentModel record) {
 		Date nowDate = new Date();
 		record.setLastUpdateDt(nowDate);
-		return complaintModelMapper.updateByPrimaryKeySelective(record);
+		return accidentModelMapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
-	public Integer removeComplaint(Long id) {
-		return complaintModelMapper.deleteByPrimaryKey(id);
+	public Integer removeAccident(Long id) {
+		return accidentModelMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
-	public List<ComplaintModel> getAll() {
-		return complaintModelMapper.selectAll();
+	public List<AccidentModel> getAll() {
+		return accidentModelMapper.selectAll();
 	}
 
 }

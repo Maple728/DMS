@@ -1,5 +1,5 @@
 var dashboardApp = angular.module(window.tsc.constants.DASHBOARD_APP, ["ui.router", "ngTable", "toastr"
-	,'userInfo', 'complaintInfo', 'serverService']);
+	,'userInfo', 'complaintInfo', 'accidentInfo', 'serverService']);
 
 dashboardApp.config(function($stateProvider){
    var userManageState = {
@@ -14,15 +14,15 @@ dashboardApp.config(function($stateProvider){
      component: 'complaintManagement'
    };
    
-   var courseAssignState = {
-     name : 'courseAssign',
-     url : '/course-assign',
-     component : 'courseAssign'
+   var accidentManagementState = {
+     name : 'accidentManagement',
+     url : '/accident-management',
+     component : 'accidentManagement'
    };
    
     $stateProvider.state(userManageState);
     $stateProvider.state(complaintManagementState);
-    $stateProvider.state(courseAssignState);
+    $stateProvider.state(accidentManagementState);
 
 })
 .controller('dashboardCtrl', function($scope, serverService){

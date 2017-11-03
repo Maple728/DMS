@@ -1,5 +1,5 @@
 <div>
-    <h1 class="page-header">投诉管理</h1>
+    <h1 class="page-header">事故管理</h1>
     <div class="sub-header">
         <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddCourseModal()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
     	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteCourses()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
@@ -17,16 +17,12 @@
                 <span>{{row.occurDt | date : $ctrl.DATE_FORMAT}}</span>
             </td>
             
-            <td data-title="'投诉内容'" filter="{content : 'text'}">
-                <span>{{row.content}}</span>
+            <td data-title="'责任类型'" filter="{responsibilityTypeId : 'text'}">
+                <span>{{row.responsibilityTypeId}}</span>
             </td>
- 
-            <td data-title="'是否解决'" filter="{isSolved : 'text'}" style="width:50px">
-                <input type="checkbox" name="isSolved" style="width:17px;height:17px" type="checkbox" disabled="disable" ng-model="row.isSolved" />
-            </td>
-            
-            <td data-title="'解决方式'" filter="{solveWay : 'text'}">
-                <span>{{row.solveWay}}</span>
+
+            <td data-title="'赔款是否发放'" filter="{isInsurancePaid : 'text'}" style="width:50px">
+                <input type="checkbox" name="isInsurancePaid" style="width:17px;height:17px" disabled="disable" ng-model="row.isInsurancePaid" />
             </td>
             
             <td data-title="'创建日期'"  sortable="'createDt'">{{row.createDt | date : $ctrl.DATE_FORMAT}}</td>
@@ -38,16 +34,16 @@
     </table>
 
     <!-- Customized Modal -->
-    <div id="complaintDetailModal" class="modal fade" role="dialog" tabindex="-1">
+    <div id="accidentDetailModal" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-lg	">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3>编辑投诉信息</h3>
+                    <h3>编辑事故信息</h3>
                 </div>
                 <div class="modal-body">
                 	<div class="form-content">
-	                    <complaint-info mode="$ctrl.editableMode" complaint-detail="$ctrl.clickedComplaint" is-form-valid="$ctrl.isFormValid"></complaint-info>
+	                    <accident-info mode="$ctrl.editableMode" accident-detail="$ctrl.clickedAccident" is-form-valid="$ctrl.isFormValid"></accident-info>
                 	</div>
                 </div>
                 <div class="modal-footer">

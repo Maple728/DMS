@@ -63,10 +63,10 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 					idNo : row.idNo
 				}
 			}).success(function(response){
-				if(response == null) {
-					response = false;
+				if(response == '') {
+					response = true;
 				} else {
-					return true;
+					response = false;
 				}
                ctrl.isAccountIdValid = response;
                defered.resolve(response);
@@ -108,17 +108,7 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
                     // delete user success
                     
                     // remove these users in ng-table
-                    _.remove(ctrl.tableParams.settings().dataset, function (item) {
-                        return  _.indexOf(ctrl.selectedUserIdList, item.id) >= 0;
-                    });
-                    
-                    // reload ng-table
-        			ctrl.tableParams.reload().then(function (data) {
-        				if (data.length === 0 && ctrl.tableParams.total() > 0) {
-        					ctrl.tableParams.page(ctrl.tableParams.page() - 1);
-        					ctrl.tableParams.reload();
-        				}
-        			});
+                	ctrl.delRowsByIdList(ctrl.selectedUserIdList);
                     // initialize the list
         			ctrl.selectedUserIdList = [];
         			
@@ -135,6 +125,22 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 		ctrl.isSelected = function(row) {
 			return _.indexOf(ctrl.selectedUserIdList, row.id) >= 0;
 		}
+// ------------------ ng-table functions ----------------------
+		ctrl.delRowsByIdList = function (idList) {
+            // remove these users in ng-table
+            _.remove(ctrl.tableParams.settings().dataset, function (item) {
+                return  _.indexOf(idList, item.id) >= 0;
+            });
+            
+            // reload ng-table
+			ctrl.tableParams.reload().then(function (data) {
+				if (data.length === 0 && ctrl.tableParams.total() > 0) {
+					ctrl.tableParams.page(ctrl.tableParams.page() - 1);
+					ctrl.tableParams.reload();
+				}
+			});			
+		};
+		
 // ------------------ Model functions  ----------------------------------
 		function setDefaultPicture(userWithDetail) {
 			var defaultPicturePath = "\\global\\img";
@@ -235,7 +241,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
                         }, function(reject){
                            toastr.error("添加司机失败！", "Server Error");
                         });
-                        return ;
                     }
                     else {
                         // Get the original data
@@ -256,7 +261,7 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
                     }
             	}
             	else {
-            		toastr.error("添加司机数据失败：该身份证号已存在！", "Operation Error");
+            		toastr.error("该身份证号已存在！", "Operation Error");
             	}
             });
             

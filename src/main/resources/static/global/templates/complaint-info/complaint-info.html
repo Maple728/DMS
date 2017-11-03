@@ -19,7 +19,7 @@
     <div ng-class="['form-group', complaintForm.occurDt.$invalid ? 'has-error' : '']">
 	    <label class="col-sm-5 control-label" >发生时间：</label>
     	<div class="col-sm-7">
-	        <input name="occurDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.occurDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+	        <input name="occurDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="complaintDetail.occurDt" max="{{nowDate | date : 'yyyy-MM-dd'}}" required/>
     	</div>	    
     </div>	
     <div ng-class="['form-group', complaintForm.content.$invalid ? 'has-error' : '']">
@@ -32,7 +32,7 @@
     <div class="form-group">
         <label class="col-sm-5 control-label">是否解决：</label>
     	<div class="col-sm-7">
-    		<input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="complaintDetail.isSolved"/>
+    		<input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-model="complaintDetail.isSolved"/>
     	</div>
     </div>
  
@@ -46,7 +46,7 @@
     <div class="form-group">
         <label class="col-md-5 control-label">创 建 日 期：</label>
     	<div class="col-md-7 form-control-static">
-        	<label class="label label-info" ng-bind="complaintDetail.createdDt | date : DATE_FORMAT"></label>
+        	<label class="label label-info" ng-bind="complaintDetail.createDt | date : DATE_FORMAT"></label>
     	</div>
     </div>
 
