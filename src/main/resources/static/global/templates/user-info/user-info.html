@@ -10,14 +10,14 @@
 	    <div ng-class="['form-group', userDetailForm.idNo.$invalid ? 'has-error' : '']" ng-if="isBaseEditable">
 		    <label class="col-sm-5 control-label">身份证号：</label>
 	    	<div class="col-sm-7">
-		        <input name="idNo" type="text" class="form-control" ng-model="userWithDetail.idNo" required/>
+		        <input name="idNo" type="text" class="form-control" ng-model="userWithDetail.idNo" pattern="^\d{17}[\dXx]$" required/>
 	    	</div>
 	    </div>
 	    
 	    <div ng-class="['form-group', userDetailForm.phonenumber.$invalid ? 'has-error' : '']">
 		    <label class="col-sm-5 control-label">联系方式：</label>
 	        <div class="col-sm-7">
-		        <input name="phonenumber" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.phonenumber" required/>
+		        <input name="phonenumber" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.phonenumber" pattern="^\d{11}$" title="请输入11位手机号" required/>
 	    	</div>
 	    </div>
 	    	
@@ -76,7 +76,7 @@
 	    <div ng-class="['form-group', userDetailForm.insurancePremium.$invalid ? 'has-error' : '']">
 		    <label class="col-sm-5 control-label" >保险金额：</label>
 	    	<div class="col-sm-7">
- 				<input name="insurancePremium" type="number" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.insurancePremium"/>
+ 				<input name="insurancePremium" type="number" step="0.01" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.driverDetailModel.insurancePremium"/>
  	    	</div>
 	    </div>
 

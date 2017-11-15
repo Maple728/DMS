@@ -1,7 +1,7 @@
 /**
  * Created by Maple on 2017/4/21.
  */
-angular.module('chargeInfo', [])
+angular.module('chargeInfo', ['bootstrap3-typeahead'])
 .directive('chargeInfo',function() {
     return {
         restrict : 'EA',
@@ -47,23 +47,18 @@ angular.module('chargeInfo', [])
                 scope.isDetailEditable = false;
             }
         },
-        controller : function($scope, $http, toastr){
-        	$scope.getDriver = function() {
-        		$http.get('/driver/checkIdNo', {
-    				params : {
-    					idNo : $scope.chargeDetail.driverIdNo
-    				}
-        		}).success(function(response){
-        			if(response == '') {
-        				toastr.error('该驾驶员不存在！');
-        				$scope.chargeDetail.driverName = null;
-        			} else {
-        				$scope.chargeDetail.driverName = response.name;
-        			}
-        		}).error(function(response){
-        			toastr.error('检查失败！');
-        		});
-        	}
+        controller : function($scope, $http, toastr, $timeout){
+        	
+			$http.get('/driver/getAllDriverBase').success(function (response) {
+				$scope.users = response;
+			}).error(function (response) {
+				toastr.error("获取司机信息失败!");
+			});
+			
+			$scope.updateTypeahead = function(value) {
+				$scope.chargeDetail.driverIdNo = value.idNo;
+				return value;
+			}
         }
         
     };

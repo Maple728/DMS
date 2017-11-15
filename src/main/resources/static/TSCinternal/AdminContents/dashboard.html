@@ -4,12 +4,12 @@
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="驾驶员管理系统"></meta>
+    <meta name="description" content="司机管理系统"></meta>
     <meta name="author" content="Maple.S"></meta>
 
     <link rel="icon" href="../../favicon.ico"></link>
 
-    <title>驾驶员管理系统</title>
+    <title>司机管理系统</title>
 
     <link rel="stylesheet" href="../../global/plugins/bootstrap-3.3.7/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="../../global/plugins/bootstrap-3.3.7/css/bootstrap-theme.min.css"></link>
@@ -56,11 +56,10 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a ui-sref="userManagement" ui-sref-active="active">驾驶员管理</a></li>
-                <li><a ui-sref="complaintManagement" ui-sref-active="active">投诉管理</a></li>
-                <li><a ui-sref="accidentManagement" ui-sref-active="active">事故管理</a></li>
+                <li><a ui-sref="userManagement" ui-sref-active="active" class="active">司机管理</a></li>
+                <li><a ui-sref="complaintManagement" ui-sref-active="active" >投诉管理</a></li>
+                <li><a ui-sref="accidentManagement" ui-sref-active="active" >事故管理</a></li>
                 <li><a ui-sref="chargeManagement" ui-sref-active="active">收费管理</a></li>
-                
             </ul>
         </div>
         
@@ -75,6 +74,8 @@
 <script src="../../global/plugins/jquery-3.2.0.min.js" th:src="@{/global/plugins/jquery-3.2.0.min.js}"></script>
 <script src="../../global/plugins/angular-1.5.8/angular.js" th:src="@{/global/plugins/angular-1.5.8/angular.js}"></script>
 <script src="../../global/plugins/bootstrap-3.3.7/js/bootstrap.min.js" th:src="@{/global/plugins/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+<script src="../../global/plugins/bootstrap3-typeahead.js"></script>
+<script src="../../global/plugins/angular-bootstrap3-typeahead.js"></script>
 
 <script src="../../global/plugins/ui-router/angular-ui-router.js" th:src="@{/global/plugins/ui-router/angular-ui-router.js}"></script>
 <script src="../../global/plugins/ng-table/ng-table.js"></script>

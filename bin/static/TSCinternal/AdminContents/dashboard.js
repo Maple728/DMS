@@ -1,5 +1,5 @@
 var dashboardApp = angular.module(window.tsc.constants.DASHBOARD_APP, ["ui.router", "ngTable", "toastr"
-	,'userInfo', 'complaintInfo', 'accidentInfo', 'serverService']);
+	,'userInfo', 'complaintInfo', 'accidentInfo', 'chargeInfo','serverService']);
 
 dashboardApp.config(function($stateProvider){
    var userManageState = {
@@ -38,8 +38,8 @@ dashboardApp.config(function($stateProvider){
 .controller('dashboardCtrl', function($scope, serverService){
 	var userId = window.tsc.utils.getValueFromCookieByParam(window.tsc.constants.COOKIE_PARAM.USER_ID);
 	
-	serverService.getUserWithDetailFromServer(userId).success(function(response){
-		$scope.logedUser = response;
-	});
+//	serverService.getUserWithDetailFromServer(userId).success(function(response){
+//		$scope.logedUser = response;
+//	});
 });
 $('#CSRF-TOKEN')[0].value = window.tsc.utils.getValueFromCookieByParam(window.tsc.constants.COOKIE_PARAM.TOKEN);

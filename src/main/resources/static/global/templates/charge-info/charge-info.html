@@ -1,6 +1,6 @@
 <form name="chargeForm" class="form-horizontal">
     <div ng-class="['form-group', chargeForm.driverIdNo.$invalid ? 'has-error' : '']">
-        <label class="col-md-5 control-label">驾驶员身份证号：</label>
+        <label class="col-md-5 control-label">司机身份证号：</label>
      	<div class="col-md-7">
         	<input name="driverIdNo" type="text" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.driverIdNo" required/>
 	        <span class="input-group-btn">
@@ -10,29 +10,30 @@
     </div>
     
     <div ng-class="['form-group', chargeForm.driverName.$invalid ? 'has-error' : '']">
-        <label class="col-md-5 control-label">驾驶员姓名：</label>
+        <label class="col-md-5 control-label">司机姓名：</label>
         <div class="col-md-7">
-	        <input id="driverName" name="driverName" type="text" class="form-control" disabled="true" ng-model="chargeDetail.driverName"/>
+	        <input id="driverName" name="driverName" type="text" class="form-control" ng-model="chargeDetail.driverName" data-provide="typeahead"
+	         bs3-typeahead bs3-items="5" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead"/>
         </div>
     </div>
 
     <div ng-class="['form-group', chargeForm.occurDt.$invalid ? 'has-error' : '']">
-	    <label class="col-sm-5 control-label" >发生时间：</label>
+	    <label class="col-sm-5 control-label" >时间：</label>
     	<div class="col-sm-7">
 	        <input name="occurDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.occurDt" max="{{nowDate | date : 'yyyy-MM-dd'}}" required/>
     	</div>	    
     </div>	
-    <div ng-class="['form-group', chargeForm.responsibilityTypeId.$invalid ? 'has-error' : '']">
-        <label class="col-md-5 control-label">责任类型：</label>
+    <div ng-class="['form-group', chargeForm.chargeType.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">类型：</label>
         <div class="col-md-7">
-        	<input id="responsibilityTypeId" name="responsibilityTypeId" type="text" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.responsibilityTypeId"/>
+        	<input id="chargeType" name="chargeType" type="text" class="form-control" ng-model="chargeDetail.chargeType"/>
         </div>
     </div>
 
-    <div ng-class="['form-group', chargeForm.isInsurancePaid.$invalid ? 'has-error' : '']">
-        <label class="col-sm-5 control-label">赔款是否发放：</label>
+    <div ng-class="['form-group', chargeForm.amount.$invalid ? 'has-error' : '']">
+        <label class="col-sm-5 control-label">金额：</label>
     	<div class="col-sm-7">
-    		<input name="isInsurancePaid" class="checkbox" style="width:17px;height:17px" type="checkbox" ng-model="chargeDetail.isInsurancePaid" />
+			<input name="amount" type="number" step="0.01" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.amount"/>
     	</div>
     </div>
     

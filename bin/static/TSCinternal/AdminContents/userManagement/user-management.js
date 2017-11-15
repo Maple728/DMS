@@ -306,26 +306,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 			});
 		}
 
-		function getAllUserRoleCategory() {
-			var defered = $q.defer();
-			$http.get('/user/getAllUserRoleCategory', {
-				cache : true
-			}).success(function (response) {
-				ctrl.userRoleCategoryList = response;
-				var userRoleCategoryList = new Array();
-				for (var i = 0; i < response.length; i++) {
-					var item = {};
-					item.id = response[i].displayValue;
-					item.title = response[i].displayValue;
-					userRoleCategoryList[i] = item;
-				}
-				defered.resolve(userRoleCategoryList);
-			}).error(function (response) {
-				defered.reject(response);
-			});
-			return defered.promise;
-		}
-
         /**
          * Delete users in rowIdList.
          *

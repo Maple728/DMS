@@ -150,7 +150,7 @@ CREATE TABLE "accident"
 CREATE TABLE "civil_dispute"
 (
 	id bigserial,
-	driver_id bigint NOT NULL UNIQUE,
+	driver_id bigint NOT NULL,
 	
 	occur_dt DATE NOT NULL,
 	content text NOT NULL,
@@ -164,4 +164,21 @@ CREATE TABLE "civil_dispute"
 )
 ;
 
+CREATE TABLE "charge"
+(
+	id bigserial,
+	driver_id bigint NOT NULL,
+	
+	occur_dt DATE NOT NULL,
+	charge_type text NOT NULL,
+	amount double precision NOT NULL,
+	
+	create_dt DATE NOT NULL,
+	last_update_dt DATE NOT NULL,
+	is_active boolean DEFAULT true,
+	
+	CONSTRAINT charge_pkey PRIMARY KEY(id),
+	CONSTRAINT charge_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)	
+)
+;
 

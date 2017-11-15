@@ -24,6 +24,17 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('accidentManagement
 			});
 		});
 
+		// For ng-table filter select
+		ctrl.bool = new Array(2);
+		ctrl.bool[0] = {
+				'id' : true,
+				'title' : '是'
+		};
+		ctrl.bool[1] = {
+				'id' : false,
+				'title' : '否'
+		};
+		
 		function getTableParams() {
 			var initialParams = {
 				count: 10,
@@ -209,6 +220,14 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('accidentManagement
          */
 		function deleteAccidentsInServer(rowIdList){
 			return $http.post('/accident/removeAccidentList', rowIdList);
+		}
+	}
+}).filter('BoolToChar', function(){
+	return function(inputArray) {
+		if(inputArray == true) {
+			return '是';
+		} else {
+			return '否';
 		}
 	}
 });

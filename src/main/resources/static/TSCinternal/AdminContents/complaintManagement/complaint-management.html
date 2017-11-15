@@ -7,7 +7,7 @@
     <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" demo-tracked-table="$ctrl.tableTracker">
         <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
         	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
-            <td data-title="'驾驶员身份证号'" filter="{driverIdNo : 'number'}" sortable="'driverIdNo'">
+            <td data-title="'驾驶员身份证号'" filter="{driverIdNo : 'text'}" sortable="'driverIdNo'">
                 <span>{{row.driverIdNo}}</span>
             </td>
             <td data-title="'驾驶员姓名'" filter="{driverName : 'text'}" sortable="'driverName'" >
@@ -16,13 +16,13 @@
             <td data-title="'发生时间'" filter="{occurDt : 'text'}" sortable="'occurDt'">
                 <span>{{row.occurDt | date : $ctrl.DATE_FORMAT}}</span>
             </td>
-            
+            <!-- 
             <td data-title="'投诉内容'" filter="{content : 'text'}">
                 <span>{{row.content}}</span>
             </td>
- 
-            <td data-title="'是否解决'" filter="{isSolved : 'text'}" style="width:50px">
-                <input type="checkbox" name="isSolved" style="width:17px;height:17px" type="checkbox" disabled="disable" ng-model="row.isSolved" />
+  			-->
+            <td data-title="'是否解决'" filter="{isSolved : 'select'}" filter-data="$ctrl.bool" style="width:60px;text-align:center">
+            	{{ row.isSolved | BoolToChar }}
             </td>
             
             <td data-title="'解决方式'" filter="{solveWay : 'text'}">

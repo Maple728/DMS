@@ -7,7 +7,7 @@
     <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" demo-tracked-table="$ctrl.tableTracker">
         <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
         	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
-            <td data-title="'驾驶员身份证号'" filter="{driverIdNo : 'number'}" sortable="'driverIdNo'">
+            <td data-title="'驾驶员身份证号'" filter="{driverIdNo : 'text'}" sortable="'driverIdNo'">
                 <span>{{row.driverIdNo}}</span>
             </td>
             <td data-title="'驾驶员姓名'" filter="{driverName : 'text'}" sortable="'driverName'" >

@@ -68,9 +68,9 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('chargeManagement',
                 	ctrl.delRowsByIdList(ctrl.selectedChargeIdList);
                     // initialize the list
         			ctrl.selectedChargeIdList = [];
-        			toastr.success("删除事故数据成功！", "Server:");
+        			toastr.success("删除收费数据成功！", "Server:");
                 }).error(function(reject){
-                    toastr.error("删除事故数据 失败！", "Server Error:");
+                    toastr.error("删除收费数据 失败！", "Server Error:");
                 });
 			}
 		};
@@ -136,19 +136,19 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('chargeManagement',
 
 		ctrl.saveCourseModal = function() {
 			console.log(ctrl.clickedCharge);
-			if(ctrl.clickedCharge.id == null) {
+			if(typeof(ctrl.clickedCharge.id) == 'undefined' || ctrl.clickedCharge.id == null) {
 				// add 
 				addChargeInServer(ctrl.clickedCharge).success(function(response){
 					// Add the row into ngtable
-					ctrl.addDataNgtable();
+					ctrl.addDataNgtable(response);
 					// reload ng-table
 					ctrl.refreshNgtable();
 					
 					$('#chargeDetailModal').modal('hide');
 					ctrl.clickedCharge = null;
-					toastr.success("添加事故数据成功！", "Server：");
+					toastr.success("添加收费数据成功！", "Server：");
 				}).error( function(reject){
-					toastr.error("添加事故数据失败！", "Server Error");
+					toastr.error("添加收费数据失败！", "Server Error");
 				});
 			} else {
 				// update
@@ -156,9 +156,9 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('chargeManagement',
 					// reload ng-table
 					ctrl.updateDataNgtable(ctrl.clickedCharge);
 					
-					toastr.success("更新事故数据成功！", "Server：");
+					toastr.success("更新收费数据成功！", "Server：");
 				}).error( function(reject){
-					toastr.error("更新事故数据失败！", "Server Error");
+					toastr.error("更新收费数据失败！", "Server Error");
 				});
 			}
 		};
