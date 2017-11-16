@@ -3,6 +3,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 bin/
 *.log
+picture_path/
 
 ### STS ###
 .apt_generated
