@@ -10,7 +10,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="driver_id" jdbcType="BIGINT" property="driverId" />
     <result column="occur_dt" jdbcType="DATE" property="occurDt" />
-    <result column="responsibility_type_id" jdbcType="BIGINT" property="responsibilityTypeId" />
+    <result column="responsibility_type_id" jdbcType="VARCHAR" property="responsibilityTypeId" />
     <result column="is_insurance_paid" jdbcType="BIT" property="isInsurancePaid" />
     <result column="create_dt" jdbcType="DATE" property="createDt" />
     <result column="last_update_dt" jdbcType="DATE" property="lastUpdateDt" />

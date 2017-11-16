@@ -58,7 +58,7 @@ public class AccidentModel {
      *
      * @mbg.generated Tue Oct 24 17:43:16 CST 2017
      */
-    private Long responsibilityTypeId;
+    private String responsibilityTypeId;
 
     /**
      *
@@ -176,7 +176,7 @@ public class AccidentModel {
      *
      * @mbg.generated Tue Oct 24 17:43:16 CST 2017
      */
-    public Long getResponsibilityTypeId() {
+    public String getResponsibilityTypeId() {
         return responsibilityTypeId;
     }
 
@@ -188,7 +188,7 @@ public class AccidentModel {
      *
      * @mbg.generated Tue Oct 24 17:43:16 CST 2017
      */
-    public void setResponsibilityTypeId(Long responsibilityTypeId) {
+    public void setResponsibilityTypeId(String responsibilityTypeId) {
         this.responsibilityTypeId = responsibilityTypeId;
     }
 

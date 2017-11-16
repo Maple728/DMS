@@ -134,7 +134,7 @@ CREATE TABLE "accident"
 	driver_id bigint NOT NULL,
 		
 	occur_dt DATE NOT NULL,
-	responsibility_type_id bigint NOT NULL,
+	responsibility_type_id text NOT NULL,
 	is_insurance_paid boolean DEFAULT false,
 	
 	create_dt DATE NOT NULL,
@@ -142,7 +142,6 @@ CREATE TABLE "accident"
 	is_active boolean DEFAULT true,
 	
 	CONSTRAINT accident_pkey PRIMARY KEY(id),
-	CONSTRAINT accident_type_fk FOREIGN KEY(responsibility_type_id) REFERENCES "codetable"(id),
 	CONSTRAINT accident_driver_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)
 )
 ;
