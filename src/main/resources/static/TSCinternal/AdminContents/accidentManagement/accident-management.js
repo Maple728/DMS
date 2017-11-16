@@ -174,14 +174,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('accidentManagement
 			}
 		};
 
-		ctrl.cancelCourseModal = function() {
-			var index = _.findIndex(ctrl.originalData, function(r){
-				return r.id === ctrl.clickedAccident.id;
-			});
-			var originalRow = ctrl.originalData[index];
-			angular.extend(ctrl.clickedAccident, originalRow);
-		}
-
 // ------------------------- Functions Interact with server -------------------------------
 		/**
 		 * Add course to server

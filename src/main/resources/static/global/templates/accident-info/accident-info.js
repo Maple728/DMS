@@ -48,23 +48,29 @@ angular.module('accidentInfo', [])
             }
         },
         controller : function($scope, $http, toastr){
-        	$scope.getDriver = function() {
-        		$http.get('/driver/checkIdNo', {
-    				params : {
-    					idNo : $scope.accidentDetail.driverIdNo
-    				}
-        		}).success(function(response){
-        			if(response == '') {
-        				toastr.error('该驾驶员不存在！');
-        				$scope.accidentDetail.driverName = null;
-        			} else {
-        				$scope.accidentDetail.driverName = response.name;
-        			}
-        		}).error(function(response){
-        			toastr.error('检查失败！');
-        		});
-        	}
+        	// -------------- For bootstrap typeahead ---------------------------
+        	$scope.accidentDetail = {};
+        	
+			$http.get('/driver/getAllDriverBase').success(function (response) {
+				$scope.users = response;
+			}).error(function (response) {
+				toastr.error("获取司机信息失败!");
+			});
+			
+			$scope.updateTypeahead = function(value) {
+				$scope.accidentDetail.driverIdNo = value.idNo;
+				$scope.accidentDetail.driverName = value.name;
+				return value;
+			}
+			$scope.displayText = function(value) {
+				return value.name + " (" + value.idNo + ")";
+			}
+			
+			$scope.$watch('accidentDetail.driverIdNo', function(newValue) {
+				if(typeof(newValue) != 'undefined') {
+					$scope.driverDisplay = $scope.accidentDetail.driverName + " (" + $scope.accidentDetail.driverIdNo + ")";
+				}
+			})
         }
-        
     };
 })

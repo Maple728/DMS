@@ -135,7 +135,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('chargeManagement',
 		}
 
 		ctrl.saveCourseModal = function() {
-			console.log(ctrl.clickedCharge);
 			if(typeof(ctrl.clickedCharge.id) == 'undefined' || ctrl.clickedCharge.id == null) {
 				// add 
 				addChargeInServer(ctrl.clickedCharge).success(function(response){
@@ -162,14 +161,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('chargeManagement',
 				});
 			}
 		};
-
-		ctrl.cancelCourseModal = function() {
-			var index = _.findIndex(ctrl.originalData, function(r){
-				return r.id === ctrl.clickedCharge.id;
-			});
-			var originalRow = ctrl.originalData[index];
-			angular.extend(ctrl.clickedCharge, originalRow);
-		}
 
 // ------------------------- Functions Interact with server -------------------------------
 		/**

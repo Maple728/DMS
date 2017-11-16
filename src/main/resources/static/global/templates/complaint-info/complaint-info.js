@@ -48,22 +48,29 @@ angular.module('complaintInfo', [])
             }
         },
         controller : function($scope, $http, toastr){
-        	$scope.getDriver = function() {
-        		$http.get('/driver/checkIdNo', {
-    				params : {
-    					idNo : $scope.complaintDetail.driverIdNo
-    				}
-        		}).success(function(response){
-        			if(response == '') {
-        				toastr.error('该驾驶员不存在！');
-        				$scope.complaintDetail.driverName = null;
-        			} else {
-        				$scope.complaintDetail.driverName = response.name;
-        			}
-        		}).error(function(response){
-        			toastr.error('检查失败！');
-        		});
-        	}
+        	// -------------- For bootstrap typeahead ---------------------------
+        	$scope.complaintDetail = {};
+        	
+			$http.get('/driver/getAllDriverBase').success(function (response) {
+				$scope.users = response;
+			}).error(function (response) {
+				toastr.error("获取司机信息失败!");
+			});
+			
+			$scope.updateTypeahead = function(value) {
+				$scope.complaintDetail.driverIdNo = value.idNo;
+				$scope.complaintDetail.driverName = value.name;
+				return value;
+			}
+			$scope.displayText = function(value) {
+				return value.name + " (" + value.idNo + ")";
+			}
+			
+			$scope.$watch('complaintDetail.driverIdNo', function(newValue) {
+				if(typeof(newValue) != 'undefined') {
+					$scope.driverDisplay = $scope.complaintDetail.driverName + " (" + $scope.complaintDetail.driverIdNo + ")";
+				}
+			})
         }
         
     };

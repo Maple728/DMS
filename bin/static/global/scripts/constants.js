@@ -6,16 +6,11 @@
 	window.tsc.constants = {
 	    DASHBOARD_APP : 'dashboardApp',
         HOMEPAGE_APP : 'homepageApp',
-	    DATE_FORMAT : 'yyyy-MM-dd HH:mm',
+	    DATE_FORMAT : 'yyyy-MM-dd',
 	    USER_INFO_MODE : {
 	        USER_MODE : 1,
 	        ADMIN_MODE : 2,
 	        VISTOR_MODE : 3
-	    },
-	    TOPIC_CATEGORY : {
-	    	HOMEWORK : 'HOMEWORK',
-	    	QUESTION : 'QUESTION',
-	    	GOSSIP : 'GOSSIP'
 	    },
 	    COOKIE_PARAM : {
 	    	TOKEN : 'XSRF-TOKEN',

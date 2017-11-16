@@ -13,12 +13,12 @@
             <td data-title="'驾驶员姓名'" filter="{driverName : 'text'}" sortable="'driverName'" >
         	    <span>{{row.driverName}}</span>
             </td>
-            <td data-title="'类型'" filter="{occurDt : 'text'}" sortable="'occurDt'">
+            <td data-title="'时间'" filter="{occurDt : 'text'}" sortable="'occurDt'">
                 <span>{{row.occurDt | date : $ctrl.DATE_FORMAT}}</span>
             </td>
             
-            <td data-title="'时间'" filter="{responsibilityTypeId : 'text'}">
-                <span>{{row.responsibilityTypeId}}</span>
+            <td data-title="'类型'" filter="{chargeType : 'text'}">
+                <span>{{row.chargeType}}</span>
             </td>
 
             <td data-title="'金额'" filter="{isInsurancePaid : 'text'}" style="width:50px">
@@ -47,7 +47,7 @@
                 	</div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal" ng-click="$ctrl.cancelCourseModal()">取 消</button>
+                    <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal">取 消</button>
                     <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="$ctrl.isFormValid" ng-click="$ctrl.saveCourseModal()">保 存</button>
                 </div>
             </div>

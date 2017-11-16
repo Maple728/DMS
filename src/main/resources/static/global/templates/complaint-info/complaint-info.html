@@ -1,18 +1,10 @@
 <form name="complaintForm" class="form-horizontal">
-    <div ng-class="['form-group', complaintForm.driverIdNo.$invalid ? 'has-error' : '']">
-        <label class="col-md-5 control-label">驾驶员身份证号：</label>
-     	<div class="col-md-7">
-        	<input name="driverIdNo" type="text" class="form-control" ng-disabled="!isDetailEditable" ng-model="complaintDetail.driverIdNo" required/>
-	        <span class="input-group-btn">
-	            <button class="btn btn-default" type="button" ng-click="getDriver()">检查</button>
-	        </span>
-    	</div>
-    </div>
     
-    <div ng-class="['form-group', complaintForm.driverName.$invalid ? 'has-error' : '']">
-        <label class="col-md-5 control-label">驾驶员姓名：</label>
+    <div ng-class="['form-group', complaintForm.driver.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">司机：</label>
         <div class="col-md-7">
-	        <input id="driverName" name="driverName" type="text" class="form-control" disabled="true" ng-model="complaintDetail.driverName"/>
+	        <input id="driver" name="driver" type="text" class="form-control"
+       		ng-model="driverDisplay" data-provide="typeahead" bs3-typeahead bs3-items="5" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead" bs3-displayText="displayText"/>
         </div>
     </div>
 

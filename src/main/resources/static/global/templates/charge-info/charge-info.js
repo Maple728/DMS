@@ -47,7 +47,10 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
                 scope.isDetailEditable = false;
             }
         },
-        controller : function($scope, $http, toastr, $timeout){
+        controller : function($scope, $http, toastr){
+        	
+        	// -------------- For bootstrap typeahead ---------------------------
+        	$scope.chargeDetail = {};
         	
 			$http.get('/driver/getAllDriverBase').success(function (response) {
 				$scope.users = response;
@@ -57,8 +60,18 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
 			
 			$scope.updateTypeahead = function(value) {
 				$scope.chargeDetail.driverIdNo = value.idNo;
+				$scope.chargeDetail.driverName = value.name;
 				return value;
 			}
+			$scope.displayText = function(value) {
+				return value.name + " (" + value.idNo + ")";
+			}
+			
+			$scope.$watch('chargeDetail.driverIdNo', function(newValue) {
+				if(typeof(newValue) != 'undefined') {
+					$scope.driverDisplay = $scope.chargeDetail.driverName + " (" + $scope.chargeDetail.driverIdNo + ")";
+				}
+			})
         }
         
     };
