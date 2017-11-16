@@ -17,12 +17,12 @@
                 <span>{{row.occurDt | date : $ctrl.DATE_FORMAT}}</span>
             </td>
             
-            <td data-title="'类型'" filter="{chargeType : 'text'}">
+            <td data-title="'类型'" filter="{chargeType : 'text'}" sortable="'chargeType'">
                 <span>{{row.chargeType}}</span>
             </td>
 
-            <td data-title="'金额'" filter="{isInsurancePaid : 'text'}" style="width:50px">
-                <input type="checkbox" name="isInsurancePaid" style="width:17px;height:17px" disabled="disable" ng-model="row.isInsurancePaid" />
+            <td data-title="'金额'" filter="{amount : 'number'}" sortable="'amount'">
+                <span>{{ row.amount}}</span>
             </td>
             
             <td data-title="'创建日期'"  sortable="'createDt'">{{row.createDt | date : $ctrl.DATE_FORMAT}}</td>

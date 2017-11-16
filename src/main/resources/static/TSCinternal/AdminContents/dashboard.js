@@ -22,7 +22,7 @@ dashboardApp.config(function($stateProvider){
 
    var chargeManagementState = {
      name : 'chargeManagement',
-     url : 'charge-management',
+     url : '/charge-management',
      component : 'chargeManagement'
    };   
    

@@ -41,4 +41,42 @@
          <label class="label label-info" ng-bind="chargeDetail.lastUpdateDt | date : DATE_FORMAT"></label>
     	</div>
     </div>
+
+    <div class="form-group">
+        <label class="col-md-5 control-label">车 号：</label>
+    	<div class="col-md-5">
+    		<input name="carNumber" type="text" class="form-control" ng-model="carNumber"/>
+   		</div>
+   		<div class="col-md-2">
+        	<button type="button" class="btn btn-default" style="width:80px" ng-click="printCharge()">打印</button>
+   		</div>
+
+    </div>    
+    <div id="dmsChargeView">
+    	<table border="1" style="height:150px;width:100%">
+    		<caption>大连渤海汽车出租公司内部交款单</caption>
+    		<caption>{{ nowDay | date : 'yyyy年MM月dd日'}}</caption>
+    		<tr>
+	    		<th>车 号</th>
+	    		<th>姓 名</th>
+	    		<th>摘 要</th>
+	    		<th>交款金额</th>
+    		</tr>
+    		<tr>
+	    		<td>{{ carNumber }}</td>
+	    		<td>{{ chargeDetail.driverName}}</td>
+	    		<td>{{ chargeDetail.chargeType }}</td>
+	    		<td>{{ chargeDetail.amount }}</td>    			
+    		</tr>
+    		<tr>
+	    		<th colspan="2" style="text-align:left">人民币：（大写金额）</th>
+	    		<td colspan="2">{{ chargeDetail.amount | amountToCapMoney}}</td>    			
+    		</tr>    		
+    	</table>
+    </div>
 </form>
+<style type="text/css">
+#dmsChargeView table th,td,caption {
+	text-align:center
+}
+</style>
