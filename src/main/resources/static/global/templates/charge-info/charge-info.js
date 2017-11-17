@@ -70,6 +70,8 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
 			$scope.$watch('chargeDetail.driverIdNo', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
 					$scope.driverDisplay = $scope.chargeDetail.driverName + " (" + $scope.chargeDetail.driverIdNo + ")";
+				} else {
+					$scope.driverDisplay = null;
 				}
 			});
 			

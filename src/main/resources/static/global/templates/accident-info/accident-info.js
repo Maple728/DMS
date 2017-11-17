@@ -69,6 +69,8 @@ angular.module('accidentInfo', [])
 			$scope.$watch('accidentDetail.driverIdNo', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
 					$scope.driverDisplay = $scope.accidentDetail.driverName + " (" + $scope.accidentDetail.driverIdNo + ")";
+				} else {
+					$scope.driverDisplay = null;
 				}
 			})
         }

@@ -69,6 +69,8 @@ angular.module('complaintInfo', [])
 			$scope.$watch('complaintDetail.driverIdNo', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
 					$scope.driverDisplay = $scope.complaintDetail.driverName + " (" + $scope.complaintDetail.driverIdNo + ")";
+				} else {
+					$scope.driverDisplay = null;
 				}
 			})
         }
