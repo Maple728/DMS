@@ -1,5 +1,13 @@
 <div class="user-info">
 	<form name="userDetailForm" class="form-horizontal">
+	
+	    <div ng-class="['form-group', userDetailForm.carNumber.$invalid ? 'has-error' : '']" ng-if="isBaseEditable">
+		    <label class="col-sm-5 control-label">车    号：</label>
+	    	<div class="col-sm-7">
+		        <input name="carNumber" type="text" class="form-control" ng-model="userWithDetail.carNumber" required/>
+	    	</div>
+	    </div>
+	    	
 	    <div ng-class="['form-group', userDetailForm.name.$invalid ? 'has-error' : '']">
 		    <label class="col-sm-5 control-label">司机姓名：</label>
 	    	<div class="col-sm-7">
@@ -66,13 +74,20 @@
  	    	</div>
 	    </div>
 	    
-	    <div ng-class="['form-group', userDetailForm.insuranceDt.$invalid ? 'has-error' : '']">
-		    <label class="col-sm-5 control-label" >保险时间：</label>
+	    <div ng-class="['form-group', userDetailForm.insuranceStartDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >保险起始时间：</label>
 	    	<div class="col-sm-7">
-		        <input name="insuranceDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.insuranceDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+		        <input name="insuranceStartDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.insuranceStartDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
 	    	</div>	    
 	    </div>
 
+	    <div ng-class="['form-group', userDetailForm.insuranceEndDt.$invalid ? 'has-error' : '']">
+		    <label class="col-sm-5 control-label" >保险结束时间：</label>
+	    	<div class="col-sm-7">
+		        <input name="insuranceEndDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.insuranceEndDt" />
+	    	</div>	    
+	    </div>
+	    
 	    <div ng-class="['form-group', userDetailForm.insurancePremium.$invalid ? 'has-error' : '']">
 		    <label class="col-sm-5 control-label" >保险金额：</label>
 	    	<div class="col-sm-7">
@@ -104,7 +119,7 @@
 	    <div ng-class="['form-group', userDetailForm.contractEndDt.$invalid ? 'has-error' : '']">
 		    <label class="col-sm-5 control-label" >合同到期时间：</label>
 	    	<div class="col-sm-7">
-		        <input name="contractEndDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.contractEndDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+		        <input name="contractEndDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.contractEndDt"/>
 	    	</div>	    
 	    </div>
 	    	    	

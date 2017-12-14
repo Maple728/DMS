@@ -60,19 +60,26 @@ angular.module('complaintInfo', [])
 			$scope.updateTypeahead = function(value) {
 				$scope.complaintDetail.driverIdNo = value.idNo;
 				$scope.complaintDetail.driverName = value.name;
+				$scope.complaintDetail.carNumber = value.carNumber
 				return value;
 			}
-			$scope.displayText = function(value) {
-				return value.name + " (" + value.idNo + ")";
+			
+			$scope.displayText = function(driver) {
+				if (typeof(driver.driverName) =='undefined') {
+					// driver model
+					return driver.carNumber + " - " + driver.name + " (" + driver.idNo + ")";
+				} else {
+					return driver.carNumber + " - " + driver.driverName + " (" + driver.driverIdNo + ")";
+				}
 			}
 			
 			$scope.$watch('complaintDetail.driverIdNo', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
-					$scope.driverDisplay = $scope.complaintDetail.driverName + " (" + $scope.complaintDetail.driverIdNo + ")";
+					$scope.driverDisplay = $scope.displayText($scope.complaintDetail);
 				} else {
 					$scope.driverDisplay = null;
 				}
-			})
+			});
         }
         
     };

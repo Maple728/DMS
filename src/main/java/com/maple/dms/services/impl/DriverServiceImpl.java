@@ -10,13 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.maple.dms.mappers.DriverDetailModelMapper;
 import com.maple.dms.mappers.DriverModelMapper;
+import com.maple.dms.mappers.SubstituteDriverModelMapper;
 import com.maple.dms.models.DriverModel;
+import com.maple.dms.models.SubstituteDriverModel;
 import com.maple.dms.services.DriverService;
 
 @Service
 @Transactional(value = "transactionManager", rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
 public class DriverServiceImpl implements DriverService {
 
+	@Autowired
+	private SubstituteDriverModelMapper substituteDriverModelMapper;
+	
 	@Autowired
 	private DriverModelMapper driverModelMapper;
 	
@@ -34,6 +39,7 @@ public class DriverServiceImpl implements DriverService {
 		
 		for(DriverModel driver : result) {
 			driver.setDriverDetailModel(driverDetailModelMapper.selectByDriverId(driver.getId()));
+			driver.setSubstituteDriverModel(substituteDriverModelMapper.selectByDriverId(driver.getId()));
 		}
 		return result;
 	}
@@ -54,6 +60,18 @@ public class DriverServiceImpl implements DriverService {
 		record.getDriverDetailModel().setLastUpdateDt(nowDate);		
 		driverDetailModelMapper.insertSelective(record.getDriverDetailModel());
 		
+		if(record.getSubstituteDriverModel() != null) {
+			SubstituteDriverModel subDriver = substituteDriverModelMapper.selectByDriverId(record.getId());
+			if(subDriver == null) {
+				// insert
+				substituteDriverModelMapper.insertSelective(record.getSubstituteDriverModel());
+			} else {
+				// update
+				record.getSubstituteDriverModel().setId(subDriver.getId());
+				substituteDriverModelMapper.updateByPrimaryKeySelective(record.getSubstituteDriverModel());
+			}
+		}
+		
 		return 1;
 	}
 
@@ -69,6 +87,18 @@ public class DriverServiceImpl implements DriverService {
 		if(record.getDriverDetailModel() != null) {
 			record.getDriverDetailModel().setLastUpdateDt(nowDate);
 			driverDetailModelMapper.updateByPrimaryKeySelective(record.getDriverDetailModel());
+		}
+		
+		if(record.getSubstituteDriverModel() != null) {
+			SubstituteDriverModel subDriver = substituteDriverModelMapper.selectByDriverId(record.getId());
+			if(subDriver == null) {
+				// insert
+				substituteDriverModelMapper.insertSelective(record.getSubstituteDriverModel());
+			} else {
+				// update
+				record.getSubstituteDriverModel().setId(subDriver.getId());
+				substituteDriverModelMapper.updateByPrimaryKeySelective(record.getSubstituteDriverModel());
+			}
 		}
 		return 1;
 	}
@@ -91,6 +121,7 @@ public class DriverServiceImpl implements DriverService {
 
 		// get driver detail
 		result.setDriverDetailModel(driverDetailModelMapper.selectByDriverId(id));
+		result.setSubstituteDriverModel(substituteDriverModelMapper.selectByDriverId(id));
 		
 		return result;
 	}

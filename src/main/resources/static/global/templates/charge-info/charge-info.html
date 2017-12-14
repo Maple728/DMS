@@ -1,12 +1,19 @@
 <form name="chargeForm" class="form-horizontal">
 
     <div ng-class="['form-group', chargeForm.driver.$invalid ? 'has-error' : '']">
-        <label class="col-md-5 control-label">司机：</label>
+        <label class="col-md-5 control-label">车   辆：</label>
         <div class="col-md-7">
 	        <input name="driver" type="text" class="form-control" 
 	        ng-model="driverDisplay" data-provide="typeahead" bs3-typeahead bs3-items="5" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead" bs3-displayText="displayText"/>
         </div>
     </div>
+    
+    <div ng-class="['form-group', chargeForm.invoceNumber.$invalid ? 'has-error' : '']">
+        <label class="col-md-5 control-label">发票号码：</label>
+        <div class="col-md-7">
+        	<input id="invoceNumber" name="chargeType" type="text" class="form-control" ng-model="chargeDetail.invoceNumber"/>
+        </div>
+    </div>    
 
     <div ng-class="['form-group', chargeForm.occurDt.$invalid ? 'has-error' : '']">
 	    <label class="col-sm-5 control-label" >时间：</label>

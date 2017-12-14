@@ -61,15 +61,22 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
 			$scope.updateTypeahead = function(value) {
 				$scope.chargeDetail.driverIdNo = value.idNo;
 				$scope.chargeDetail.driverName = value.name;
+				$scope.chargeDetail.carNumber = value.carNumber
 				return value;
 			}
-			$scope.displayText = function(value) {
-				return value.name + " (" + value.idNo + ")";
+			
+			$scope.displayText = function(driver) {
+				if (typeof(driver.driverName) =='undefined') {
+					// driver model
+					return driver.carNumber + " - " + driver.name + " (" + driver.idNo + ")";
+				} else {
+					return driver.carNumber + " - " + driver.driverName + " (" + driver.driverIdNo + ")";
+				}
 			}
 			
 			$scope.$watch('chargeDetail.driverIdNo', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
-					$scope.driverDisplay = $scope.chargeDetail.driverName + " (" + $scope.chargeDetail.driverIdNo + ")";
+					$scope.driverDisplay = $scope.displayText($scope.chargeDetail);
 				} else {
 					$scope.driverDisplay = null;
 				}
@@ -78,10 +85,6 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
 			// --------------------- For print -----------------------
 			
 			$scope.printCharge = function() {
-				if(typeof($scope.carNumber) == 'undefined' || $scope.carNumber == null) {
-					toastr.error('请输入车号');
-					return ;
-				}
 				$('#dmsChargeView').print({
 					title : '大连渤海汽车出租公司内部交款单'
 				});

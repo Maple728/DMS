@@ -60,15 +60,22 @@ angular.module('accidentInfo', [])
 			$scope.updateTypeahead = function(value) {
 				$scope.accidentDetail.driverIdNo = value.idNo;
 				$scope.accidentDetail.driverName = value.name;
+				$scope.accidentDetail.carNumber = value.carNumber;
 				return value;
 			}
-			$scope.displayText = function(value) {
-				return value.name + " (" + value.idNo + ")";
+			
+			$scope.displayText = function(driver) {
+				if (typeof(driver.driverName) =='undefined') {
+					// driver model
+					return driver.carNumber + " - " + driver.name + " (" + driver.idNo + ")";
+				} else {
+					return driver.carNumber + " - " + driver.driverName + " (" + driver.driverIdNo + ")";
+				}
 			}
 			
 			$scope.$watch('accidentDetail.driverIdNo', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
-					$scope.driverDisplay = $scope.accidentDetail.driverName + " (" + $scope.accidentDetail.driverIdNo + ")";
+					$scope.driverDisplay = $scope.displayText($scope.accidentDetail);
 				} else {
 					$scope.driverDisplay = null;
 				}

@@ -37,6 +37,7 @@ public class ComplaintController {
 			tmpDriver = drivers.stream().filter(driver -> driver.getId() == complaint.getDriverId()).collect(Collectors.toList()).get(0);
 			complaint.setDriverIdNo(tmpDriver.getIdNo());
 			complaint.setDriverName(tmpDriver.getName());
+			complaint.setCarNumber(tmpDriver.getCarNumber());
 		}
 		return results;
 	}

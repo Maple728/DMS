@@ -4,6 +4,17 @@ import java.util.Date;
 
 public class ComplaintModel {
 	
+	private String carNumber;
+	
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+
+	
 	private String driverName;
 	
 	private String driverIdNo;

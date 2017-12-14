@@ -89,13 +89,20 @@
      	<property name="useActualColumnNames" value="false" />
     	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
     </table>
-	-->
+
 	<table tableName="charge" domainObjectName="ChargeModel" 
 	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 	    enableSelectByExample="false" selectByExampleQueryId="false" >
      	<property name="useActualColumnNames" value="false" />
     	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
     </table>
-	
+	-->	
+
+	<table tableName="substitute_driver" domainObjectName="SubstituteDriverModel" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+     	<property name="useActualColumnNames" value="false" />
+    	<generatedKey sqlStatement="JDBC" column="id"></generatedKey>
+    </table>	
   </context>
 </generatorConfiguration>

@@ -17,7 +17,8 @@
     <result column="change_car_fee" jdbcType="DOUBLE" property="changeCarFee" />
     <result column="is_transfer_ownership" jdbcType="BIT" property="isTransferOwnership" />
     <result column="insurance_photo_path" jdbcType="VARCHAR" property="insurancePhotoPath" />
-    <result column="insurance_dt" jdbcType="DATE" property="insuranceDt" />
+    <result column="insurance_start_dt" jdbcType="DATE" property="insuranceStartDt" />
+    <result column="insurance_end_dt" jdbcType="DATE" property="insuranceEndDt" />
     <result column="insurance_premium" jdbcType="DOUBLE" property="insurancePremium" />
     <result column="insurance_insured_company" jdbcType="VARCHAR" property="insuranceInsuredCompany" />
     <result column="contract_photo_path" jdbcType="VARCHAR" property="contractPhotoPath" />
@@ -34,7 +35,7 @@
       This element was generated on Thu Nov 02 16:28:01 CST 2017.
     -->
     id, driver_id, vehicle_operating_id, vehicle_registration, annual_audit, substitute_driver_id, 
-    change_car_dt, change_car_fee, is_transfer_ownership, insurance_photo_path, insurance_dt, 
+    change_car_dt, change_car_fee, is_transfer_ownership, insurance_photo_path, insurance_start_dt, insurance_end_dt,
     insurance_premium, insurance_insured_company, contract_photo_path, contract_start_dt, 
     contract_end_dt, contract_supplementary, create_dt, last_update_dt
   </sql>
@@ -67,14 +68,14 @@
     insert into driver_detail (driver_id, vehicle_operating_id, vehicle_registration, 
       annual_audit, substitute_driver_id, change_car_dt, 
       change_car_fee, is_transfer_ownership, insurance_photo_path, 
-      insurance_dt, insurance_premium, insurance_insured_company, 
+      insurance_start_dt, insurance_end_dt, insurance_premium, insurance_insured_company, 
       contract_photo_path, contract_start_dt, contract_end_dt, 
       contract_supplementary, create_dt, last_update_dt
       )
     values (#{driverId,jdbcType=BIGINT}, #{vehicleOperatingId,jdbcType=VARCHAR}, #{vehicleRegistration,jdbcType=VARCHAR}, 
       #{annualAudit,jdbcType=DATE}, #{substituteDriverId,jdbcType=BIGINT}, #{changeCarDt,jdbcType=DATE}, 
       #{changeCarFee,jdbcType=DOUBLE}, #{isTransferOwnership,jdbcType=BIT}, #{insurancePhotoPath,jdbcType=VARCHAR}, 
-      #{insuranceDt,jdbcType=DATE}, #{insurancePremium,jdbcType=DOUBLE}, #{insuranceInsuredCompany,jdbcType=VARCHAR}, 
+      #{insuranceStartDt,jdbcType=DATE}, #{insuranceEndDt,jdbcType=DATE},#{insurancePremium,jdbcType=DOUBLE}, #{insuranceInsuredCompany,jdbcType=VARCHAR}, 
       #{contractPhotoPath,jdbcType=VARCHAR}, #{contractStartDt,jdbcType=DATE}, #{contractEndDt,jdbcType=DATE}, 
       #{contractSupplementary,jdbcType=VARCHAR}, #{createDt,jdbcType=DATE}, #{lastUpdateDt,jdbcType=DATE}
       )
@@ -114,9 +115,12 @@
       <if test="insurancePhotoPath != null">
         insurance_photo_path,
       </if>
-      <if test="insuranceDt != null">
-        insurance_dt,
+      <if test="insuranceStartDt != null">
+        insurance_start_dt,
       </if>
+      <if test="insuranceEndDt != null">
+        insurance_end_dt,
+      </if>      
       <if test="insurancePremium != null">
         insurance_premium,
       </if>
@@ -170,9 +174,12 @@
       <if test="insurancePhotoPath != null">
         #{insurancePhotoPath,jdbcType=VARCHAR},
       </if>
-      <if test="insuranceDt != null">
-        #{insuranceDt,jdbcType=DATE},
+      <if test="insuranceStartDt != null">
+        #{insuranceStartDt,jdbcType=DATE},
       </if>
+      <if test="insuranceEndDt != null">
+        #{insuranceEndDt,jdbcType=DATE},
+      </if>      
       <if test="insurancePremium != null">
         #{insurancePremium,jdbcType=DOUBLE},
       </if>
@@ -235,9 +242,12 @@
       <if test="insurancePhotoPath != null">
         insurance_photo_path = #{insurancePhotoPath,jdbcType=VARCHAR},
       </if>
-      <if test="insuranceDt != null">
+      <if test="insuranceStartDt != null">
         insurance_dt = #{insuranceDt,jdbcType=DATE},
       </if>
+      <if test="insuranceEndDt != null">
+        insurance_dt = #{insuranceDt,jdbcType=DATE},
+      </if>      
       <if test="insurancePremium != null">
         insurance_premium = #{insurancePremium,jdbcType=DOUBLE},
       </if>
@@ -276,7 +286,8 @@
       change_car_fee = #{changeCarFee,jdbcType=DOUBLE},
       is_transfer_ownership = #{isTransferOwnership,jdbcType=BIT},
       insurance_photo_path = #{insurancePhotoPath,jdbcType=VARCHAR},
-      insurance_dt = #{insuranceDt,jdbcType=DATE},
+      insurance_start_dt = #{insuranceStartDt,jdbcType=DATE},
+      insurance_end_dt = #{insuranceEndDt,jdbcType=DATE},
       insurance_premium = #{insurancePremium,jdbcType=DOUBLE},
       insurance_insured_company = #{insuranceInsuredCompany,jdbcType=VARCHAR},
       contract_photo_path = #{contractPhotoPath,jdbcType=VARCHAR},

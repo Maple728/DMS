@@ -57,6 +57,7 @@ CREATE TABLE "driver"
 	  address text,
 	  phonenumber text,
 	  
+	  car_number text NOT NULL UNIQUE,
 	  driving_license_path text,
 	  vehicle_travel_license_path text,
 	  
@@ -69,6 +70,26 @@ CREATE TABLE "driver"
 	  
 	  CONSTRAINT driver_pkey PRIMARY KEY (id),
 	  CONSTRAINT driver_id_no_key UNIQUE (id_no)
+)
+;
+
+CREATE TABLE "substitute_driver"
+(
+	id bigserial PRIMARY KEY,
+	driver_id bigint NOT NULL UNIQUE,
+	
+	id_no text NOT NULL,
+	name text NOT NULL,
+	address text,
+	phonenumber text,
+	
+	driving_license_path text,
+	vehicle_travel_license_path text,
+
+	certificate_path text,
+	certificate_dt date,
+	
+	CONSTRAINT substitute_driver_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 )
 ;
 
@@ -90,7 +111,8 @@ CREATE TABLE "driver_detail"
 	
 	-- Insurance
 	insurance_photo_path text,
-	insurance_dt DATE,
+	insurance_start_dt DATE,
+	insurance_end_dt DATE,
 	insurance_premium double precision,
 	insurance_insured_company text,
 
@@ -105,7 +127,7 @@ CREATE TABLE "driver_detail"
 
 	
 	CONSTRAINT driver_detail_pkey PRIMARY KEY(id),
-	CONSTRAINT driver_detail_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)
+	CONSTRAINT driver_detail_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 )
 ;
 
@@ -124,7 +146,7 @@ CREATE TABLE "complaint"
 	is_active boolean DEFAULT true,
 
 	CONSTRAINT complaint_pkey PRIMARY KEY(id),
-	CONSTRAINT complaint_driver_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)
+	CONSTRAINT complaint_driver_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 )
 ;
 
@@ -142,7 +164,7 @@ CREATE TABLE "accident"
 	is_active boolean DEFAULT true,
 	
 	CONSTRAINT accident_pkey PRIMARY KEY(id),
-	CONSTRAINT accident_driver_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)
+	CONSTRAINT accident_driver_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 )
 ;
 
@@ -159,7 +181,7 @@ CREATE TABLE "civil_dispute"
 	is_active boolean DEFAULT true,
 	
 	CONSTRAINT civil_dispute_pkey PRIMARY KEY(id),
-	CONSTRAINT civil_dispute_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)	
+	CONSTRAINT civil_dispute_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 )
 ;
 
@@ -171,13 +193,14 @@ CREATE TABLE "charge"
 	occur_dt DATE NOT NULL,
 	charge_type text NOT NULL,
 	amount double precision NOT NULL,
+	invoce_number text,
 	
 	create_dt DATE NOT NULL,
 	last_update_dt DATE NOT NULL,
 	is_active boolean DEFAULT true,
 	
 	CONSTRAINT charge_pkey PRIMARY KEY(id),
-	CONSTRAINT charge_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id)	
+	CONSTRAINT charge_fk FOREIGN KEY(driver_id) REFERENCES "driver"(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 )
 ;
 

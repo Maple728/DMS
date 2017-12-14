@@ -33,10 +33,11 @@ public class AccidentController {
 		// get correspond to driver
 		List<DriverModel> drivers = driverService.getAllBase();
 		DriverModel tmpDriver = null;
-		for(AccidentModel complaint : results) {
-			tmpDriver = drivers.stream().filter(driver -> driver.getId() == complaint.getDriverId()).collect(Collectors.toList()).get(0);
-			complaint.setDriverIdNo(tmpDriver.getIdNo());
-			complaint.setDriverName(tmpDriver.getName());
+		for(AccidentModel accident : results) {
+			tmpDriver = drivers.stream().filter(driver -> driver.getId() == accident.getDriverId()).collect(Collectors.toList()).get(0);
+			accident.setDriverIdNo(tmpDriver.getIdNo());
+			accident.setDriverName(tmpDriver.getName());
+			accident.setCarNumber(tmpDriver.getCarNumber());
 		}
 		return results;
 	}

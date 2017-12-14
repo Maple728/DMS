@@ -33,10 +33,11 @@ public class ChargeController {
 		// get correspond to driver
 		List<DriverModel> drivers = driverService.getAllBase();
 		DriverModel tmpDriver = null;
-		for(ChargeModel complaint : results) {
-			tmpDriver = drivers.stream().filter(driver -> driver.getId() == complaint.getDriverId()).collect(Collectors.toList()).get(0);
-			complaint.setDriverIdNo(tmpDriver.getIdNo());
-			complaint.setDriverName(tmpDriver.getName());
+		for(ChargeModel charge : results) {
+			tmpDriver = drivers.stream().filter(driver -> driver.getId() == charge.getDriverId()).collect(Collectors.toList()).get(0);
+			charge.setDriverIdNo(tmpDriver.getIdNo());
+			charge.setDriverName(tmpDriver.getName());
+			charge.setCarNumber(tmpDriver.getCarNumber());
 		}
 		return results;
 	}

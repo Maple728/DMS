@@ -4,14 +4,18 @@
         <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddUserWithDetail()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
     	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteUser()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
     </div>
-    <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" demo-tracked-table="$ctrl.tableTracker">
+    <table ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" >
         <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
         	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
-            <td data-title="'身份证号'" filter="{idNo : 'number'}" sortable="'idNo'">
-                <span class="editable-text">{{row.idNo}}</span>
-            </td>
+           
+            <td data-title="'车    号'" filter="{carNumber : 'text'}" sortable="'carNumber'">
+                <span class="editable-text"><a ng-click="$ctrl.openUserDetail(row)" style="cursor: pointer;">{{row.carNumber}}</a></span>
+            </td>        
             <td data-title="'姓名'" filter="{name : 'text'}" sortable="'name'">
-        	    <span class="editable-text"><a ng-click="$ctrl.openUserDetail(row)" style="cursor: pointer;">{{row.name}}</a></span>
+        	    <span class="editable-text">{{row.name}}</span>
+            </td>
+            <td data-title="'身份证号'" filter="{idNo : 'text'}" sortable="'idNo'">
+                <span class="editable-text">{{row.idNo}}</span>
             </td>
             <td data-title="'联系方式'" filter="{phonenumber : 'number'}" sortable="'phonenumber'">
 				<span class="editable-text">{{row.phonenumber}}</span>

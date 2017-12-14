@@ -4,6 +4,17 @@ import java.util.Date;
 
 public class ChargeModel {
 	
+	private String carNumber;
+	
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+
+	
 	private String driverIdNo;
 	
 	private String driverName;
@@ -23,6 +34,18 @@ public class ChargeModel {
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
+	
+	private String invoceNumber;
+	
+
+	public String getInvoceNumber() {
+		return invoceNumber;
+	}
+
+	public void setInvoceNumber(String invoceNumber) {
+		this.invoceNumber = invoceNumber;
+	}
+
 
 	/**
      *

@@ -4,6 +4,16 @@ import java.util.Date;
 
 public class AccidentModel {
 	
+	private String carNumber;
+	
+	public String getCarNumber() {
+		return carNumber;
+	}
+
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+
 	private String driverIdNo;
 	
 	private String driverName;
