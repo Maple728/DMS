@@ -51,7 +51,7 @@
       certificate_path, certificate_dt, create_dt, 
       last_update_dt, is_active)
     values (#{idNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{phonenumber,jdbcType=VARCHAR}, #{car_number,jdbcType=VARCHAR}
+      #{phonenumber,jdbcType=VARCHAR}, #{carNumber,jdbcType=VARCHAR}
       #{drivingLicensePath,jdbcType=VARCHAR}, #{vehicleTravelLicensePath,jdbcType=VARCHAR}, 
       #{certificatePath,jdbcType=VARCHAR}, #{certificateDt,jdbcType=DATE}, #{createDt,jdbcType=DATE}, 
       #{lastUpdateDt,jdbcType=DATE}, true)
@@ -73,7 +73,7 @@
         phonenumber,
       </if>
       <if test="car_number != null">
-        phonenumber,
+        car_number,
       </if>
       <if test="drivingLicensePath != null">
         driving_license_path,
@@ -110,8 +110,8 @@
       <if test="phonenumber != null">
         #{phonenumber,jdbcType=VARCHAR},
       </if>
-      <if test="car_number != null">
-        #{phonenumber,jdbcType=VARCHAR},
+      <if test="carNumber != null">
+        #{carNumber,jdbcType=VARCHAR},
       </if>
       <if test="drivingLicensePath != null">
         #{drivingLicensePath,jdbcType=VARCHAR},
@@ -170,8 +170,8 @@
       <if test="phonenumber != null">
         phonenumber = #{phonenumber,jdbcType=VARCHAR},
       </if>
-      <if test="car_number != null">
-        car_number = #{car_number,jdbcType=VARCHAR},
+      <if test="carNumber != null">
+        car_number = #{carNumber,jdbcType=VARCHAR},
       </if>      
       <if test="drivingLicensePath != null">
         driving_license_path = #{drivingLicensePath,jdbcType=VARCHAR},
@@ -200,7 +200,7 @@
       name = #{name,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       phonenumber = #{phonenumber,jdbcType=VARCHAR},
-      car_number = #{car_number,jdbcType=VARCHAR},
+      car_number = #{carNumber,jdbcType=VARCHAR},
       driving_license_path = #{drivingLicensePath,jdbcType=VARCHAR},
       vehicle_travel_license_path = #{vehicleTravelLicensePath,jdbcType=VARCHAR},
       certificate_path = #{certificatePath,jdbcType=VARCHAR},

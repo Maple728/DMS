@@ -92,11 +92,12 @@ public class DriverServiceImpl implements DriverService {
 		if(record.getSubstituteDriverModel() != null) {
 			SubstituteDriverModel subDriver = substituteDriverModelMapper.selectByDriverId(record.getId());
 			if(subDriver == null) {
+				// set driver id for sub driver
+				record.getSubstituteDriverModel().setDriverId(record.getId());
 				// insert
 				substituteDriverModelMapper.insertSelective(record.getSubstituteDriverModel());
 			} else {
 				// update
-				record.getSubstituteDriverModel().setId(subDriver.getId());
 				substituteDriverModelMapper.updateByPrimaryKeySelective(record.getSubstituteDriverModel());
 			}
 		}

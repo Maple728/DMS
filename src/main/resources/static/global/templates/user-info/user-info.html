@@ -163,7 +163,77 @@
 	    	<div class="col-sm-7">
 	    		<input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="userWithDetail.userDetail.isTransferOwnership"/>
 	    	</div>
-	    </div>	    
+	    </div>
+	    
+    	<div class="panel panel-default">
+    		<div class="panel-heading">
+    			<h4 class="panel-title" style="text-align:center">
+    				<a role="button" data-toggle="collapse" data-parent="subDriver" href="#subDriverInfo" aria-expanded="false">替班司机信息</a>
+    			</h4>
+    		</div>
+    		<div class="panel-body">
+			    <div id="subDriverInfo" class="panel-collapse collapse" aria-expanded="false">
+			    
+				    <div ng-class="['form-group']">
+					    <label class="col-sm-5 control-label">替班司机姓名：</label>
+				    	<div class="col-sm-7">
+					        <input name="subDriverName" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.substituteDriverModel.name"/>
+				    	</div>
+				    </div>
+			
+				    <div ng-class="['form-group', userDetailForm.subDriverIdNo.$invalid ? 'has-error' : '']" ng-if="isBaseEditable">
+					    <label class="col-sm-5 control-label">替班司机身份证号：</label>
+				    	<div class="col-sm-7">
+					        <input name="subDriverIdNo" type="text" class="form-control" ng-model="userWithDetail.substituteDriverModel.idNo" pattern="^\d{17}[\dXx]$"/>
+				    	</div>
+				    </div>
+		
+				    <div ng-class="['form-group', userDetailForm.subDriverPhoneNumber.$invalid ? 'has-error' : '']">
+					    <label class="col-sm-5 control-label">替班司机联系方式：</label>
+				        <div class="col-sm-7">
+					        <input name="subDriverPhoneNumber" type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.substituteDriverModel.phonenumber" pattern="^\d{11}$" title="请输入11位手机号"/>
+				    	</div>
+				    </div>
+				    	
+				    <div ng-class="['form-group']">
+					    <label class="col-sm-5 control-label">替班司机居住地：</label>
+				        <div class="col-sm-7">
+					        <input type="text" class="form-control" ng-disabled="!isBaseEditable" ng-model="userWithDetail.substituteDriverModel.address"/>
+				    	</div>
+				    </div>
+				    <div ng-class="['form-group']">
+				        <label class="col-sm-5 control-label">替班司机驾驶证：</label>
+				        <div class="col-sm-7">
+					        <img name="subDrivingLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.substituteDriverModel.drivingLicensePath}}" ng-click="uploadPicture('subDrivingLicensePath')" alt="上传驾驶证照片" src=""/>
+					        <input name="subDrivingLicensePathInput" id="subDrivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="visibility: hidden;"/>	        
+				    	</div>
+				    </div>
+				    
+				    <div ng-class="['form-group']">
+					    <label class="col-sm-5 control-label" >替班司机从业资格证：</label>
+				    	<div class="col-sm-7">
+					        <img name="subCertificatePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.substituteDriverModel.certificatePath}}" ng-click="uploadPicture('subCertificatePathInput')" alt="上传从业资格证照片"/>
+					        <input id="subCertificatePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+				    	</div>
+				    </div>	
+			
+				    <div ng-class="['form-group']">
+					    <label class="col-sm-5 control-label" >替班司机从业资格证取得时间：</label>
+				    	<div class="col-sm-7">
+					        <input type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.substituteDriverModel.certificateDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
+				    	</div>	    
+				    </div>	
+				    	    
+				    <div ng-class="['form-group']">
+					    <label class="col-sm-5 control-label" >替班司机行驶证：</label>
+				    	<div class="col-sm-7">
+					        <img name="subVehicleTravelLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.substituteDriverModel.vehicleTravelLicensePath}}" ng-click="uploadPicture('subVehicleTravelLicensePathInput')" alt="上传行驶证照片"/>
+					        <input id="subVehicleTravelLicensePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+				    	</div>
+				    </div>	 
+			    </div>   		    	    	
+		    </div>
+    	</div>
 	    
 	    <div class="form-group" ng-show="isDetailEditable">
 	        <label class="col-sm-5 control-label">创 建 日 期：</label>

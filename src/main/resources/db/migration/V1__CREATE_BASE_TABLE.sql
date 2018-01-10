@@ -78,8 +78,8 @@ CREATE TABLE "substitute_driver"
 	id bigserial PRIMARY KEY,
 	driver_id bigint NOT NULL UNIQUE,
 	
-	id_no text NOT NULL,
-	name text NOT NULL,
+	id_no text,
+	name text,
 	address text,
 	phonenumber text,
 	
