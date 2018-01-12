@@ -27,41 +27,50 @@ public class XLSFileProcessUtil {
 	
 	public static final int COLUMN_NUMBER_OF_DRIVER_INFO_IN_RECORD = 18;
 	
-	public List<DriverModel> extractDriverRecord(String fileName) throws Exception {
+	public List<DriverModel> extractDriverRecord(File file) throws Exception {
 		List<DriverModel> result = new ArrayList<>();
 		
 		// use a file to open workbook
-		Workbook wb = WorkbookFactory.create(new File(fileName));
-		Sheet sheet1 = wb.getSheetAt(0);
-		
+		Workbook wb = null;
 		int failCount = 0;
 		int successCount = 0;
-		int numRows = sheet1.getPhysicalNumberOfRows();
 		int i = 7;
 		int nextiI = i + 1;
-		while(i < numRows) {
-			try{
-				nextiI = i + 1;
-				Row driverRow = sheet1.getRow(i);
-				Row subDriverRow = null;
-				
-				// check if it is a driver
-				if(driverRow != null && getCellValue(driverRow.getCell(2)) != null) {
-					while(nextiI < numRows && sheet1.getRow(nextiI) != null && getCellValue(sheet1.getRow(nextiI).getCell(2)) == null) {
-						subDriverRow = sheet1.getRow(nextiI);
-						++nextiI;
+		try {
+			wb = WorkbookFactory.create(file);
+			Sheet sheet1 = wb.getSheetAt(0);
+			int numRows = sheet1.getPhysicalNumberOfRows();
+
+			while(i < numRows) {
+				try{
+					nextiI = i + 1;
+					Row driverRow = sheet1.getRow(i);
+					Row subDriverRow = null;
+					
+					// check if it is a driver
+					if(driverRow != null && getCellValue(driverRow.getCell(2)) != null) {
+						while(nextiI < numRows && sheet1.getRow(nextiI) != null && getCellValue(sheet1.getRow(nextiI).getCell(2)) == null) {
+							subDriverRow = sheet1.getRow(nextiI);
+							++nextiI;
+						}
+						result.add(fillDriverModel(driverRow, subDriverRow));
+						++successCount;
 					}
-					result.add(fillDriverModel(driverRow, subDriverRow));
-					++successCount;
+				} catch(Exception e) {
+					++failCount;
+				} finally {
+					i = nextiI;
 				}
-			} catch(Exception e) {
-				++failCount;
-			} finally {
-				i = nextiI;
 			}
+		} catch(Exception e) {
+			throw e;
+		} finally {
+			if(wb != null) {
+				wb.close();
+			}			
+			logger.info("Extracts driver records! Success: " + successCount + " , fail: " + failCount);
 		}
 		
-		logger.info("Extracts driver records! Success: " + successCount + " , fail: " + failCount);
 		return result;
 	}
 	
@@ -133,7 +142,7 @@ public class XLSFileProcessUtil {
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				result = formatter.format(cell.getDateCellValue()).trim();
 			} else {
-				result = "" + (int)cell.getNumericCellValue();
+				result = "" + (long)cell.getNumericCellValue();
 			}
 			break;
 		case STRING:

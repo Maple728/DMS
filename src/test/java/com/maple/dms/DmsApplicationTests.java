@@ -1,5 +1,7 @@
 package com.maple.dms;
 
+import java.io.File;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class DmsApplicationTests {
 	
 	@Test
 	public void contextLoads() throws Exception {
-		xlsUtil.extractDriverRecord("bo.xlsx");
+		xlsUtil.extractDriverRecord(new File("bo.xlsx"));
 	}
 
 }

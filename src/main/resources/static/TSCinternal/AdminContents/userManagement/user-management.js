@@ -125,6 +125,37 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 		ctrl.isSelected = function(row) {
 			return _.indexOf(ctrl.selectedUserIdList, row.id) >= 0;
 		}
+		
+		/**
+		 * Import driver records in xls/xlsx file
+		 */
+		ctrl.importDrivers = function(uploadCtrlId) {
+			var importDriverInputEle = document.querySelector(uploadCtrlId);
+			
+			if(importDriverInputEle.onchange == null) {
+				
+				importDriverInputEle.onchange = function() {
+					var file = new FormData();
+					file.append('file', importDriverInputEle.files[0]);
+					$http({
+						method : 'post',
+						url: '/driver/importDrivers',
+						data : file,
+						transformRequese : angular.identity,
+						headers : {
+							'Content-Type' : undefined
+						}
+					}).success(function(count){
+						toastr.success('导入 ' + count + ' 条记录！');
+					}).error(function() {
+						toastr.error('导入记录失败！');
+					});
+				}
+				
+			} 
+			importDriverInputEle.click();
+
+		}
 // ------------------ ng-table functions ----------------------
 		ctrl.delRowsByIdList = function (idList) {
             // remove these users in ng-table
@@ -177,6 +208,10 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
             $('#userDetailModal').modal('show');
 		};
 		
+		ctrl.fitDate = function(numDate) {
+			return numDate == null ? null : new Date(numDate);
+		}
+		
 		ctrl.openUserDetail = function(row) {
 			// Get user detail 
 			$http.get('/driver/getDriverWithDetailById', {
@@ -188,15 +223,19 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('userManagement', {
 				setDefaultPicture(response);
 				
 				// handle date type
-				response.certificateDt == null ? null : response.certificateDt = new Date(response.certificateDt);
-
-				response.driverDetailModel.annualAudit == null ? null : response.driverDetailModel.annualAudit = new Date(response.driverDetailModel.annualAudit);
-				response.driverDetailModel.changeCarDt == null ? null : response.driverDetailModel.changeCarDt = new Date(response.driverDetailModel.changeCarDt);
-				response.driverDetailModel.insuranceDt == null ? null : response.driverDetailModel.insuranceDt = new Date(response.driverDetailModel.insuranceDt);
-				response.driverDetailModel.contractStartDt == null ? null : response.driverDetailModel.contractStartDt = new Date(response.driverDetailModel.contractStartDt);
-				response.driverDetailModel.contractEndDt == null ? null : response.driverDetailModel.contractEndDt = new Date(response.driverDetailModel.contractEndDt);
-				response.driverDetailModel.changeCarDt == null ? null : response.driverDetailModel.changeCarDt = new Date(response.driverDetailModel.changeCarDt);
-
+				response.driverDetailModel.certificateDt = ctrl.fitDate(response.driverDetailModel.certificateDt);
+				response.driverDetailModel.annualAudit = ctrl.fitDate(response.driverDetailModel.annualAudit);
+				response.driverDetailModel.changeCarDt = ctrl.fitDate(response.driverDetailModel.changeCarDt);
+				
+				response.driverDetailModel.insuranceStartDt = ctrl.fitDate(response.driverDetailModel.insuranceStartDt);
+				response.driverDetailModel.insuranceEndDt = ctrl.fitDate(response.driverDetailModel.insuranceEndDt);
+				
+				response.driverDetailModel.contractStartDt = ctrl.fitDate(response.driverDetailModel.contractStartDt);
+				response.driverDetailModel.contractEndDt = ctrl.fitDate(response.driverDetailModel.contractEndDt);
+				
+				if(response.substituteDriverModel != null && response.substituteDriverModel.certificateDt != null) {
+					response.substituteDriverModel.certificateDt = ctrl.fitDate(response.substituteDriverModel.certificateDt);
+				}
 				
 				ctrl.clickedUser = response;
 	    		

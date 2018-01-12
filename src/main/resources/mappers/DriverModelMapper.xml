@@ -72,7 +72,7 @@
       <if test="phonenumber != null">
         phonenumber,
       </if>
-      <if test="car_number != null">
+      <if test="carNumber != null">
         car_number,
       </if>
       <if test="drivingLicensePath != null">

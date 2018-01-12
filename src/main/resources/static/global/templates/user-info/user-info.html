@@ -40,7 +40,7 @@
 	        <label class="col-sm-5 control-label">驾驶证：</label>
 	        <div class="col-sm-7">
 		        <img name="drivingLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.drivingLicensePath}}" ng-click="uploadPicture('drivingLicensePathInput')" alt="上传驾驶证照片" src=""/>
-		        <input name="drivingLicensePathInput" id="drivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="visibility: hidden;" required/>	        
+		        <input name="drivingLicensePathInput" id="drivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="display:none"/>	        
 	    	</div>
 	    </div>
 	    
@@ -48,7 +48,7 @@
 		    <label class="col-sm-5 control-label" >从业资格证：</label>
 	    	<div class="col-sm-7">
 		        <img name="certificatePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.certificatePath}}" ng-click="uploadPicture('certificatePathInput')" alt="上传从业资格证照片"/>
-		        <input id="certificatePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+		        <input id="certificatePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>	        
 	    	</div>
 	    </div>	
 
@@ -63,7 +63,7 @@
 		    <label class="col-sm-5 control-label" >行驶证：</label>
 	    	<div class="col-sm-7">
 		        <img name="vehicleTravelLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.vehicleTravelLicensePath}}" ng-click="uploadPicture('vehicleTravelLicensePathInput')" alt="上传行驶证照片"/>
-		        <input id="vehicleTravelLicensePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+		        <input id="vehicleTravelLicensePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>	        
 	    	</div>
 	    </div>
 	    
@@ -106,7 +106,7 @@
 	        <label class="col-sm-5 control-label">保险照片：</label>
 	    	<div class="col-sm-7">
 		        <img name="insurancePhotoPath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.driverDetailModel.insurancePhotoPath}}" ng-click="uploadPicture('insurancePhotoPath')" alt="上传保险照片"/>
-		        <input id="insurancePhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>		    	</div>
+		        <input id="insurancePhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>		    	</div>
 	    </div>
 	    
 	    <div ng-class="['form-group', userDetailForm.insuranceDt.$invalid ? 'has-error' : '']">
@@ -134,7 +134,7 @@
 	        <label class="col-sm-5 control-label">合同照片：</label>
 	    	<div class="col-sm-7">
 		        <img name="contractPhotoPath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.driverDetailModel.contractPhotoPath}}" ng-click="uploadPicture('contractPhotoPath')" alt="上传合同照片"/>
-		        <input id="contractPhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>		    	</div>
+		        <input id="contractPhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>		    	</div>
 	    </div>
 	    
 	    <div ng-class="['form-group', userDetailForm.driverDetailModel.annualAudit.$invalid ? 'has-error' : '']">
@@ -205,7 +205,7 @@
 				        <label class="col-sm-5 control-label">替班司机驾驶证：</label>
 				        <div class="col-sm-7">
 					        <img name="subDrivingLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.substituteDriverModel.drivingLicensePath}}" ng-click="uploadPicture('subDrivingLicensePath')" alt="上传驾驶证照片" src=""/>
-					        <input name="subDrivingLicensePathInput" id="subDrivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="visibility: hidden;"/>	        
+					        <input name="subDrivingLicensePathInput" id="subDrivingLicensePathInput" tabindex="-1" type="file" accept="image/*" style="display:none"/>	        
 				    	</div>
 				    </div>
 				    
@@ -213,7 +213,7 @@
 					    <label class="col-sm-5 control-label" >替班司机从业资格证：</label>
 				    	<div class="col-sm-7">
 					        <img name="subCertificatePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.substituteDriverModel.certificatePath}}" ng-click="uploadPicture('subCertificatePathInput')" alt="上传从业资格证照片"/>
-					        <input id="subCertificatePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+					        <input id="subCertificatePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>	        
 				    	</div>
 				    </div>	
 			
@@ -228,7 +228,7 @@
 					    <label class="col-sm-5 control-label" >替班司机行驶证：</label>
 				    	<div class="col-sm-7">
 					        <img name="subVehicleTravelLicensePath" ng-class="[isDetailEditable ?'edit-img' : '']" width="300px" height="150px" ng-src="{{userWithDetail.substituteDriverModel.vehicleTravelLicensePath}}" ng-click="uploadPicture('subVehicleTravelLicensePathInput')" alt="上传行驶证照片"/>
-					        <input id="subVehicleTravelLicensePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="visibility: hidden;"/>	        
+					        <input id="subVehicleTravelLicensePathInput" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>	        
 				    	</div>
 				    </div>	 
 			    </div>   		    	    	
