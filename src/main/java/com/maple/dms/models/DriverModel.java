@@ -422,7 +422,7 @@ public class DriverModel {
     
 	
 	private SubstituteDriverModel substituteDriverModel;
-	
+ 	
     public SubstituteDriverModel getSubstituteDriverModel() {
 		return substituteDriverModel;
 	}
