@@ -52,7 +52,7 @@ CREATE TABLE "car_type"
 CREATE TABLE "driver"
 (
 	  id bigserial,
-	  id_no text NOT NULL,
+	  id_no text,
 	  name text NOT NULL,
 	  address text,
 	  phonenumber text,
@@ -69,7 +69,7 @@ CREATE TABLE "driver"
 	  is_active boolean DEFAULT true,
 	  
 	  CONSTRAINT driver_pkey PRIMARY KEY (id),
-	  CONSTRAINT driver_id_no_key UNIQUE (id_no)
+	  CONSTRAINT driver_id_no_key UNIQUE (id_no, name)
 )
 ;
 

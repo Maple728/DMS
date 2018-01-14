@@ -2,8 +2,8 @@
     <h1 class="page-header">司 机 管 理</h1>
     <div class="sub-header">
         <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddUserWithDetail()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
-    	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteUser()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
-    	<button type="button" class="btn btn-primary " ng-click="$ctrl.importDrivers('#importDriverInput')"> 导入</button>
+    	<button type="button" class="btn btn-danger " style="margin-right:15px" ng-click="$ctrl.deleteUser()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
+    	<button type="button" class="btn btn-primary" ng-click="$ctrl.importDrivers('#importDriverInput')"> <span class="glyphicon glyphicon-upload"> 导入</span></button>
     	<input id="importDriverInput" tabindex="-1" type="file" name="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display:none;"/>
     </div>
     <table style="text-align: center;" ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" >
