@@ -45,24 +45,24 @@
     <div class="form-group">
          <label class="col-md-5 control-label">上次更新日期：</label>
     	<div class="col-md-7 form-control-static">
-         <label class="label label-info" ng-bind="chargeDetail.lastUpdateDt | date : DATE_FORMAT"></label>
+        	<label class="label label-info" ng-bind="chargeDetail.lastUpdateDt | date : DATE_FORMAT"></label>
     	</div>
     </div>
 
     <div class="form-group">
-        <label class="col-md-5 control-label">车 号：</label>
-    	<div class="col-md-5">
-    		<input name="carNumber" type="text" class="form-control" ng-model="carNumber"/>
-   		</div>
-   		<div class="col-md-2">
-        	<button type="button" class="btn btn-default" style="width:80px" ng-click="printCharge()">打印</button>
-   		</div>
-
-    </div>    
+	    <div class="col-md-4 col-md-offset-4">
+	       	<button type="button" class="btn btn-default" style="width:100%" ng-click="printCharge()">打 印</button>
+	    </div>
+    </div>  
+      
     <div id="dmsChargeView">
     	<table border="1" style="height:150px;width:100%">
+    		<caption style="text-align:left">
+    			No.{{ chargeDetail.invoceNumber }}
+    			<hr style="margin:0 1px"/>
+    		</caption>
     		<caption>大连渤海汽车出租公司内部交款单</caption>
-    		<caption>{{ nowDay | date : 'yyyy年MM月dd日'}}</caption>
+    		<caption>{{ chargeDetail.occurDt | date : 'yyyy年MM月dd日'}}</caption>
     		<tr>
 	    		<th>车 号</th>
 	    		<th>姓 名</th>
@@ -70,7 +70,7 @@
 	    		<th>交款金额</th>
     		</tr>
     		<tr>
-	    		<td>{{ carNumber }}</td>
+	    		<td>{{ chargeDetail.carNumber }}</td>
 	    		<td>{{ chargeDetail.driverName}}</td>
 	    		<td>{{ chargeDetail.chargeType }}</td>
 	    		<td>{{ chargeDetail.amount }}</td>    			
