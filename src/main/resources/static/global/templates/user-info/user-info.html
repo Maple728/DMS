@@ -109,7 +109,7 @@
 		        <input id="insurancePhotoPath" tabindex="-1" type="file" name="file" accept="image/*" style="display:none"/>		    	</div>
 	    </div>
 	    
-	    <div ng-class="['form-group', userDetailForm.insuranceDt.$invalid ? 'has-error' : '']">
+	    <div ng-class="['form-group', userDetailForm.contractStartDt.$invalid ? 'has-error' : '']">
 		    <label class="col-sm-5 control-label" >合同起始时间：</label>
 	    	<div class="col-sm-7">
 		        <input name="contractStartDt" type="date" class="form-control" ng-disabled="!isDetailEditable" ng-model="userWithDetail.driverDetailModel.contractStartDt" max="{{nowDate | date : 'yyyy-MM-dd'}}"/>
