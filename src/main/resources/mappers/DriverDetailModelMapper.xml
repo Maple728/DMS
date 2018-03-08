@@ -243,10 +243,10 @@
         insurance_photo_path = #{insurancePhotoPath,jdbcType=VARCHAR},
       </if>
       <if test="insuranceStartDt != null">
-        insurance_dt = #{insuranceDt,jdbcType=DATE},
+        insurance_start_dt = #{insuranceStartDt,jdbcType=DATE},
       </if>
       <if test="insuranceEndDt != null">
-        insurance_dt = #{insuranceDt,jdbcType=DATE},
+        insurance_end_dt = #{insuranceEndDt,jdbcType=DATE},
       </if>      
       <if test="insurancePremium != null">
         insurance_premium = #{insurancePremium,jdbcType=DOUBLE},
