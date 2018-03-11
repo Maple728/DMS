@@ -46,7 +46,6 @@ dashboardApp.config(function($stateProvider){
 	}
 	
 	$scope.modifyPwd = function(user) {
-		console.log(user);
 		if(user.newPwd != user.reNewPwd) {
 			alert("错误：两次输入的新密码不一致，请重新输入！");
 			return;
