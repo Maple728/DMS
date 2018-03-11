@@ -14,7 +14,7 @@
 	    },
 	    COOKIE_PARAM : {
 	    	TOKEN : 'XSRF-TOKEN',
-	    	USER_ID : 'userId'
+	    	USERNAME : 'username'
 	    }
 	};
 	

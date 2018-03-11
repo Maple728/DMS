@@ -1,6 +1,6 @@
 body {
     line-height: 1.7;
-    background: url("../../global/img/login_bg.jpg") no-repeat #E9F0F4;;
+    background: url("/global/img/login_bg.jpg") no-repeat #E9F0F4;;
 
 }
 .login-content {

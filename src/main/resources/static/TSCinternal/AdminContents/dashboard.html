@@ -7,20 +7,20 @@
     <meta name="description" content="司机管理系统"></meta>
     <meta name="author" content="Maple.S"></meta>
 
-    <link rel="icon" href="../../favicon.ico"></link>
+    <link rel="icon" href="/global/img/favicon.ico"></link>
 
     <title>司机管理系统</title>
 
-    <link rel="stylesheet" href="../../global/plugins/bootstrap-3.3.7/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="../../global/plugins/bootstrap-3.3.7/css/bootstrap-theme.min.css"></link>
-    <link rel="stylesheet" href="../../global/plugins/ng-table/ng-table.css" ></link>
-    <link rel="stylesheet" href="../../global/plugins/angular-tostr/angular-toastr.css"></link>
+    <link rel="stylesheet" href="/global/plugins/bootstrap-3.3.7/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="/global/plugins/bootstrap-3.3.7/css/bootstrap-theme.min.css"></link>
+    <link rel="stylesheet" href="/global/plugins/ng-table/ng-table.css" ></link>
+    <link rel="stylesheet" href="/global/plugins/angular-tostr/angular-toastr.css"></link>
 
-    <link rel="stylesheet" href="../../global/css/common.css"></link>
+    <link rel="stylesheet" href="/global/css/common.css"></link>
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet" th:href="@{/TSCinternal/AdminContents/dashboard.css}"></link>
-    <link href="../../global/templates/user-info/user-info.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="/TSCinternal/AdminContents/dashboard.css"></link>
+    <link href="/global/templates/user-info/user-info.css" rel="stylesheet"></link>
 
 </head>
 
@@ -39,7 +39,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         	<ul class="nav navbar-nav navbar-right">
-        		<li><a class="a-like-btn navbar-inverse" href="#" ng-bind="logedUser.name"></a></li>
+        		<li><a class="a-like-btn navbar-inverse" ng-click="openAuthModal()" style="cursor: pointer;" ng-bind="logedUser.username"></a></li>
         		<!-- <li><input id="quick-search" type="text" class="form-control navbar-form" placeholder="Search..."></input></li>  -->
         		<li>
 	        		<form class="form-inline navbar-form" action="/logout" method="post">
@@ -67,36 +67,77 @@
             <ui-view></ui-view>
         </div>
     </div>
+    
+    <!-- Customized Modal -->
+    <div id="authModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg	">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3>修 改 密 码</h3>
+                </div>
+                <div class="modal-body">
+                	<div class="form-content">
+                		<form name="authForm" class="form-horizontal">
+               			    <div ng-class="['form-group', authForm.oldPwd.$invalid ? 'has-error' : '']">
+							    <label class="col-sm-5 control-label">旧密码：</label>
+						    	<div class="col-sm-7">
+							        <input name="oldPwd" type="password" class="form-control" ng-model="logedUser.oldPwd" required/>
+						    	</div>
+					    	</div>
+ 	               			<div ng-class="['form-group', authForm.newPwd.$invalid ? 'has-error' : '']">
+							    <label class="col-sm-5 control-label">新密码：</label>
+						    	<div class="col-sm-7">
+							        <input name="newPwd" type="password" class="form-control" ng-model="logedUser.newPwd" required/>
+						    	</div>
+					    	</div>
+               			    <div ng-class="['form-group', authForm.reNewPwd.$invalid ? 'has-error' : '']">
+							    <label class="col-sm-5 control-label">重复新密码：</label>
+						    	<div class="col-sm-7">
+							        <input name="reNewPwd" type="password" class="form-control" ng-model="logedUser.reNewPwd" required/>
+						    	</div>
+					    	</div>					    	
+                		</form>
+                	</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="width:80px;margin-right:10px" data-dismiss="modal" >取 消</button>
+                    <button type="button" class="btn btn-primary" style="width:80px" ng-disabled="!authForm.$valid" ng-click="modifyPwd(logedUser)">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="../../global/plugins/lodash-min.js" th:src="@{/global/plugins/lodash-min.js}"></script>
-<script src="../../global/plugins/jquery-3.2.0.min.js" th:src="@{/global/plugins/jquery-3.2.0.min.js}"></script>
-<script src="../../global/plugins/angular-1.5.8/angular.js" th:src="@{/global/plugins/angular-1.5.8/angular.js}"></script>
-<script src="../../global/plugins/bootstrap-3.3.7/js/bootstrap.min.js" th:src="@{/global/plugins/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
-<script src="../../global/plugins/bootstrap3-typeahead.js"></script>
-<script src="../../global/plugins/angular-bootstrap3-typeahead.js"></script>
-<script src="../../global/plugins/jQuery.print.js"></script>
 
-<script src="../../global/plugins/ui-router/angular-ui-router.js"></script>
-<script src="../../global/plugins/ng-table/ng-table.js"></script>
-<script src="../../global/plugins/angular-tostr/angular-toastr.tpls.js" th:src="@{/global/plugins/angular-tostr/angular-toastr.tpls.js}"></script>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/global/plugins/lodash-min.js" ></script>
+<script src="/global/plugins/jquery-3.2.0.min.js" ></script>
+<script src="/global/plugins/angular-1.5.8/angular.js"></script>
+<script src="/global/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="/global/plugins/bootstrap3-typeahead.js"></script>
+<script src="/global/plugins/angular-bootstrap3-typeahead.js"></script>
+<script src="/global/plugins/jQuery.print.js"></script>
+
+<script src="/global/plugins/ui-router/angular-ui-router.js"></script>
+<script src="/global/plugins/ng-table/ng-table.js"></script>
+<script src="/global/plugins/angular-tostr/angular-toastr.tpls.js"></script>
 
 <!-- Customized scripts -->
-<script type="text/javascript" src="../../global/scripts/constants.js" th:src="@{/global/scripts/constants.js}"></script>
-<script type="text/javascript" src="../../global/scripts/server-service.js" th:src="@{/global/scripts/server-service.js}"></script>
-<script src="dashboard.js" th:src="@{/TSCinternal/AdminContents/dashboard.js}"></script>
-<script src="ng-table-necessary.js" th:src="@{/TSCinternal/AdminContents/ng-table-necessary.js}"></script>
+<script type="text/javascript" src="/global/scripts/constants.js"></script>
+<script type="text/javascript" src="/global/scripts/server-service.js"></script>
+<script src="/TSCinternal/AdminContents/dashboard.js"></script>
+<script src="/TSCinternal/AdminContents/ng-table-necessary.js" ></script>
 
-<script src="userManagement/user-management.js"></script>
-<script src="complaintManagement/complaint-management.js"></script>
-<script src="accidentManagement/accident-management.js"></script>
-<script src="chargeManagement/charge-management.js"></script>
+<script src="/TSCinternal/AdminContents/userManagement/user-management.js"></script>
+<script src="/TSCinternal/AdminContents/complaintManagement/complaint-management.js"></script>
+<script src="/TSCinternal/AdminContents/accidentManagement/accident-management.js"></script>
+<script src="/TSCinternal/AdminContents/chargeManagement/charge-management.js"></script>
 
-<script src="../../global/templates/user-info/user-info.js" ></script>
-<script src="../../global/templates/complaint-info/complaint-info.js"></script>
-<script src="../../global/templates/accident-info/accident-info.js"></script>
-<script src="../../global/templates/charge-info/charge-info.js"></script>
+<script src="/global/templates/user-info/user-info.js" ></script>
+<script src="/global/templates/complaint-info/complaint-info.js"></script>
+<script src="/global/templates/accident-info/accident-info.js"></script>
+<script src="/global/templates/charge-info/charge-info.js"></script>
 
 </body>
 </html>

@@ -9,30 +9,13 @@ CREATE TABLE "codetable"
 )
 ;
 
-CREATE TABLE "user"
-(
-	id bigserial,
-	account_id bigint NOT NULL UNIQUE,
-	name text NOT NULL,
-	user_role_id bigint NOT NULL,
-
-	created_dt timestamp without time zone NOT NULL,
-	last_left_dt timestamp without time zone,
-
-	is_active boolean DEFAULT true,
-
-	CONSTRAINT user_pkey PRIMARY KEY (id),
-	CONSTRAINT user_role_fk FOREIGN KEY(user_role_id) REFERENCES "codetable"(id)
-)
-;
-
 CREATE TABLE "authorization"
 (
-  user_id bigint NOT NULL,
-  user_password text NOT NULL,
+  id bigserial,
+  username text NOT NULL UNIQUE,
+  password text NOT NULL,
   
-  CONSTRAINT authorization_pkey PRIMARY KEY (user_id),
-  CONSTRAINT authorization_fk FOREIGN KEY(user_id) REFERENCES "user"(id)
+  CONSTRAINT authorization_pkey PRIMARY KEY (id)
 )
 ;
 
