@@ -3,8 +3,8 @@
     <div ng-class="['form-group', chargeForm.driver.$invalid ? 'has-error' : '']">
         <label class="col-md-5 control-label">车   辆：</label>
         <div class="col-md-7">
-	        <input name="driver" type="text" class="form-control" 
-	        ng-model="driverDisplay" data-provide="typeahead" bs3-typeahead bs3-items="5" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead" bs3-displayText="displayText"/>
+	        <input name="driver" type="text" class="form-control" ng-model="driverDisplay" 
+	        data-provide="typeahead" bs3-typeahead bs3-items="all" bs3-minLength="0" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead" bs3-displayText="displayText" required/>
         </div>
     </div>
     
@@ -31,7 +31,7 @@
     <div ng-class="['form-group', chargeForm.amount.$invalid ? 'has-error' : '']">
         <label class="col-sm-5 control-label">金额：</label>
     	<div class="col-sm-7">
-			<input name="amount" type="number" step="0.01" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.amount"/>
+			<input name="amount" type="number" step="0.01" class="form-control" ng-disabled="!isDetailEditable" ng-model="chargeDetail.amount" required/>
     	</div>
     </div>
     

@@ -6,11 +6,11 @@
     	<button type="button" class="btn btn-primary" ng-click="$ctrl.importDrivers('#importDriverInput')"> <span class="glyphicon glyphicon-upload"> 导入</span></button>
     	<input id="importDriverInput" tabindex="-1" type="file" name="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display:none;"/>
     </div>
-    <table style="text-align: center;" ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm" >
-        <tr ng-repeat="row in $data" ng-form="rowForm" demo-tracked-table-row="row">
+    <table style="text-align: center;" ng-table="$ctrl.tableParams" class="table table-bordered table-striped table-hover">
+        <tr ng-repeat="row in $data">
         	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
            
-            <td data-title="'车    号'" filter="{carNumber : 'text'}" sortable="'carNumber'">
+            <td data-title="'车 号'" filter="{carNumber : 'text'}" sortable="'carNumber'">
                 <span class="editable-text"><a ng-click="$ctrl.openUserDetail(row)" style="cursor: pointer;">{{row.carNumber}}</a></span>
             </td>        
             <td data-title="'姓名'" filter="{name : 'text'}" sortable="'name'">

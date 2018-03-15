@@ -101,3 +101,14 @@ body {
 .sidebar ul li a {
 	font-size: 17px;
 }
+
+/*
+	For typeahead scroll bar
+*/
+input + .dropdown-menu {
+	height: auto;
+	max-height:400px;
+  	overflow-y: auto;
+}
+
+

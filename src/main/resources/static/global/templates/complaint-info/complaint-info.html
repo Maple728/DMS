@@ -4,7 +4,7 @@
         <label class="col-md-5 control-label">车   辆：</label>
         <div class="col-md-7">
 	        <input id="driver" name="driver" type="text" class="form-control"
-       		ng-model="driverDisplay" data-provide="typeahead" bs3-typeahead bs3-items="5" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead" bs3-displayText="displayText"/>
+       		ng-model="driverDisplay" data-provide="typeahead" bs3-typeahead bs3-items="all" bs3-minLength="0" autocomplete="off" bs3-promise="users" bs3-updater="updateTypeahead" bs3-displayText="displayText" required/>
         </div>
     </div>
 

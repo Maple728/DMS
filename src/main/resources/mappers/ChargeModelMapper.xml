@@ -36,7 +36,7 @@
       amount, invoce_number, create_dt, last_update_dt, 
       is_active)
     values (#{driverId,jdbcType=BIGINT}, #{occurDt,jdbcType=DATE}, #{chargeType,jdbcType=VARCHAR}, 
-      #{amount,jdbcType=DOUBLE}, #{invoce_number,jdbcType=VARCHAR},
+      #{amount,jdbcType=DOUBLE}, #{invoceNumber,jdbcType=VARCHAR},
       #{createDt,jdbcType=DATE}, #{lastUpdateDt,jdbcType=DATE}, 
       #{isActive,jdbcType=BIT})
   </insert>
@@ -55,7 +55,7 @@
       <if test="amount != null">
         amount,
       </if>
-      <if test="invoce_number != null">
+      <if test="invoceNumber != null">
         invoce_number,
       </if>      
       <if test="createDt != null">
@@ -81,8 +81,8 @@
       <if test="amount != null">
         #{amount,jdbcType=DOUBLE},
       </if>
-      <if test="invoce_number != null">
-        #{invoce_number,jdbcType=VARCHAR},
+      <if test="invoceNumber != null">
+        #{invoceNumber,jdbcType=VARCHAR},
       </if>      
       <if test="createDt != null">
         #{createDt,jdbcType=DATE},
@@ -119,8 +119,8 @@
       <if test="amount != null">
         amount = #{amount,jdbcType=DOUBLE},
       </if>
-      <if test="invoce_number != null">
-        invoce_number = #{invoce_number,jdbcType=VARCHAR},
+      <if test="invoceNumber != null">
+        invoce_number = #{invoceNumber,jdbcType=VARCHAR},
       </if>      
       <if test="createDt != null">
         create_dt = #{createDt,jdbcType=DATE},

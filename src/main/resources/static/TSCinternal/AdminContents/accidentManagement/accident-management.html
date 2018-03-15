@@ -4,8 +4,8 @@
         <button type="button" class="btn btn-primary" style="margin-right:15px" ng-click="$ctrl.openAddCourseModal()"><span class="glyphicon glyphicon-plus"> 添加</span></button>
     	<button type="button" class="btn btn-danger " ng-click="$ctrl.deleteCourses()"><span class="glyphicon glyphicon-remove"> 删除</span></button>
     </div>
-    <table ng-table="$ctrl.tableParams" style="text-align:center"  class="table table-bordered table-striped table-hover" ng-form="$ctrl.tableForm">
-        <tr ng-repeat="row in $data" ng-form="rowForm">
+    <table ng-table="$ctrl.tableParams" style="text-align:center"  class="table table-bordered table-striped table-hover">
+        <tr ng-repeat="row in $data">
         	<td data-title="'#'" style="width: 40px;padding-left: 10px;"><input class="checkbox" style="width:17px;height:17px" type="checkbox" ng-checked="{{$ctrl.isSelected(row)}}" ng-click="$ctrl.checkSelectStatus($event,row)"/></td>
             <td data-title="'车   号'" filter="{carNumber : 'text'}" sortable="'carNumber'">
                 <span><a ng-click="$ctrl.clickDetail(row)" style="cursor: pointer;">{{row.carNumber}}</a></span>
