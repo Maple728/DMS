@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 				.logoutUrl("/logout")
 				.invalidateHttpSession(true).clearAuthentication(true).deleteCookies(COOKIE_USER_ID);;
-		http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(false).expiredUrl("/login");
+		http.sessionManagement().maximumSessions(-1).maxSessionsPreventsLogin(true).expiredUrl("/login");
 		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 	}
 	
