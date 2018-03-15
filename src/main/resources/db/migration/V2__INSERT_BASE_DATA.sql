@@ -16,5 +16,5 @@ VALUES (224, '曹操', '锦州', 18840831235, now(), now(), '辽B77882');;
 INSERT INTO driver(id_no, name, address, phonenumber, create_dt, last_update_dt, car_number)
 VALUES (225, '刘备', '沙河口', 18840831235, now(), now(), '辽B77881');
 
-INSERT INTO "authorization"(username, password)
-VALUES('admin', '123');
+INSERT INTO "authorization"(username, password, role)
+VALUES('admin', '123', 'ADMIN');

@@ -14,6 +14,7 @@ CREATE TABLE "authorization"
   id bigserial,
   username text NOT NULL UNIQUE,
   password text NOT NULL,
+  role text NOT NULL,
   
   CONSTRAINT authorization_pkey PRIMARY KEY (id)
 )
@@ -174,7 +175,7 @@ CREATE TABLE "charge"
 	driver_id bigint NOT NULL,
 	
 	occur_dt DATE NOT NULL,
-	charge_type text NOT NULL,
+	charge_type text,
 	amount double precision NOT NULL,
 	invoce_number text,
 	
