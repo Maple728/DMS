@@ -146,7 +146,6 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('accidentManagement
 		}
 
 		ctrl.saveCourseModal = function() {
-			console.log(ctrl.clickedAccident);
 			if(ctrl.clickedAccident.id == null) {
 				// add 
 				addAccidentInServer(ctrl.clickedAccident).success(function(response){

@@ -33,7 +33,7 @@ public class AccidentController {
 		for(AccidentModel accident : results) {
 			try{
 				// get correspond to driver
-				tmpDriver = driverService.getDriverBaseById(accident.getId());
+				tmpDriver = driverService.getDriverBaseById(accident.getDriverId());
 				accident.setDriverIdNo(tmpDriver.getIdNo());
 				accident.setDriverName(tmpDriver.getName());
 				accident.setCarNumber(tmpDriver.getCarNumber());
