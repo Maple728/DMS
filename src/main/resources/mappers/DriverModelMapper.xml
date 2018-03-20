@@ -137,7 +137,7 @@
     </trim>
   </insert>
 
-  <select id="selectAllBase" resultMap="BaseResultMap">
+  <select id="selectAllBase" resultMap="BaseResultMap" useCache="false">
   	SELECT *
   	FROM driver
   	WHERE is_active = true

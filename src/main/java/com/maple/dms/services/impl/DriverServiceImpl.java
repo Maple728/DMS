@@ -103,7 +103,6 @@ public class DriverServiceImpl implements DriverService {
 		if(null == id) {
 			return 0;
 		}
-		// soft remove by setting is_active to false
 		return driverModelMapper.deleteByPrimaryKey(id);
 	}
 

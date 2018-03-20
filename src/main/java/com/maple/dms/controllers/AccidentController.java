@@ -34,37 +34,38 @@ public class AccidentController {
 		List<DriverModel> drivers = driverService.getAllBase();
 		DriverModel tmpDriver = null;
 		for(AccidentModel accident : results) {
-			tmpDriver = drivers.stream().filter(driver -> driver.getId() == accident.getDriverId()).collect(Collectors.toList()).get(0);
-			accident.setDriverIdNo(tmpDriver.getIdNo());
-			accident.setDriverName(tmpDriver.getName());
-			accident.setCarNumber(tmpDriver.getCarNumber());
+			try{
+				tmpDriver = drivers.stream().filter(driver -> driver.getId() == accident.getDriverId()).collect(Collectors.toList()).get(0);
+				accident.setDriverIdNo(tmpDriver.getIdNo());
+				accident.setDriverName(tmpDriver.getName());
+				accident.setCarNumber(tmpDriver.getCarNumber());
+			} catch (Exception e) {
+			}
 		}
 		return results;
 	}
 	
 	@RequestMapping(path = "/addAccident", method = RequestMethod.POST)
 	public AccidentModel addAccident(@RequestBody AccidentModel record) throws DMSException {
-		if(record == null || record.getDriverIdNo() == null) {
+		if(record == null || record.getDriverId() == null) {
 			throw new DMSException("Accident is null");
 		}
-		DriverModel driver = driverService.getDriverBaseByIdNo(record.getDriverIdNo());
-		record.setDriverId(driver.getId());
+		// insert driver
 		accidentService.addAccident(record);
+
 		return record;
 	}
 	
 	@RequestMapping(path = "/updateAccident", method = RequestMethod.POST)
 	public Integer updateAccident(@RequestBody AccidentModel record) throws DMSException {
-		if(record == null || record.getDriverIdNo() == null) {
+		if(record == null || record.getDriverId() == null) {
 			throw new DMSException("Accident is null");
 		}
-		DriverModel driver = driverService.getDriverBaseByIdNo(record.getDriverIdNo());
-		record.setDriverId(driver.getId());
 		return accidentService.updateAccident(record);
 	}
 	
 	@RequestMapping(path = "/removeAccident", method = RequestMethod.POST)
-	public Integer updateAccident(@RequestBody Long id) throws DMSException {
+	public Integer removeAccident(@RequestBody Long id) throws DMSException {
 		if(id == null) {
 			throw new DMSException("Accident's id is null");
 		}

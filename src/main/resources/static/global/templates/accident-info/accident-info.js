@@ -58,6 +58,7 @@ angular.module('accidentInfo', [])
 			});
 			
 			$scope.updateTypeahead = function(value) {
+				$scope.accidentDetail.driverId = value.id;
 				$scope.accidentDetail.driverIdNo = value.idNo;
 				$scope.accidentDetail.driverName = value.name;
 				$scope.accidentDetail.carNumber = value.carNumber;

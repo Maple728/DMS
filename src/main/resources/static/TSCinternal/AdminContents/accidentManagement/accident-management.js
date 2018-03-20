@@ -151,7 +151,7 @@ angular.module(window.tsc.constants.DASHBOARD_APP).component('accidentManagement
 				// add 
 				addAccidentInServer(ctrl.clickedAccident).success(function(response){
 					// Add the row into ngtable
-					ctrl.addDataNgtable();
+					ctrl.addDataNgtable(response);
 					// reload ng-table
 					ctrl.refreshNgtable();
 					
