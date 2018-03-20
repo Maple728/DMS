@@ -59,6 +59,7 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
 			});
 			
 			$scope.updateTypeahead = function(value) {
+				$scope.chargeDetail.driverId = value.id;
 				$scope.chargeDetail.driverIdNo = value.idNo;
 				$scope.chargeDetail.driverName = value.name;
 				$scope.chargeDetail.carNumber = value.carNumber
@@ -74,7 +75,7 @@ angular.module('chargeInfo', ['bootstrap3-typeahead'])
 				}
 			}
 			
-			$scope.$watch('chargeDetail.driverIdNo', function(newValue) {
+			$scope.$watch('chargeDetail.driverId', function(newValue) {
 				if(typeof(newValue) != 'undefined') {
 					$scope.driverDisplay = $scope.displayText($scope.chargeDetail);
 				} else {

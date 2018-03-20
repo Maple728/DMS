@@ -1,7 +1,6 @@
 package com.maple.dms.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,11 +29,10 @@ public class ComplaintController {
 		// get all complaints
 		List<ComplaintModel> results = complaintService.getAll();
 		
-		// get correspond to driver
-		List<DriverModel> drivers = driverService.getAllBase();
 		DriverModel tmpDriver = null;
 		for(ComplaintModel complaint : results) {
-			tmpDriver = drivers.stream().filter(driver -> driver.getId() == complaint.getDriverId()).collect(Collectors.toList()).get(0);
+			// get correspond to driver
+			tmpDriver = driverService.getDriverBaseById(complaint.getDriverId());
 			complaint.setDriverIdNo(tmpDriver.getIdNo());
 			complaint.setDriverName(tmpDriver.getName());
 			complaint.setCarNumber(tmpDriver.getCarNumber());
@@ -44,22 +42,18 @@ public class ComplaintController {
 	
 	@RequestMapping(path = "/addComplaint", method = RequestMethod.POST)
 	public ComplaintModel addComplaint(@RequestBody ComplaintModel record) throws DMSException {
-		if(record == null || record.getDriverIdNo() == null) {
+		if(record == null || record.getDriverId() == null) {
 			throw new DMSException("Complaint is null");
 		}
-		DriverModel driver = driverService.getDriverBaseByIdNo(record.getDriverIdNo());
-		record.setDriverId(driver.getId());
 		complaintService.addComplaint(record);
 		return record;
 	}
 	
 	@RequestMapping(path = "/updateComplaint", method = RequestMethod.POST)
 	public Integer updateComplaint(@RequestBody ComplaintModel record) throws DMSException {
-		if(record == null || record.getDriverIdNo() == null) {
+		if(record == null || record.getDriverId() == null) {
 			throw new DMSException("Complaint is null");
 		}
-		DriverModel driver = driverService.getDriverBaseByIdNo(record.getDriverIdNo());
-		record.setDriverId(driver.getId());
 		return complaintService.updateComplaint(record);
 	}
 	

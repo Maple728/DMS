@@ -1,7 +1,6 @@
 package com.maple.dms.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,12 +29,11 @@ public class AccidentController {
 		// get all complaints
 		List<AccidentModel> results = accidentService.getAll();
 		
-		// get correspond to driver
-		List<DriverModel> drivers = driverService.getAllBase();
 		DriverModel tmpDriver = null;
 		for(AccidentModel accident : results) {
 			try{
-				tmpDriver = drivers.stream().filter(driver -> driver.getId() == accident.getDriverId()).collect(Collectors.toList()).get(0);
+				// get correspond to driver
+				tmpDriver = driverService.getDriverBaseById(accident.getId());
 				accident.setDriverIdNo(tmpDriver.getIdNo());
 				accident.setDriverName(tmpDriver.getName());
 				accident.setCarNumber(tmpDriver.getCarNumber());

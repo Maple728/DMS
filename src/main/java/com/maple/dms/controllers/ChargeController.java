@@ -1,7 +1,6 @@
 package com.maple.dms.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,12 +28,11 @@ public class ChargeController {
 	public List<ChargeModel> getAllCharges() {
 		// get all complaints
 		List<ChargeModel> results = chargeService.getAll();
-		
-		// get correspond to driver
-		List<DriverModel> drivers = driverService.getAllBase();
+			
 		DriverModel tmpDriver = null;
 		for(ChargeModel charge : results) {
-			tmpDriver = drivers.stream().filter(driver -> driver.getId() == charge.getDriverId()).collect(Collectors.toList()).get(0);
+			// get correspond to driver
+			tmpDriver = driverService.getDriverBaseById(charge.getDriverId());
 			charge.setDriverIdNo(tmpDriver.getIdNo());
 			charge.setDriverName(tmpDriver.getName());
 			charge.setCarNumber(tmpDriver.getCarNumber());
@@ -44,22 +42,18 @@ public class ChargeController {
 	
 	@RequestMapping(path = "/addCharge", method = RequestMethod.POST)
 	public ChargeModel addCharge(@RequestBody ChargeModel record) throws DMSException {
-		if(record == null || record.getDriverIdNo() == null) {
+		if(record == null || record.getDriverId() == null) {
 			throw new DMSException("Charge is null");
 		}
-		DriverModel driver = driverService.getDriverBaseByIdNo(record.getDriverIdNo());
-		record.setDriverId(driver.getId());
 		chargeService.addCharge(record);
 		return record;
 	}
 	
 	@RequestMapping(path = "/updateCharge", method = RequestMethod.POST)
 	public Integer updateCharge(@RequestBody ChargeModel record) throws DMSException {
-		if(record == null || record.getDriverIdNo() == null) {
+		if(record == null || record.getDriverId() == null) {
 			throw new DMSException("Charge is null");
 		}
-		DriverModel driver = driverService.getDriverBaseByIdNo(record.getDriverIdNo());
-		record.setDriverId(driver.getId());
 		return chargeService.updateCharge(record);
 	}
 	

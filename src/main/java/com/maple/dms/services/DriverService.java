@@ -6,6 +6,8 @@ import com.maple.dms.models.DriverModel;
 
 public interface DriverService {
 	
+	DriverModel getDriverBaseById(Long id);
+	
 	DriverModel getDriverBaseByIdNo(String idNo);
 	
 	List<DriverModel> getAllBase();

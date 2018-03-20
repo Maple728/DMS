@@ -58,6 +58,7 @@ angular.module('complaintInfo', [])
 			});
 			
 			$scope.updateTypeahead = function(value) {
+				$scope.complaintDetail.driverId = value.id;
 				$scope.complaintDetail.driverIdNo = value.idNo;
 				$scope.complaintDetail.driverName = value.name;
 				$scope.complaintDetail.carNumber = value.carNumber

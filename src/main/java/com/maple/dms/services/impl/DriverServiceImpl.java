@@ -128,4 +128,12 @@ public class DriverServiceImpl implements DriverService {
 		return driverModelMapper.selectByIdNo(idNo);
 	}
 
+	@Override
+	public DriverModel getDriverBaseById(Long id) {
+		if(id == null) {
+			return null;
+		}
+		return driverModelMapper.selectByPrimaryKey(id);
+	}
+
 }
